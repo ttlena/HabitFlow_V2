@@ -14,6 +14,29 @@
 		A53384952A40CE260057F231 /* Habit_Flow_V2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384942A40CE260057F231 /* Habit_Flow_V2Tests.swift */; };
 		A533849F2A40CE260057F231 /* Habit_Flow_V2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533849E2A40CE260057F231 /* Habit_Flow_V2UITests.swift */; };
 		A53384A12A40CE260057F231 /* Habit_Flow_V2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384A02A40CE260057F231 /* Habit_Flow_V2UITestsLaunchTests.swift */; };
+		A53384AF2A40CEA70057F231 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A53384AD2A40CEA70057F231 /* Model.xcdatamodeld */; };
+		A53384B12A40CF3D0057F231 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384B02A40CF3D0057F231 /* DataController.swift */; };
+		A53384B42A40E9A60057F231 /* ToDosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384B32A40E9A60057F231 /* ToDosViewModel.swift */; };
+		A53384B72A40F2080057F231 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384B62A40F2080057F231 /* NavigationBarView.swift */; };
+		A53384BA2A40F23C0057F231 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384B92A40F23C0057F231 /* HomeView.swift */; };
+		A53384BC2A40F2AA0057F231 /* DailyHabitsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384BB2A40F2AA0057F231 /* DailyHabitsComponent.swift */; };
+		A53384C12A40F3340057F231 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384C02A40F3340057F231 /* CalendarView.swift */; };
+		A53384C42A40F3FA0057F231 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384C32A40F3FA0057F231 /* PrimaryButton.swift */; };
+		A53384C62A40F7540057F231 /* ToDoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384C52A40F7540057F231 /* ToDoListViewModel.swift */; };
+		A53384C92A40F7860057F231 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384C82A40F7860057F231 /* ItemModel.swift */; };
+		A53384CB2A40F8110057F231 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384CA2A40F8110057F231 /* CircularProgressView.swift */; };
+		A53384CE2A40F8E40057F231 /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384CD2A40F8E40057F231 /* HabitView.swift */; };
+		A53384D12A40F98F0057F231 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384D02A40F98F0057F231 /* ToDoListView.swift */; };
+		A53384D32A40F9B90057F231 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384D22A40F9B90057F231 /* ListRowView.swift */; };
+		A53384D52A40F9D50057F231 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384D42A40F9D50057F231 /* AddView.swift */; };
+		A53384EF2A4104130057F231 /* ToDo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384E72A4104130057F231 /* ToDo+CoreDataClass.swift */; };
+		A53384F02A4104130057F231 /* ToDo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384E82A4104130057F231 /* ToDo+CoreDataProperties.swift */; };
+		A53384F12A4104130057F231 /* Appointment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384E92A4104130057F231 /* Appointment+CoreDataClass.swift */; };
+		A53384F22A4104130057F231 /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384EA2A4104130057F231 /* Appointment+CoreDataProperties.swift */; };
+		A53384F32A4104130057F231 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384EB2A4104130057F231 /* User+CoreDataClass.swift */; };
+		A53384F42A4104130057F231 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384EC2A4104130057F231 /* User+CoreDataProperties.swift */; };
+		A53384F52A4104130057F231 /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384ED2A4104130057F231 /* Habit+CoreDataClass.swift */; };
+		A53384F62A4104130057F231 /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384EE2A4104130057F231 /* Habit+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +67,29 @@
 		A533849A2A40CE260057F231 /* Habit_Flow_V2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Habit_Flow_V2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A533849E2A40CE260057F231 /* Habit_Flow_V2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit_Flow_V2UITests.swift; sourceTree = "<group>"; };
 		A53384A02A40CE260057F231 /* Habit_Flow_V2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit_Flow_V2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A53384AE2A40CEA70057F231 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A53384B02A40CF3D0057F231 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		A53384B32A40E9A60057F231 /* ToDosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDosViewModel.swift; sourceTree = "<group>"; };
+		A53384B62A40F2080057F231 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		A53384B92A40F23C0057F231 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A53384BB2A40F2AA0057F231 /* DailyHabitsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyHabitsComponent.swift; sourceTree = "<group>"; };
+		A53384C02A40F3340057F231 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		A53384C32A40F3FA0057F231 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		A53384C52A40F7540057F231 /* ToDoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewModel.swift; sourceTree = "<group>"; };
+		A53384C82A40F7860057F231 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		A53384CA2A40F8110057F231 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		A53384CD2A40F8E40057F231 /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
+		A53384D02A40F98F0057F231 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
+		A53384D22A40F9B90057F231 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
+		A53384D42A40F9D50057F231 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		A53384E72A4104130057F231 /* ToDo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A53384E82A4104130057F231 /* ToDo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A53384E92A4104130057F231 /* Appointment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A53384EA2A4104130057F231 /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A53384EB2A4104130057F231 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A53384EC2A4104130057F231 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A53384ED2A4104130057F231 /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A53384EE2A4104130057F231 /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +141,12 @@
 			isa = PBXGroup;
 			children = (
 				A53384832A40CE210057F231 /* Habit_Flow_V2App.swift */,
-				A53384852A40CE210057F231 /* ContentView.swift */,
+				A53384C22A40F3D20057F231 /* Components */,
+				A53384B52A40F1C00057F231 /* Views */,
+				A53384B22A40E98C0057F231 /* ViewModels */,
+				A53384C72A40F7760057F231 /* Models */,
+				A53384B02A40CF3D0057F231 /* DataController.swift */,
+				A53384F72A41046A0057F231 /* CoreData */,
 				A53384872A40CE250057F231 /* Assets.xcassets */,
 				A53384892A40CE250057F231 /* Preview Content */,
 			);
@@ -125,6 +176,96 @@
 				A53384A02A40CE260057F231 /* Habit_Flow_V2UITestsLaunchTests.swift */,
 			);
 			path = Habit_Flow_V2UITests;
+			sourceTree = "<group>";
+		};
+		A53384B22A40E98C0057F231 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A53384B32A40E9A60057F231 /* ToDosViewModel.swift */,
+				A53384C52A40F7540057F231 /* ToDoListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A53384B52A40F1C00057F231 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A53384852A40CE210057F231 /* ContentView.swift */,
+				A53384B62A40F2080057F231 /* NavigationBarView.swift */,
+				A53384D42A40F9D50057F231 /* AddView.swift */,
+				A53384BF2A40F2F40057F231 /* Calendar */,
+				A53384CC2A40F8D50057F231 /* Habits */,
+				A53384B82A40F2240057F231 /* Home */,
+				A53384CF2A40F9400057F231 /* ToDos */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A53384B82A40F2240057F231 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A53384B92A40F23C0057F231 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A53384BF2A40F2F40057F231 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				A53384C02A40F3340057F231 /* CalendarView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		A53384C22A40F3D20057F231 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A53384C32A40F3FA0057F231 /* PrimaryButton.swift */,
+				A53384CA2A40F8110057F231 /* CircularProgressView.swift */,
+				A53384BB2A40F2AA0057F231 /* DailyHabitsComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A53384C72A40F7760057F231 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A53384AD2A40CEA70057F231 /* Model.xcdatamodeld */,
+				A53384C82A40F7860057F231 /* ItemModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A53384CC2A40F8D50057F231 /* Habits */ = {
+			isa = PBXGroup;
+			children = (
+				A53384CD2A40F8E40057F231 /* HabitView.swift */,
+			);
+			path = Habits;
+			sourceTree = "<group>";
+		};
+		A53384CF2A40F9400057F231 /* ToDos */ = {
+			isa = PBXGroup;
+			children = (
+				A53384D02A40F98F0057F231 /* ToDoListView.swift */,
+				A53384D22A40F9B90057F231 /* ListRowView.swift */,
+			);
+			path = ToDos;
+			sourceTree = "<group>";
+		};
+		A53384F72A41046A0057F231 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A53384E72A4104130057F231 /* ToDo+CoreDataClass.swift */,
+				A53384E82A4104130057F231 /* ToDo+CoreDataProperties.swift */,
+				A53384E92A4104130057F231 /* Appointment+CoreDataClass.swift */,
+				A53384EA2A4104130057F231 /* Appointment+CoreDataProperties.swift */,
+				A53384EB2A4104130057F231 /* User+CoreDataClass.swift */,
+				A53384EC2A4104130057F231 /* User+CoreDataProperties.swift */,
+				A53384ED2A4104130057F231 /* Habit+CoreDataClass.swift */,
+				A53384EE2A4104130057F231 /* Habit+CoreDataProperties.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +398,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A53384F52A4104130057F231 /* Habit+CoreDataClass.swift in Sources */,
+				A53384F02A4104130057F231 /* ToDo+CoreDataProperties.swift in Sources */,
+				A53384C62A40F7540057F231 /* ToDoListViewModel.swift in Sources */,
+				A53384C12A40F3340057F231 /* CalendarView.swift in Sources */,
+				A53384C92A40F7860057F231 /* ItemModel.swift in Sources */,
+				A53384C42A40F3FA0057F231 /* PrimaryButton.swift in Sources */,
+				A53384F22A4104130057F231 /* Appointment+CoreDataProperties.swift in Sources */,
+				A53384B42A40E9A60057F231 /* ToDosViewModel.swift in Sources */,
+				A53384BA2A40F23C0057F231 /* HomeView.swift in Sources */,
+				A53384F32A4104130057F231 /* User+CoreDataClass.swift in Sources */,
 				A53384862A40CE210057F231 /* ContentView.swift in Sources */,
+				A53384B72A40F2080057F231 /* NavigationBarView.swift in Sources */,
+				A53384F12A4104130057F231 /* Appointment+CoreDataClass.swift in Sources */,
+				A53384D52A40F9D50057F231 /* AddView.swift in Sources */,
+				A53384B12A40CF3D0057F231 /* DataController.swift in Sources */,
+				A53384D12A40F98F0057F231 /* ToDoListView.swift in Sources */,
+				A53384CE2A40F8E40057F231 /* HabitView.swift in Sources */,
+				A53384D32A40F9B90057F231 /* ListRowView.swift in Sources */,
 				A53384842A40CE210057F231 /* Habit_Flow_V2App.swift in Sources */,
+				A53384CB2A40F8110057F231 /* CircularProgressView.swift in Sources */,
+				A53384F42A4104130057F231 /* User+CoreDataProperties.swift in Sources */,
+				A53384F62A4104130057F231 /* Habit+CoreDataProperties.swift in Sources */,
+				A53384BC2A40F2AA0057F231 /* DailyHabitsComponent.swift in Sources */,
+				A53384AF2A40CEA70057F231 /* Model.xcdatamodeld in Sources */,
+				A53384EF2A4104130057F231 /* ToDo+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +741,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A53384AD2A40CEA70057F231 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A53384AE2A40CEA70057F231 /* Model.xcdatamodel */,
+			);
+			currentVersion = A53384AE2A40CEA70057F231 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A53384782A40CE210057F231 /* Project object */;
 }

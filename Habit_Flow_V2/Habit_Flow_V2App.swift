@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Habit_Flow_V2App: App {
+    @StateObject private var dataController = DataController(name: "Model")
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            NavigationBar()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
