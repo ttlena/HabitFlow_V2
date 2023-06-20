@@ -22,39 +22,10 @@ struct HomeView: View {
                 }
                 Spacer()
                     .frame(height: 40)
-                ScrollView(.horizontal, showsIndicators: false){
-                    HStack(spacing: 20) {
-                        ForEach(0..<7) { idx in
-                            VStack {
-                                Text("Day")
-                                Text("\(idx + 1)")
-                            }
-                            .padding()
-                            .background(.gray)
-                            .cornerRadius(10)
-                        }
-                    }
-                }
+                WeeklyOverview()
                 Spacer()
                     .frame(height: 25)
-                Text("Heute")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundColor(.white)
-                VStack() {
-                    ForEach(0..<3) { idx in
-                        HStack {
-                            Text("Todo \(idx + 1)")
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(.gray)
-                        .cornerRadius(10)
-                    }
-                }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color(UIColor.darkGray))
-                .cornerRadius(10)
+                ToDoTodayComponent()
                 Spacer()
                     .frame(height: 25)
                 DailyHabitsComponent()
