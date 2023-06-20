@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 class DataController: ObservableObject {
-    
+    static let shared = DataController(name: "Model")
     var container: NSPersistentContainer
     
     init(name:String) {

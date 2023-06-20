@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DailyHabitsComponent: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var habits: FetchedResults<Habit>
+    @FetchRequest(entity: Habit.entity(), sortDescriptors: []) var habits: FetchedResults<Habit>
 
     let columns = [
         GridItem(.flexible()),

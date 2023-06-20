@@ -37,6 +37,9 @@
 		A53384F42A4104130057F231 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384EC2A4104130057F231 /* User+CoreDataProperties.swift */; };
 		A53384F52A4104130057F231 /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384ED2A4104130057F231 /* Habit+CoreDataClass.swift */; };
 		A53384F62A4104130057F231 /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384EE2A4104130057F231 /* Habit+CoreDataProperties.swift */; };
+		A53A41312A41161F008D64D2 /* ToDoTodayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41302A41161E008D64D2 /* ToDoTodayComponent.swift */; };
+		A53A41332A41170A008D64D2 /* WeeklyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41322A41170A008D64D2 /* WeeklyOverview.swift */; };
+		A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41342A412D3C008D64D2 /* HabitViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +93,9 @@
 		A53384EC2A4104130057F231 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A53384ED2A4104130057F231 /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A53384EE2A4104130057F231 /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A53A41302A41161E008D64D2 /* ToDoTodayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTodayComponent.swift; sourceTree = "<group>"; };
+		A53A41322A41170A008D64D2 /* WeeklyOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyOverview.swift; sourceTree = "<group>"; };
+		A53A41342A412D3C008D64D2 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,7 @@
 			children = (
 				A53384B32A40E9A60057F231 /* ToDosViewModel.swift */,
 				A53384C52A40F7540057F231 /* ToDoListViewModel.swift */,
+				A53A41342A412D3C008D64D2 /* HabitViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -205,6 +212,9 @@
 			isa = PBXGroup;
 			children = (
 				A53384B92A40F23C0057F231 /* HomeView.swift */,
+				A53A41322A41170A008D64D2 /* WeeklyOverview.swift */,
+				A53A41302A41161E008D64D2 /* ToDoTodayComponent.swift */,
+				A53384BB2A40F2AA0057F231 /* DailyHabitsComponent.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -222,7 +232,6 @@
 			children = (
 				A53384C32A40F3FA0057F231 /* PrimaryButton.swift */,
 				A53384CA2A40F8110057F231 /* CircularProgressView.swift */,
-				A53384BB2A40F2AA0057F231 /* DailyHabitsComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -407,8 +416,10 @@
 				A53384F22A4104130057F231 /* Appointment+CoreDataProperties.swift in Sources */,
 				A53384B42A40E9A60057F231 /* ToDosViewModel.swift in Sources */,
 				A53384BA2A40F23C0057F231 /* HomeView.swift in Sources */,
+				A53A41332A41170A008D64D2 /* WeeklyOverview.swift in Sources */,
 				A53384F32A4104130057F231 /* User+CoreDataClass.swift in Sources */,
 				A53384862A40CE210057F231 /* ContentView.swift in Sources */,
+				A53A41312A41161F008D64D2 /* ToDoTodayComponent.swift in Sources */,
 				A53384B72A40F2080057F231 /* NavigationBarView.swift in Sources */,
 				A53384F12A4104130057F231 /* Appointment+CoreDataClass.swift in Sources */,
 				A53384D52A40F9D50057F231 /* AddView.swift in Sources */,
@@ -419,6 +430,7 @@
 				A53384842A40CE210057F231 /* Habit_Flow_V2App.swift in Sources */,
 				A53384CB2A40F8110057F231 /* CircularProgressView.swift in Sources */,
 				A53384F42A4104130057F231 /* User+CoreDataProperties.swift in Sources */,
+				A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */,
 				A53384F62A4104130057F231 /* Habit+CoreDataProperties.swift in Sources */,
 				A53384BC2A40F2AA0057F231 /* DailyHabitsComponent.swift in Sources */,
 				A53384AF2A40CEA70057F231 /* Model.xcdatamodeld in Sources */,

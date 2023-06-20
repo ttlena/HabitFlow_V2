@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "A81E9F58-7631-4ED4-A267-CAEA4FD2B7DF"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61FB534D-23D6-413A-8CEA-0882236F81E0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Habit_Flow_V2/Views/Home/HomeView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8B8AE28A-9A7F-4BCE-897D-5C9785369D6C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Habit_Flow_V2/Views/Home/ToDoTodayComponent.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "ToDoTodayComponent"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "8B8AE28A-9A7F-4BCE-897D-5C9785369D6C - 3d3dbeccdd9a68df"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of Habit_Flow_V2.ToDoTodayComponent.toDosVM : Habit_Flow_V2.ToDosViewModel"
+                  moduleName = "Habit_Flow_V2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lena.ngo/Documents/Uni/5_MobileComputing/Habit_Flow_V2/Habit_Flow_V2/Views/Home/ToDoTodayComponent.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "38">
+               </Location>
+               <Location
+                  uuid = "8B8AE28A-9A7F-4BCE-897D-5C9785369D6C - e8bbc5360b9d9c35"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Habit_Flow_V2.ToDoTodayComponent.toDosVM.getter : Habit_Flow_V2.ToDosViewModel"
+                  moduleName = "Habit_Flow_V2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lena.ngo/Documents/Uni/5_MobileComputing/Habit_Flow_V2/Habit_Flow_V2/Views/Home/ToDoTodayComponent.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "115">
+               </Location>
+               <Location
+                  uuid = "8B8AE28A-9A7F-4BCE-897D-5C9785369D6C - 7f8b9dc4196aca13"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Habit_Flow_V2.ToDoTodayComponent.$toDosVM.getter : SwiftUI.ObservedObject&lt;Habit_Flow_V2.ToDosViewModel&gt;.Wrapper"
+                  moduleName = "Habit_Flow_V2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lena.ngo/Documents/Uni/5_MobileComputing/Habit_Flow_V2/Habit_Flow_V2/Views/Home/ToDoTodayComponent.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "115">
+               </Location>
+               <Location
+                  uuid = "8B8AE28A-9A7F-4BCE-897D-5C9785369D6C - eb15c3aa91d5fab2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Habit_Flow_V2.ToDoTodayComponent.init() -&gt; Habit_Flow_V2.ToDoTodayComponent"
+                  moduleName = "Habit_Flow_V2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lena.ngo/Documents/Uni/5_MobileComputing/Habit_Flow_V2/Habit_Flow_V2/Views/Home/ToDoTodayComponent.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D397516D-8CC4-467C-8FCD-D376F606319C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Habit_Flow_V2/Views/Home/HomeView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
