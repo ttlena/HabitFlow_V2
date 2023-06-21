@@ -7,12 +7,18 @@
 
 import SwiftUI
 
+class NavigationBarViewModel: ObservableObject {
+    @Published var selectedTabIndex: Int = 0
+}
+
 struct NavigationBar: View {
     @StateObject var toDoListViewModel: ToDoListViewModel = ToDoListViewModel()
-    
+    @StateObject var navigationBarViewModel = NavigationBarViewModel()
+
     var body: some View {
-        TabView {
+        TabView(selection: $navigationBarViewModel.selectedTabIndex) {
             HomeView()
+                .tag(0)
                 .tabItem() {
                     VStack {
                         Image("HomeIcon")
@@ -21,6 +27,7 @@ struct NavigationBar: View {
                     }
                 }
             CalendarView()
+                .tag(1)
                 .tabItem() {
                     Image("CalendarIcon")
                     Text("Kalender")
@@ -28,6 +35,7 @@ struct NavigationBar: View {
 
                 }
             ToDoListView()
+                .tag(2)
                 .tabItem() {
                     Image("ToDoIcon")
                     Text("To Do")
@@ -36,6 +44,7 @@ struct NavigationBar: View {
                 }
                 .environmentObject(toDoListViewModel)
             HabitsView()
+                .tag(3)
                 .tabItem() {
                     Image("HabitsIcon")
                     Text("Habits")
@@ -44,6 +53,7 @@ struct NavigationBar: View {
                 }
         }
         .background(.black)
+        .environmentObject(navigationBarViewModel)
     }
 }
 

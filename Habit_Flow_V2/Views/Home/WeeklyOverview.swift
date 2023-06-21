@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WeeklyOverview: View {
+    @EnvironmentObject var navigationBarViewModel: NavigationBarViewModel
+
     var body: some View {
         let weekdays = getCurrentWeekdays()
         ScrollView(.horizontal, showsIndicators: false){
@@ -21,6 +23,9 @@ struct WeeklyOverview: View {
                     .padding()
                     .background(.gray)
                     .cornerRadius(10)
+                    .onTapGesture {
+                        navigationBarViewModel.selectedTabIndex = 1
+                    }
                 }
             }
         }
