@@ -30,7 +30,6 @@ class ToDosViewModel:ObservableObject {
         let newToDo = ToDo(context: dataController.container.viewContext)
         newToDo.id = UUID()
         newToDo.name = name
-        
         save()
         fetchData()
     }
@@ -44,7 +43,21 @@ class ToDosViewModel:ObservableObject {
         fetchData()
     }
     
+    func updateItem(obj: ToDo) {
+        print("update")
+        if let item = toDos.firstIndex(where: {$0.id == obj.id}) {
+            dataController.container.viewContext.delete(toDos.remove(at: item))
+        }
+        save()
+        fetchData()
+    }
+    
     func save() {
-        try? dataController.container.viewContext.save()
+        do {
+            try dataController.container.viewContext.save()
+            print("saved!")
+        } catch {
+            print("speichern failed")
+        }
     }
 }
