@@ -24,7 +24,7 @@ struct WeeklyOverview: View {
                     }
                     .frame(width: 35)
                     .padding()
-                    .background(.gray)
+                    .background(calendarViewModel.getDateDayNumber(date: day) == calendarViewModel.getDateDayNumber(date: Date.now) ? .orange : .gray)
                     .cornerRadius(10)
                     .onTapGesture {
                         navigationBarViewModel.selectedTabIndex = 1
