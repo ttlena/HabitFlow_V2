@@ -21,7 +21,7 @@ struct CalendarView: View {
             .datePickerStyle(.graphical)
             .accentColor(.orange)
             .background(Color.gray.opacity(0.4), in: RoundedRectangle(cornerRadius: 20)).padding()
-            .environment(\.locale, Locale.init(identifier: "de"))
+            .environment(\.locale, Locale.init(identifier: "de_DE"))
             
             PrimaryButton(labelMessage: "neuer Termin", symbol: "plus", action: {
                 print("printed")

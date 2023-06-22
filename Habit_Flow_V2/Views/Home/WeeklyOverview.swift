@@ -12,13 +12,15 @@ struct WeeklyOverview: View {
     @EnvironmentObject var calendarViewModel: CalendarViewModel
 
     var body: some View {
-        let weekdays = getCurrentWeekdays()
+        let weekdays = calendarViewModel.getCurrentWeekdays()
         ScrollView(.horizontal, showsIndicators: false){
+            Text("Wochenübersicht")
+                .foregroundColor(.white)
             HStack(spacing: 20) {
                 ForEach(weekdays, id: \.self) { day in
                     VStack {
-                        Text(getDateWeekday(date:day))
-                        Text(getDateDayNumber(date:day))
+                        Text(calendarViewModel.getDateWeekday(date:day))
+                        Text(calendarViewModel.getDateDayNumber(date:day))
                     }
                     .frame(width: 35)
                     .padding()
@@ -33,35 +35,7 @@ struct WeeklyOverview: View {
         }
     }
     
-    func getCurrentWeekdays() -> [Date] {
-        var calendar = Calendar.autoupdatingCurrent
-        calendar.firstWeekday = 2
-        let today = calendar.startOfDay(for: Date())
-        var week = [Date]()
-        if let weekInterval = calendar.dateInterval(of: .weekOfYear, for: today) {
-            for i in 0...6 {
-                if let day = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
-                    week += [day]
-                }
-            }
-        }
-        return week
-    }
     
-    func getDateWeekday(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EE"
-        dateFormatter.locale = Locale(identifier: "de_DE")
-        let weekDay = dateFormatter.string(from: date)
-        return weekDay
-    }
-    
-    func getDateDayNumber(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd"
-        let weekDay = dateFormatter.string(from: date)
-        return weekDay
-    }
 }
 
 struct WeeklyOverview_Previews: PreviewProvider {
