@@ -17,6 +17,7 @@ extension ToDo {
     }
 
     @NSManaged public var id: UUID?
+    @NSManaged public var date: Date?
     @NSManaged public var name: String?
     @NSManaged public var origin: User?
 
