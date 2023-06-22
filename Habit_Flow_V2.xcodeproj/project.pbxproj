@@ -40,6 +40,8 @@
 		A53A41312A41161F008D64D2 /* ToDoTodayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41302A41161E008D64D2 /* ToDoTodayComponent.swift */; };
 		A53A41332A41170A008D64D2 /* WeeklyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41322A41170A008D64D2 /* WeeklyOverview.swift */; };
 		A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41342A412D3C008D64D2 /* HabitViewModel.swift */; };
+		A59693612A43C3D6003CF220 /* NavigationBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */; };
+		A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59693622A43CB23003CF220 /* CalendarViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		A53A41302A41161E008D64D2 /* ToDoTodayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTodayComponent.swift; sourceTree = "<group>"; };
 		A53A41322A41170A008D64D2 /* WeeklyOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyOverview.swift; sourceTree = "<group>"; };
 		A53A41342A412D3C008D64D2 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
+		A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModel.swift; sourceTree = "<group>"; };
+		A59693622A43CB23003CF220 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,8 @@
 				A53384B32A40E9A60057F231 /* ToDosViewModel.swift */,
 				A53384C52A40F7540057F231 /* ToDoListViewModel.swift */,
 				A53A41342A412D3C008D64D2 /* HabitViewModel.swift */,
+				A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */,
+				A59693622A43CB23003CF220 /* CalendarViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -414,6 +420,7 @@
 				A53384C92A40F7860057F231 /* ItemModel.swift in Sources */,
 				A53384C42A40F3FA0057F231 /* PrimaryButton.swift in Sources */,
 				A53384F22A4104130057F231 /* Appointment+CoreDataProperties.swift in Sources */,
+				A59693612A43C3D6003CF220 /* NavigationBarViewModel.swift in Sources */,
 				A53384B42A40E9A60057F231 /* ToDosViewModel.swift in Sources */,
 				A53384BA2A40F23C0057F231 /* HomeView.swift in Sources */,
 				A53A41332A41170A008D64D2 /* WeeklyOverview.swift in Sources */,
@@ -430,6 +437,7 @@
 				A53384842A40CE210057F231 /* Habit_Flow_V2App.swift in Sources */,
 				A53384CB2A40F8110057F231 /* CircularProgressView.swift in Sources */,
 				A53384F42A4104130057F231 /* User+CoreDataProperties.swift in Sources */,
+				A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */,
 				A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */,
 				A53384F62A4104130057F231 /* Habit+CoreDataProperties.swift in Sources */,
 				A53384BC2A40F2AA0057F231 /* DailyHabitsComponent.swift in Sources */,

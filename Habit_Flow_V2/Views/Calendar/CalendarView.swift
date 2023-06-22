@@ -8,17 +8,14 @@
 import SwiftUI
 
 struct CalendarView: View {
-   // @StateObject var calendarViewModel: CalendarViewModel?
-    
-    @State private var date = Date()
-    
+    @EnvironmentObject var calendar: CalendarViewModel
     
     var body: some View {
         VStack {
             Text("Kalender").font(.title)
             DatePicker(
                 "Start Date",
-                selection: $date,
+                selection: $calendar.pickedDate,
                 displayedComponents: [.date]
             )
             .datePickerStyle(.graphical)

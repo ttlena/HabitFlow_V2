@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WeeklyOverview: View {
     @EnvironmentObject var navigationBarViewModel: NavigationBarViewModel
+    @EnvironmentObject var calendarViewModel: CalendarViewModel
 
     var body: some View {
         let weekdays = getCurrentWeekdays()
@@ -25,6 +26,7 @@ struct WeeklyOverview: View {
                     .cornerRadius(10)
                     .onTapGesture {
                         navigationBarViewModel.selectedTabIndex = 1
+                        calendarViewModel.pickedDate = day
                     }
                 }
             }

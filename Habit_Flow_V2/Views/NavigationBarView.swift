@@ -7,13 +7,10 @@
 
 import SwiftUI
 
-class NavigationBarViewModel: ObservableObject {
-    @Published var selectedTabIndex: Int = 0
-}
-
 struct NavigationBar: View {
     @StateObject var toDoListViewModel: ToDoListViewModel = ToDoListViewModel()
     @StateObject var navigationBarViewModel = NavigationBarViewModel()
+    @StateObject var calendarViewModel = CalendarViewModel()
 
     var body: some View {
         TabView(selection: $navigationBarViewModel.selectedTabIndex) {
@@ -26,6 +23,7 @@ struct NavigationBar: View {
                             .foregroundColor(.white)
                     }
                 }
+                .environmentObject(calendarViewModel)
             CalendarView()
                 .tag(1)
                 .tabItem() {
@@ -34,6 +32,7 @@ struct NavigationBar: View {
                         .foregroundColor(.white)
 
                 }
+                .environmentObject(calendarViewModel)
             ToDoListView()
                 .tag(2)
                 .tabItem() {
