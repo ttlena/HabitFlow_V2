@@ -14,8 +14,6 @@ struct WeeklyOverview: View {
     var body: some View {
         let weekdays = calendarViewModel.getCurrentWeekdays()
         ScrollView(.horizontal, showsIndicators: false){
-            Text("Wochenübersicht")
-                .foregroundColor(.white)
             HStack(spacing: 20) {
                 ForEach(weekdays, id: \.self) { day in
                     VStack {

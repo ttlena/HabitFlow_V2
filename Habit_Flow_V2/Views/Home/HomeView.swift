@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject var toDosViewModel = ToDosViewModel()
+    @StateObject var habitViewModel = HabitViewModel()
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
@@ -26,9 +28,11 @@ struct HomeView: View {
                 Spacer()
                     .frame(height: 25)
                 ToDoTodayComponent()
+                    .environmentObject(toDosViewModel)
                 Spacer()
                     .frame(height: 25)
                 DailyHabitsComponent()
+                    .environmentObject(habitViewModel)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ToDoTodayComponent: View {
-    @StateObject var toDosVM = ToDosViewModel()
+    @EnvironmentObject var toDosVM: ToDosViewModel
     
     var body: some View {
         Text("Heute")

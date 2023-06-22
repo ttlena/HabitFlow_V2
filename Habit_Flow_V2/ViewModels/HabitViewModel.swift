@@ -35,6 +35,28 @@ class HabitViewModel:ObservableObject {
         fetchData()
     }
     
+    func addRandomHabit() {
+        let task = ["clean", "wash", "study", "workout"]
+        let chosenTask = task.randomElement()!
+        let habit = Habit(context: dataController.container.viewContext)
+        habit.id = UUID()
+        habit.icon = "Waterdrop"
+        habit.name = "\(chosenTask)"
+        habit.current = Int16.random(in: 0...10)
+        habit.goal = Int16.random(in: 5...100)
+        habit.progress = Double(habit.current) / Double(habit.goal)
+        save()
+        fetchData()
+    }
+    
+    func deleteAll() {
+        for habit in habits {
+            dataController.container.viewContext.delete(habit)
+        }
+        save()
+        fetchData()
+    }
+    
     func deleteItems(at offsets:IndexSet) {
         for offset in offsets {
             let habit = habits[offset]
@@ -43,7 +65,7 @@ class HabitViewModel:ObservableObject {
         save()
         fetchData()
     }
-    
+        
     func save() {
         try? dataController.container.viewContext.save()
     }

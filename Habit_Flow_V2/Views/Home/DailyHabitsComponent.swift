@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct DailyHabitsComponent: View {
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: Habit.entity(), sortDescriptors: []) var habits: FetchedResults<Habit>
-
+    @EnvironmentObject var habitsVM: HabitViewModel
+    
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -23,7 +22,7 @@ struct DailyHabitsComponent: View {
             
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(habits, id: \.self) { habit in
+                    ForEach(habitsVM.habits, id: \.self) { habit in
                         VStack() {
                             HStack() {
                                 Image(habit.icon ?? "")
@@ -46,33 +45,13 @@ struct DailyHabitsComponent: View {
             .frame(height: 500)
             
             Button("add") {
-                addRandomHabit()
+                habitsVM.addRandomHabit()
             }
             Button("delete") {
-                deleteHabits()
+                habitsVM.deleteAll()
             }
             
         }
-    }
-    func addRandomHabit() {
-        let task = ["clean", "wash", "study", "workout"]
-        let chosenTask = task.randomElement()!
-        let habit = Habit(context: moc)
-        habit.id = UUID()
-        habit.icon = "Waterdrop"
-        habit.name = "\(chosenTask)"
-        habit.current = Int16.random(in: 0...10)
-        habit.goal = Int16.random(in: 5...100)
-        habit.progress = Double(habit.current) / Double(habit.goal)
-        try? moc.save()
-    }
-    
-    func deleteHabits() {
-        for idx in 0...(habits.count-1) {
-            let habit = habits[idx]
-            moc.delete(habit)
-        }
-        try? moc.save()
     }
 }
 
