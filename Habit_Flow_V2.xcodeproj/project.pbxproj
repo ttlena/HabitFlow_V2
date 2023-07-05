@@ -45,6 +45,7 @@
 		A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41342A412D3C008D64D2 /* HabitViewModel.swift */; };
 		A59693612A43C3D6003CF220 /* NavigationBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */; };
 		A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59693622A43CB23003CF220 /* CalendarViewModel.swift */; };
+		C5444A2D2A560F23002D05EA /* CalenderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5444A2C2A560F23002D05EA /* CalenderList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		A53A41342A412D3C008D64D2 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
 		A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModel.swift; sourceTree = "<group>"; };
 		A59693622A43CB23003CF220 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		C5444A2C2A560F23002D05EA /* CalenderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 			children = (
 				A53384C32A40F3FA0057F231 /* PrimaryButton.swift */,
 				A53384CA2A40F8110057F231 /* CircularProgressView.swift */,
+				C5444A2C2A560F23002D05EA /* CalenderList.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				A53384C92A40F7860057F231 /* ItemModel.swift in Sources */,
 				A53384C42A40F3FA0057F231 /* PrimaryButton.swift in Sources */,
 				A53384F22A4104130057F231 /* Appointment+CoreDataProperties.swift in Sources */,
+				C5444A2D2A560F23002D05EA /* CalenderList.swift in Sources */,
 				A59693612A43C3D6003CF220 /* NavigationBarViewModel.swift in Sources */,
 				A53384B42A40E9A60057F231 /* ToDosViewModel.swift in Sources */,
 				A53384BA2A40F23C0057F231 /* HomeView.swift in Sources */,
