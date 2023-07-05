@@ -14,7 +14,7 @@ struct WeeklyOverview: View {
     var body: some View {
         let weekdays = calendarViewModel.getCurrentWeekdays()
         ScrollView(.horizontal, showsIndicators: false){
-            HStack(spacing: 20) {
+            HStack(spacing: 10) {
                 ForEach(weekdays, id: \.self) { day in
                     VStack {
                         Text(calendarViewModel.getDateWeekday(date:day))
@@ -39,5 +39,7 @@ struct WeeklyOverview: View {
 struct WeeklyOverview_Previews: PreviewProvider {
     static var previews: some View {
         WeeklyOverview()
+            .environmentObject(NavigationBarViewModel())
+            .environmentObject(CalendarViewModel())
     }
 }

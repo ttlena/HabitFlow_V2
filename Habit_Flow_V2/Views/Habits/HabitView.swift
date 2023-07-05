@@ -44,6 +44,8 @@ struct HabitsView: View {
                 .background(Color.orange)
                 .cornerRadius(32)
                 .padding([.horizontal], 100)
+            
+                .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .padding([.bottom], 50)
         
