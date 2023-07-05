@@ -37,7 +37,9 @@ struct PrimaryButton: View {
             .padding()
             .foregroundColor(.black)
             .background(Color.orange)
-            .cornerRadius(22)
+            .cornerRadius(32)
+            .frame(height: 50)
+            .frame(maxWidth: .infinity)
         }
     }
     

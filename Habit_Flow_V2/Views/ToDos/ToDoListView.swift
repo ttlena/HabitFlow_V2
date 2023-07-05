@@ -19,21 +19,30 @@ struct ToDoListView: View {
                 Text("ToDo's")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
-                    
-                    .padding(20)
+                    .padding(0)
                     .frame(maxWidth: .infinity, alignment: .leading)
             
-                Text(String(toDoListViewModel.items.filter{$0.isCompleted == true}.count) + "/" + String(toDoListViewModel.items.count))
+                Text(String(toDoListViewModel.items.filter{$0.isCompleted == true}.count) + " / " + String(toDoListViewModel.items.count))
+                    .padding(10)
+                    .padding([.horizontal], 15)
                     .font(.title3)
                     .fontWeight(.semibold)
-                    .background(Color.purple)
-                    .cornerRadius(4)
-                    .padding()
+                    .background(Color(UIColor.systemGray5))
+                    .cornerRadius(12)
+                    
+                    
                 
             }
+            .padding([.horizontal], 25)
+            
+            
             if(toDoListViewModel.items.count == 0) {
                 Text("Noch keine ToDo's für heute")
+                    .font(.title3)
+                    .padding([.top], 100)
             }
+            
+           
            
             
              
@@ -41,14 +50,16 @@ struct ToDoListView: View {
                 ForEach(toDoListViewModel.items) { item in
                     ListRowView(item: item)
                         .onTapGesture {
-                            withAnimation(.linear) {
+                            withAnimation(.linear(duration: 0)) {
                                 toDoListViewModel.updateItem(item: item)
                             }
                         }
                 }
+                
                 .onDelete(perform: toDoListViewModel.deleteItem)
                 .onMove(perform: toDoListViewModel.moveItem)
             }
+            .listStyle(InsetListStyle())
             
             Button(action: newToDo, label: {
                 Text("+ neues ToDo")
@@ -63,6 +74,8 @@ struct ToDoListView: View {
             .padding([.horizontal], 100)
             
         }
+        .padding([.bottom], 50)
+       
 
         
         .frame(maxHeight: .infinity, alignment: .bottom)

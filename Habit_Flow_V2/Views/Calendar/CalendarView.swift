@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct CalendarView: View {
+    
     @EnvironmentObject var calendar: CalendarViewModel
+    @State var showingBottomSheet = false
     
     var body: some View {
         VStack {
-            Text("Kalender").font(.title)
+            Text("Kalender")
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .padding(0)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding([.horizontal], 25)
             DatePicker(
                 "Start Date",
                 selection: $calendar.pickedDate,
@@ -23,21 +30,34 @@ struct CalendarView: View {
             .background(Color.gray.opacity(0.4), in: RoundedRectangle(cornerRadius: 20)).padding()
             .environment(\.locale, Locale.init(identifier: "de_DE"))
             
+            
             CalenderList(event: "Laufen", eventType: "Habit", time: "20:00", imageName: "checkmark", recColor: Color.red)
             CalenderList(event: "Arzt", eventType: "Termin", time: "23:00", imageName: "checkmark", recColor: Color.blue)
             
             PrimaryButton(labelMessage: "neuer Termin", symbol: "plus", action: {
-                print("printed")
+                newDate()
                 
             }).frame(maxHeight: .infinity, alignment: .bottom)
-                .padding(40)
         
         }
+        .padding([.bottom], 20)
+        
+        .sheet(isPresented: $showingBottomSheet) {
+            AddCalendarSheetView()
+                .presentationDetents([.medium, .large])
+        }
+        
+        
+    }
+    
+    func newDate() {
+        showingBottomSheet.toggle()
     }
 }
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
         CalendarView()
+            .environmentObject(CalendarViewModel())
     }
 }
