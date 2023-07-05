@@ -16,6 +16,7 @@ class ToDoListViewModel: ObservableObject {
     }
     let itemsKey: String = "items_list"
     
+    
     init() {
         getItems()
     }

@@ -17,6 +17,7 @@ struct PrimaryButton: View {
         self.labelMessage = labelMessage
         self.symbol = symbol
         self.action = action
+        
     }
     
     var body: some View {
@@ -25,16 +26,18 @@ struct PrimaryButton: View {
         }) {
             HStack {
                 Image(systemName: symbol)
-                    .font(.title)
-                    .foregroundColor(Color.black)
+                    .fontWeight(.bold)
+                    .font(.title3)
+                    .foregroundColor(Color.white)
                 Text(labelMessage)
-                    .fontWeight(.semibold)
-                    .font(.title)
+                    .fontWeight(.bold)
+                    .font(.title3)
+                    .foregroundColor(Color.white)
             }
             .padding()
             .foregroundColor(.black)
             .background(Color.orange)
-            .cornerRadius(40)
+            .cornerRadius(32)
         }
     }
     

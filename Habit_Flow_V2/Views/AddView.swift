@@ -19,11 +19,11 @@ struct AddView: View {
     var body: some View {
         ScrollView {
             VStack {
-                TextField("Type something here...", text: $textFieldText)
+                TextField("Titel", text: $textFieldText)
                     .padding(.horizontal)
-                    .frame(height: 55)
+                    .frame(height: 41)
                     .background(Color(UIColor.lightGray))
-                    .cornerRadius(10)
+                    .cornerRadius(12)
                 Button(action: saveButtonPressed, label: {
                     Text("Save")
                         .foregroundColor(.white)

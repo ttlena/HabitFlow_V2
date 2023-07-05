@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F4A080D2A55A24D009D1AED /* AddCalendarSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */; };
+		5FFA70762A5573DC006B313F /* AddToDoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */; };
+		5FFA70782A5577D7006B313F /* AddHabitSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */; };
 		A53384842A40CE210057F231 /* Habit_Flow_V2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384832A40CE210057F231 /* Habit_Flow_V2App.swift */; };
 		A53384862A40CE210057F231 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384852A40CE210057F231 /* ContentView.swift */; };
 		A53384882A40CE250057F231 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A53384872A40CE250057F231 /* Assets.xcassets */; };
@@ -62,6 +65,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalendarSheetView.swift; sourceTree = "<group>"; };
+		5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoSheetView.swift; sourceTree = "<group>"; };
+		5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitSheetView.swift; sourceTree = "<group>"; };
 		A53384802A40CE210057F231 /* Habit_Flow_V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habit_Flow_V2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53384832A40CE210057F231 /* Habit_Flow_V2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit_Flow_V2App.swift; sourceTree = "<group>"; };
 		A53384852A40CE210057F231 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -206,6 +212,9 @@
 				A53384852A40CE210057F231 /* ContentView.swift */,
 				A53384B62A40F2080057F231 /* NavigationBarView.swift */,
 				A53384D42A40F9D50057F231 /* AddView.swift */,
+				5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */,
+				5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */,
+				5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */,
 				A53384BF2A40F2F40057F231 /* Calendar */,
 				A53384CC2A40F8D50057F231 /* Habits */,
 				A53384B82A40F2240057F231 /* Home */,
@@ -431,10 +440,13 @@
 				A53384F12A4104130057F231 /* Appointment+CoreDataClass.swift in Sources */,
 				A53384D52A40F9D50057F231 /* AddView.swift in Sources */,
 				A53384B12A40CF3D0057F231 /* DataController.swift in Sources */,
+				5FFA70762A5573DC006B313F /* AddToDoSheetView.swift in Sources */,
 				A53384D12A40F98F0057F231 /* ToDoListView.swift in Sources */,
 				A53384CE2A40F8E40057F231 /* HabitView.swift in Sources */,
 				A53384D32A40F9B90057F231 /* ListRowView.swift in Sources */,
+				5F4A080D2A55A24D009D1AED /* AddCalendarSheetView.swift in Sources */,
 				A53384842A40CE210057F231 /* Habit_Flow_V2App.swift in Sources */,
+				5FFA70782A5577D7006B313F /* AddHabitSheetView.swift in Sources */,
 				A53384CB2A40F8110057F231 /* CircularProgressView.swift in Sources */,
 				A53384F42A4104130057F231 /* User+CoreDataProperties.swift in Sources */,
 				A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */,
