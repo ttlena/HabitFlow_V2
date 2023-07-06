@@ -15,11 +15,11 @@ struct CalenderList: View {
     var recColor: Color
     
     let gridItems = [
-         GridItem(),
-         GridItem(),
-         GridItem(),
-         GridItem(),
-     ]
+        GridItem(),
+        GridItem(),
+        GridItem(),
+        GridItem(),
+    ]
     
     init(event: String, eventType: String, time: String, imageName: String, recColor: Color) {
         self.event = event
@@ -31,7 +31,7 @@ struct CalenderList: View {
     
     var body: some View {
         VStack{
-            LazyVGrid(columns: gridItems) { 
+            LazyVGrid(columns: gridItems) {
                 HStack(alignment: .top) {
                     HStack {
                         Rectangle()
@@ -49,6 +49,8 @@ struct CalenderList: View {
                 Image(systemName: imageName)
                     .foregroundColor(Color.orange)
             }
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+            
         }
     }
 }
