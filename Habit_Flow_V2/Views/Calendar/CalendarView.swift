@@ -30,24 +30,20 @@ struct CalendarView: View {
             .background(Color.gray.opacity(0.4), in: RoundedRectangle(cornerRadius: 20)).padding()
             .environment(\.locale, Locale.init(identifier: "de_DE"))
             
-            
             CalenderList(event: "Laufen", eventType: "Habit", time: "20:00", imageName: "checkmark", recColor: Color.red)
             CalenderList(event: "Arzt", eventType: "Termin", time: "23:00", imageName: "checkmark", recColor: Color.blue)
             
             PrimaryButton(labelMessage: "neuer Termin", symbol: "plus", action: {
                 newDate()
-                
-            }).frame(maxHeight: .infinity, alignment: .bottom)
-        
+            })
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            
         }
-        .padding([.bottom], 20)
-        
+        .padding([.bottom], 50)
         .sheet(isPresented: $showingBottomSheet) {
             AddCalendarSheetView()
                 .presentationDetents([.medium, .large])
         }
-        
-        
     }
     
     func newDate() {

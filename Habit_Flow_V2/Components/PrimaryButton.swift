@@ -22,27 +22,22 @@ struct PrimaryButton: View {
     
     var body: some View {
         Button(action: {
-            print("Button tapped!")
+            action()
         }) {
             HStack {
                 Image(systemName: symbol)
-                    .fontWeight(.bold)
-                    .font(.title3)
-                    .foregroundColor(Color.white)
                 Text(labelMessage)
-                    .fontWeight(.bold)
-                    .font(.title3)
-                    .foregroundColor(Color.white)
             }
-            .padding()
-            .foregroundColor(.black)
-            .background(Color.orange)
-            .cornerRadius(32)
+            .foregroundColor(.white)
+            .font(.title3)
+            .fontWeight(.semibold)
             .frame(height: 50)
             .frame(maxWidth: .infinity)
+            .background(Color.orange)
+            .cornerRadius(32)
+            .padding([.horizontal], 100)
         }
     }
-    
 }
 
 struct PrimaryButton_Previews: PreviewProvider {

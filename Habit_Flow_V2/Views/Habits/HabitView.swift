@@ -31,21 +31,11 @@ struct HabitsView: View {
             }
             .padding([.horizontal], 25)
             
+            PrimaryButton(labelMessage: "neues Habit", symbol: "plus", action: {
+                newHabit()
+            })
+            .frame(maxHeight: .infinity, alignment: .bottom)
             
-  
-            
-            
-            Button(action: newHabit, label: {Text("+ neues Habit")})
-                .foregroundColor(.white)
-                .font(.title3)
-                .fontWeight(.semibold)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .background(Color.orange)
-                .cornerRadius(32)
-                .padding([.horizontal], 100)
-            
-                .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .padding([.bottom], 50)
         

@@ -12,7 +12,7 @@ struct ToDoListView: View {
     @EnvironmentObject var toDoListViewModel : ToDoListViewModel
     @State var showingBottomSheet = false
     
-
+    
     var body: some View {
         VStack {
             HStack{
@@ -21,7 +21,7 @@ struct ToDoListView: View {
                     .fontWeight(.heavy)
                     .padding(0)
                     .frame(maxWidth: .infinity, alignment: .leading)
-            
+                
                 Text(String(toDoListViewModel.items.filter{$0.isCompleted == true}.count) + " / " + String(toDoListViewModel.items.count))
                     .padding(10)
                     .padding([.horizontal], 15)
@@ -29,8 +29,8 @@ struct ToDoListView: View {
                     .fontWeight(.semibold)
                     .background(Color(UIColor.systemGray5))
                     .cornerRadius(12)
-                    
-                    
+                
+                
                 
             }
             .padding([.horizontal], 25)
@@ -42,10 +42,10 @@ struct ToDoListView: View {
                     .padding([.top], 100)
             }
             
-           
-           
             
-             
+            
+            
+            
             List {
                 ForEach(toDoListViewModel.items) { item in
                     ListRowView(item: item)
@@ -61,37 +61,25 @@ struct ToDoListView: View {
             }
             .listStyle(InsetListStyle())
             
-            Button(action: newToDo, label: {
-                Text("+ neues ToDo")
+            PrimaryButton(labelMessage: "neues ToDo", symbol: "plus", action: {
+                newToDo()
             })
-            .foregroundColor(.white)
-            .font(.title3)
-            .fontWeight(.semibold)
-            .frame(height: 50)
-            .frame(maxWidth: .infinity)
-            .background(Color.orange)
-            .cornerRadius(32)
-            .padding([.horizontal], 100)
+            .frame(maxHeight: .infinity, alignment: .bottom)
             
         }
         .padding([.bottom], 50)
-       
-
-        
         .frame(maxHeight: .infinity, alignment: .bottom)
-            .sheet(isPresented: $showingBottomSheet) {
-              AddToDoSheetView()
-                    .presentationDetents([.medium, .large])
-            }
-        
-        
+        .sheet(isPresented: $showingBottomSheet) {
+            AddToDoSheetView()
+                .presentationDetents([.medium, .large])
+        }
         /*
-        .navigationTitle("ToDo's")
-        .navigationBarItems(
-            leading: EditButton(),
-            trailing:
-                NavigationLink("Add", destination: AddView())
-            )
+         .navigationTitle("ToDo's")
+         .navigationBarItems(
+         leading: EditButton(),
+         trailing:
+         NavigationLink("Add", destination: AddView())
+         )
          */
     }
     
