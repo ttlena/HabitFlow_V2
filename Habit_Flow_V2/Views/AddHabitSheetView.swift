@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AddHabitSheetView: View {
     @State var textFieldText: String=""
@@ -25,11 +26,20 @@ struct AddHabitSheetView: View {
                 .background(Color(UIColor.systemGray2))
                 .cornerRadius(12)
             
+            
+            
             TextField("Dauer in Tagen", text: $durationInput)
-                .padding(.horizontal)
-                .frame(height: 41)
-                .background(Color(UIColor.systemGray2))
-                .cornerRadius(12)
+                        .keyboardType(.numberPad)
+                        .onReceive(Just(durationInput)) { newValue in
+                            let filtered = newValue.filter { "0123456789".contains($0) }
+                            if filtered != newValue {
+                                self.durationInput = filtered
+                            }
+                        }
+                        .padding(.horizontal)
+                        .frame(height: 41)
+                        .background(Color(UIColor.systemGray2))
+                        .cornerRadius(12)
             
             Button(action: saveButtonPressed, label: {
                 Text("Speichern")
