@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ToDoListView: View {
     
-    @EnvironmentObject var toDoListViewModel : ToDoListViewModel
+    //@EnvironmentObject var toDoListViewModel : ToDoListViewModel
+    @EnvironmentObject var toDosViewModel : ToDosViewModel
 
     @State var showingBottomSheet = false
     
@@ -23,7 +24,7 @@ struct ToDoListView: View {
                     .padding(0)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(String(toDoListViewModel.items.filter{$0.isCompleted == true}.count) + " / " + String(toDoListViewModel.items.count))
+                Text(String(toDosViewModel.toDos.filter{$0.isCompleted == true}.count) + " / " + String(toDosViewModel.toDos.count))
                     .padding(10)
                     .padding([.horizontal], 15)
                     .font(.title3)
@@ -39,7 +40,7 @@ struct ToDoListView: View {
             
             //WeeklyOverview()
             
-            if(toDoListViewModel.items.count == 0) {
+            if(toDosViewModel.toDos.count == 0) {
                 Text("Noch keine ToDo's für heute")
                     .font(.title3)
                     .padding([.top], 100)
@@ -50,17 +51,16 @@ struct ToDoListView: View {
             
             
             List {
-                ForEach(toDoListViewModel.items) { item in
+                ForEach(toDosViewModel.toDos) { item in
                     ListRowView(item: item)
                         .onTapGesture {
                             withAnimation(.linear(duration: 0)) {
-                                toDoListViewModel.updateItem(item: item)
+                                toDosViewModel.updateItem(obj: item)
                             }
                         }
                 }
-                
-                .onDelete(perform: toDoListViewModel.deleteItem)
-                .onMove(perform: toDoListViewModel.moveItem)
+                .onDelete(perform: toDosViewModel.deleteItems)
+                .onMove(perform: toDosViewModel.moveItem)
             }
             .listStyle(InsetListStyle())
             
@@ -99,7 +99,7 @@ struct ToDoListView_Previews: PreviewProvider {
         NavigationView {
             ToDoListView()
         }
-        .environmentObject(ToDoListViewModel())
+        .environmentObject(ToDosViewModel())
         
     }
 }

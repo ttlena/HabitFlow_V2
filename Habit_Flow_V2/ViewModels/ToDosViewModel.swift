@@ -10,7 +10,8 @@ import CoreData
 
 class ToDosViewModel:ObservableObject {
     private var dataController = DataController(name: "Model")
-    @Published var toDos = [ToDo]()
+    @Published var toDos: [ToDo] = []
+    @Published var toDosItemModels: [ItemModel] = []
     
     init() {
         fetchData()
@@ -18,7 +19,7 @@ class ToDosViewModel:ObservableObject {
     
     func fetchData() {
         let request = NSFetchRequest<ToDo>(entityName: "ToDo")
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         do {
             toDos = try dataController.container.viewContext.fetch(request)
         } catch {
@@ -26,10 +27,11 @@ class ToDosViewModel:ObservableObject {
         }
     }
     
-    func addData(name: String) {
+    func addItem(title: String) {
         let newToDo = ToDo(context: dataController.container.viewContext)
         newToDo.id = UUID()
-        newToDo.name = name
+        newToDo.isCompleted = false
+        newToDo.title = title
         save()
         fetchData()
     }
@@ -43,13 +45,26 @@ class ToDosViewModel:ObservableObject {
         fetchData()
     }
     
-    func updateItem(obj: ToDo) {
-        print("update")
+    func deleteItem(obj: ToDo) {
+        print("delete ToDo")
         if let item = toDos.firstIndex(where: {$0.id == obj.id}) {
             dataController.container.viewContext.delete(toDos.remove(at: item))
         }
         save()
         fetchData()
+    }
+    
+    func updateItem(obj: ToDo) {
+        print("update ToDo")
+        if let item = toDos.first(where: {$0.id == obj.id}) {
+            item.isCompleted = true
+            save()
+            fetchData()
+        }
+    }
+    
+    func moveItem(from: IndexSet, to: Int) {
+        toDos.move(fromOffsets: from, toOffset: to)
     }
     
     func save() {

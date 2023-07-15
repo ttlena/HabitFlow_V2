@@ -21,7 +21,7 @@ struct ToDoTodayComponent: View {
             } else {
                 ForEach(toDosVM.toDos, id: \.self) { toDo in
                     HStack {
-                        Text("\(toDo.name ?? "")")
+                        Text("\(toDo.title ?? "")")
                     }
                     .padding()
                     .frame(maxWidth: .infinity)

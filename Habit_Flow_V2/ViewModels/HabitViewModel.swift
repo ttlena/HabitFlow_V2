@@ -26,10 +26,10 @@ class HabitViewModel:ObservableObject {
         }
     }
     
-    func addData(name: String) {
+    func addData(title: String) {
         let newHabit = Habit(context: dataController.container.viewContext)
         newHabit.id = UUID()
-        newHabit.name = name
+        newHabit.title = title
         
         save()
         fetchData()
@@ -41,7 +41,7 @@ class HabitViewModel:ObservableObject {
         let habit = Habit(context: dataController.container.viewContext)
         habit.id = UUID()
         habit.icon = "Waterdrop"
-        habit.name = "\(chosenTask)"
+        habit.title = "\(chosenTask)"
         habit.current = Int16.random(in: 0...10)
         habit.goal = Int16.random(in: 5...100)
         habit.progress = Double(habit.current) / Double(habit.goal)

@@ -17,7 +17,7 @@ struct ContentView: View {
         VStack {
             List {
                 ForEach(toDosVM.toDos) { toDo in
-                    Text(toDo.name ?? "Error")
+                    Text(toDo.title ?? "Error")
                 }
                 .onDelete(perform: toDosVM.deleteItems)
             }
@@ -25,7 +25,7 @@ struct ContentView: View {
             HStack {
                 TextField("neues Todo", text:$name)
                 Button("Add") {
-                    toDosVM.addData(name: name)
+                    toDosVM.addItem(title: name)
                     name = ""
                 }
             }

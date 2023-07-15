@@ -29,7 +29,7 @@ struct DailyHabitsComponent: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 20)
-                                Text(habit.name ?? "Unknown")
+                                Text(habit.title ?? "Unknown")
                                     .foregroundColor(.white)
                             }
                             .padding()

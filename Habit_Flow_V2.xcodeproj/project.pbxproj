@@ -28,7 +28,6 @@
 		A53384BC2A40F2AA0057F231 /* DailyHabitsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384BB2A40F2AA0057F231 /* DailyHabitsComponent.swift */; };
 		A53384C12A40F3340057F231 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384C02A40F3340057F231 /* CalendarView.swift */; };
 		A53384C42A40F3FA0057F231 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384C32A40F3FA0057F231 /* PrimaryButton.swift */; };
-		A53384C62A40F7540057F231 /* ToDoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384C52A40F7540057F231 /* ToDoListViewModel.swift */; };
 		A53384C92A40F7860057F231 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384C82A40F7860057F231 /* ItemModel.swift */; };
 		A53384CB2A40F8110057F231 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384CA2A40F8110057F231 /* CircularProgressView.swift */; };
 		A53384CE2A40F8E40057F231 /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384CD2A40F8E40057F231 /* HabitView.swift */; };
@@ -93,7 +92,6 @@
 		A53384BB2A40F2AA0057F231 /* DailyHabitsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyHabitsComponent.swift; sourceTree = "<group>"; };
 		A53384C02A40F3340057F231 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		A53384C32A40F3FA0057F231 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
-		A53384C52A40F7540057F231 /* ToDoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewModel.swift; sourceTree = "<group>"; };
 		A53384C82A40F7860057F231 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		A53384CA2A40F8110057F231 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		A53384CD2A40F8E40057F231 /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 			children = (
 				A53384B32A40E9A60057F231 /* ToDosViewModel.swift */,
 				5FE7AAE02A56C6E400C03E3F /* HabitsViewModel.swift */,
-				A53384C52A40F7540057F231 /* ToDoListViewModel.swift */,
 				A53A41342A412D3C008D64D2 /* HabitViewModel.swift */,
 				A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */,
 				A59693622A43CB23003CF220 /* CalendarViewModel.swift */,
@@ -437,7 +434,6 @@
 				5FE7AAE32A56C99D00C03E3F /* HabitListViewModel.swift in Sources */,
 				A53384F52A4104130057F231 /* Habit+CoreDataClass.swift in Sources */,
 				A53384F02A4104130057F231 /* ToDo+CoreDataProperties.swift in Sources */,
-				A53384C62A40F7540057F231 /* ToDoListViewModel.swift in Sources */,
 				5FE7AAE12A56C6E400C03E3F /* HabitsViewModel.swift in Sources */,
 				A53384C12A40F3340057F231 /* CalendarView.swift in Sources */,
 				A53384C92A40F7860057F231 /* ItemModel.swift in Sources */,

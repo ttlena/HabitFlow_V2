@@ -18,7 +18,7 @@ class HabitsViewModel: ObservableObject {
     
     func fetchData() {
         let request = NSFetchRequest<Habit>(entityName: "Habit")
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         do {
             habits = try dataController.container.viewContext.fetch(request)
         } catch {
@@ -26,10 +26,10 @@ class HabitsViewModel: ObservableObject {
         }
     }
     
-    func addData(name: String) {
+    func addData(title: String) {
         let newHabit = Habit(context: dataController.container.viewContext)
         newHabit.id = UUID()
-        newHabit.name = name
+        newHabit.title = title
         save()
         fetchData()
     }

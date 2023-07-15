@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct NavigationBar: View {
-    @StateObject var toDoListViewModel: ToDoListViewModel = ToDoListViewModel()
     @StateObject var navigationBarViewModel = NavigationBarViewModel()
     @StateObject var calendarViewModel = CalendarViewModel()
+    @StateObject var toDosViewModel = ToDosViewModel()
 
     var body: some View {
         TabView(selection: $navigationBarViewModel.selectedTabIndex) {
@@ -24,6 +24,7 @@ struct NavigationBar: View {
                     }
                 }
                 .environmentObject(calendarViewModel)
+                .environmentObject(toDosViewModel)
             CalendarView()
                 .tag(1)
                 .tabItem() {
@@ -41,8 +42,7 @@ struct NavigationBar: View {
                         .foregroundColor(.white)
 
                 }
-                .environmentObject(toDoListViewModel)
-                .environmentObject(calendarViewModel)
+                .environmentObject(toDosViewModel)
             HabitsView()
                 .tag(3)
                 .tabItem() {

@@ -20,7 +20,7 @@ extension Habit {
     @NSManaged public var goal: Int16
     @NSManaged public var icon: String?
     @NSManaged public var id: UUID?
-    @NSManaged public var name: String?
+    @NSManaged public var title: String?
     @NSManaged public var progress: Double
     @NSManaged public var origin: User?
 

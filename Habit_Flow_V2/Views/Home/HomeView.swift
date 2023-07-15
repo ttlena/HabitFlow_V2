@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var toDosViewModel = ToDosViewModel()
+    // @StateObject var toDosViewModel = ToDosViewModel()
     @StateObject var habitViewModel = HabitViewModel()
+    @EnvironmentObject var toDosViewModel: ToDosViewModel
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
