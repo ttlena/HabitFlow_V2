@@ -10,6 +10,7 @@ import SwiftUI
 struct ToDoListView: View {
     
     @EnvironmentObject var toDoListViewModel : ToDoListViewModel
+
     @State var showingBottomSheet = false
     
     
@@ -35,6 +36,8 @@ struct ToDoListView: View {
             }
             .padding([.horizontal], 25)
             
+            
+            //WeeklyOverview()
             
             if(toDoListViewModel.items.count == 0) {
                 Text("Noch keine ToDo's für heute")

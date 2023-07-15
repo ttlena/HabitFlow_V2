@@ -30,6 +30,28 @@ struct HabitsView: View {
                     .cornerRadius(12)
             }
             .padding([.horizontal], 25)
+            .padding([.bottom], 50)
+            
+            
+            
+            HStack {
+                
+                VStack {
+                    Text("Lesen")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                    CircularProgressView(progress: 0.9)
+                }
+                VStack {
+                    Text("Meditieren")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                    CircularProgressView(progress: 0.86)
+                }
+            }
+            
+            
+            
             
             PrimaryButton(labelMessage: "neues Habit", symbol: "plus", action: {
                 newHabit()

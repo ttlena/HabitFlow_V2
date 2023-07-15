@@ -14,14 +14,14 @@ struct CircularProgressView: View {
             Circle()
                 .stroke(
                     Color.gray.opacity(0.5),
-                    lineWidth: 5
+                    lineWidth: 15
                 )
             Circle()
                 .trim(from: 0, to: progress) // 1
                 .stroke(
                     Color.orange,
                     style: StrokeStyle(
-                        lineWidth: 5,
+                        lineWidth: 15,
                         lineCap: .round
                     )
                 )
@@ -33,7 +33,7 @@ struct CircularProgressView: View {
                 .resizable()
                 .frame(width: 30, height: 30)
         }
-        .padding(40)
+        .padding(20)
     }
 }
 

@@ -42,6 +42,7 @@ struct NavigationBar: View {
 
                 }
                 .environmentObject(toDoListViewModel)
+                .environmentObject(calendarViewModel)
             HabitsView()
                 .tag(3)
                 .tabItem() {

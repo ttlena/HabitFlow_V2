@@ -10,6 +10,7 @@ import SwiftUI
 struct AddCalendarSheetView: View {
     
     @State var textFieldText: String=""
+    @State var date = Date()
     
     var body: some View {
         VStack {
@@ -19,17 +20,20 @@ struct AddCalendarSheetView: View {
                 .padding(0.0)
                 .frame(maxWidth: .infinity, alignment: .topLeading)
             
-            Text("Titel")
-            
+     
             TextField("Titel", text: $textFieldText)
                 .padding(.horizontal)
                 .frame(height: 41)
                 .background(Color(UIColor.systemGray2))
                 .cornerRadius(12)
             
-            Text("Standort")
+            //Text("Standort")
             
-            Text("Datum")
+
+            DatePicker("Datum", selection: $date, in: Date()...)//.datePickerStyle(.graphical)
+                .accentColor(.orange)
+                //.background(Color.gray.opacity(0.4), in: RoundedRectangle(cornerRadius: 20)).padding()
+                .environment(\.locale, Locale.init(identifier: "de_DE"))
             
             
             Button(action: saveButtonPressed, label: {
