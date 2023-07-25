@@ -60,6 +60,10 @@ struct AddHabitSheetView: View {
     
     func saveButtonPressed() {
         print("pressed")
+//        if textIsAppropiate() {
+//            toDosViewModel.addItem(title: textFieldText)
+//            presentationMode.wrappedValue.dismiss()
+//        }
     }
 }
 
