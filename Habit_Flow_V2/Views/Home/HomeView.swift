@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
-    // @StateObject var toDosViewModel = ToDosViewModel()
-    @StateObject var habitViewModel = HabitViewModel()
-    @EnvironmentObject var toDosViewModel: ToDosViewModel
+    @StateObject var habitViewModel: HabitViewModel
+    @StateObject var toDosViewModel: ToDosViewModel
+    @StateObject var calendarViewModel: CalendarViewModel
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
@@ -25,15 +26,13 @@ struct HomeView: View {
                 }
                 Spacer()
                     .frame(height: 40)
-                WeeklyOverview()
+                WeeklyOverview(calendarViewModel: calendarViewModel)
                 Spacer()
                     .frame(height: 25)
-                ToDoTodayComponent()
-                    .environmentObject(toDosViewModel)
+                ToDoTodayComponent(toDosVM: toDosViewModel)
                 Spacer()
                     .frame(height: 25)
-                DailyHabitsComponent()
-                    .environmentObject(habitViewModel)
+                DailyHabitsComponent(habitsVM: habitViewModel)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
@@ -46,6 +45,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(habitViewModel: HabitViewModel(), toDosViewModel: ToDosViewModel(), calendarViewModel: CalendarViewModel())
     }
 }

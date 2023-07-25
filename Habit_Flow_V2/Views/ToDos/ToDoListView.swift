@@ -10,7 +10,7 @@ import SwiftUI
 struct ToDoListView: View {
     
     //@EnvironmentObject var toDoListViewModel : ToDoListViewModel
-    @EnvironmentObject var toDosViewModel : ToDosViewModel
+    @StateObject var toDosViewModel : ToDosViewModel
 
     @State var showingBottomSheet = false
     
@@ -73,7 +73,7 @@ struct ToDoListView: View {
         .padding([.bottom], 50)
         .frame(maxHeight: .infinity, alignment: .bottom)
         .sheet(isPresented: $showingBottomSheet) {
-            AddToDoSheetView()
+            AddToDoSheetView(toDosViewModel:toDosViewModel)
                 .presentationDetents([.medium, .large])
         }
         /*
@@ -97,9 +97,9 @@ struct ToDoListView: View {
 struct ToDoListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ToDoListView()
+            ToDoListView(toDosViewModel: ToDosViewModel())
         }
-        .environmentObject(ToDosViewModel())
+//        .environmentObject(ToDosViewModel())
         
     }
 }

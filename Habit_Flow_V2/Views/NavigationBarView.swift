@@ -11,10 +11,11 @@ struct NavigationBar: View {
     @StateObject var navigationBarViewModel = NavigationBarViewModel()
     @StateObject var calendarViewModel = CalendarViewModel()
     @StateObject var toDosViewModel = ToDosViewModel()
+    @StateObject var habitViewModel = HabitViewModel()
 
     var body: some View {
         TabView(selection: $navigationBarViewModel.selectedTabIndex) {
-            HomeView()
+            HomeView(habitViewModel: habitViewModel, toDosViewModel: toDosViewModel, calendarViewModel: calendarViewModel)
                 .tag(0)
                 .tabItem() {
                     VStack {
@@ -23,8 +24,6 @@ struct NavigationBar: View {
                             .foregroundColor(.white)
                     }
                 }
-                .environmentObject(calendarViewModel)
-                .environmentObject(toDosViewModel)
             CalendarView()
                 .tag(1)
                 .tabItem() {
@@ -34,7 +33,7 @@ struct NavigationBar: View {
 
                 }
                 .environmentObject(calendarViewModel)
-            ToDoListView()
+            ToDoListView(toDosViewModel: toDosViewModel)
                 .tag(2)
                 .tabItem() {
                     Image("ToDoIcon")
@@ -51,6 +50,7 @@ struct NavigationBar: View {
                         .foregroundColor(.white)
 
                 }
+                .environmentObject(habitViewModel)
         }
         .background(.black)
         .environmentObject(navigationBarViewModel)

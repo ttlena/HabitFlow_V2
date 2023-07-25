@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DailyHabitsComponent: View {
-    @EnvironmentObject var habitsVM: HabitViewModel
+    @StateObject var habitsVM: HabitViewModel
     
     let columns = [
         GridItem(.flexible()),
@@ -57,6 +57,6 @@ struct DailyHabitsComponent: View {
 
 struct DailyHabitsComponent_Previews: PreviewProvider {
     static var previews: some View {
-        DailyHabitsComponent()
+        DailyHabitsComponent(habitsVM: HabitViewModel())
     }
 }

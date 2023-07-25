@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ToDoTodayComponent: View {
-    @EnvironmentObject var toDosVM: ToDosViewModel
+    @StateObject var toDosVM: ToDosViewModel
     
     var body: some View {
         Text("Heute")
@@ -42,6 +42,6 @@ struct ToDoTodayComponent: View {
 
 struct ToDoToday_Previews: PreviewProvider {
     static var previews: some View {
-        ToDoTodayComponent()
+        ToDoTodayComponent(toDosVM: ToDosViewModel())
     }
 }

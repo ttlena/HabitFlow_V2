@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WeeklyOverview: View {
     @EnvironmentObject var navigationBarViewModel: NavigationBarViewModel
-    @EnvironmentObject var calendarViewModel: CalendarViewModel
+    @StateObject var calendarViewModel: CalendarViewModel
 
     var body: some View {
         let weekdays = calendarViewModel.getCurrentWeekdays()
@@ -38,8 +38,7 @@ struct WeeklyOverview: View {
 
 struct WeeklyOverview_Previews: PreviewProvider {
     static var previews: some View {
-        WeeklyOverview()
+        WeeklyOverview(calendarViewModel: CalendarViewModel())
             .environmentObject(NavigationBarViewModel())
-            .environmentObject(CalendarViewModel())
     }
 }
