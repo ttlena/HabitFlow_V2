@@ -11,7 +11,7 @@ struct PrimaryButton: View {
     var labelMessage: String
     var symbol: String
     var action: () -> Void
-
+    
     
     init(labelMessage: String, symbol: String, action: @escaping () -> Void) {
         self.labelMessage = labelMessage
@@ -21,22 +21,25 @@ struct PrimaryButton: View {
     }
     
     var body: some View {
-        Button(action: {
-            action()
-        }) {
-            HStack {
-                Image(systemName: symbol)
-                Text(labelMessage)
+        VStack {
+            Button(action: {
+                action()
+            }) {
+                HStack {
+                    Image(systemName: symbol)
+                    Text(labelMessage)
+                }
+                .foregroundColor(.white)
+                .font(.title3)
+                .fontWeight(.semibold)
+                .frame(height: 50)
+                .frame(maxWidth: .infinity)
+                .background(Color.orange)
+                .cornerRadius(32)
             }
-            .foregroundColor(.white)
-            .font(.title3)
-            .fontWeight(.semibold)
-            .frame(height: 50)
-            .frame(maxWidth: .infinity)
-            .background(Color.orange)
-            .cornerRadius(32)
-            .padding([.horizontal], 100)
         }
+        .frame(maxWidth: 200)
+        .padding([.horizontal], 100)
     }
 }
 
