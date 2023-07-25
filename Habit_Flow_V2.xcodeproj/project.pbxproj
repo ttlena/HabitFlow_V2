@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5F4A080D2A55A24D009D1AED /* AddCalendarSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */; };
 		5FE7AADF2A56C54500C03E3F /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7AADE2A56C54500C03E3F /* HabitModel.swift */; };
-		5FE7AAE12A56C6E400C03E3F /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7AAE02A56C6E400C03E3F /* HabitsViewModel.swift */; };
 		5FE7AAE32A56C99D00C03E3F /* HabitListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7AAE22A56C99D00C03E3F /* HabitListViewModel.swift */; };
 		5FFA70762A5573DC006B313F /* AddToDoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */; };
 		5FFA70782A5577D7006B313F /* AddHabitSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */; };
@@ -70,7 +69,6 @@
 /* Begin PBXFileReference section */
 		5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalendarSheetView.swift; sourceTree = "<group>"; };
 		5FE7AADE2A56C54500C03E3F /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
-		5FE7AAE02A56C6E400C03E3F /* HabitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewModel.swift; sourceTree = "<group>"; };
 		5FE7AAE22A56C99D00C03E3F /* HabitListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListViewModel.swift; sourceTree = "<group>"; };
 		5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoSheetView.swift; sourceTree = "<group>"; };
 		5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitSheetView.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				A53384B32A40E9A60057F231 /* ToDosViewModel.swift */,
-				5FE7AAE02A56C6E400C03E3F /* HabitsViewModel.swift */,
 				A53A41342A412D3C008D64D2 /* HabitViewModel.swift */,
 				A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */,
 				A59693622A43CB23003CF220 /* CalendarViewModel.swift */,
@@ -434,7 +431,6 @@
 				5FE7AAE32A56C99D00C03E3F /* HabitListViewModel.swift in Sources */,
 				A53384F52A4104130057F231 /* Habit+CoreDataClass.swift in Sources */,
 				A53384F02A4104130057F231 /* ToDo+CoreDataProperties.swift in Sources */,
-				5FE7AAE12A56C6E400C03E3F /* HabitsViewModel.swift in Sources */,
 				A53384C12A40F3340057F231 /* CalendarView.swift in Sources */,
 				A53384C92A40F7860057F231 /* ItemModel.swift in Sources */,
 				A53384C42A40F3FA0057F231 /* PrimaryButton.swift in Sources */,
