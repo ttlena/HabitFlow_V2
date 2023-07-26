@@ -68,8 +68,6 @@ struct AddToDoSheetView: View {
         return Alert(title: Text(alertTitle))
     }
     
-    
-    
 }
 
 struct AddToDoSheetView_Previews: PreviewProvider {

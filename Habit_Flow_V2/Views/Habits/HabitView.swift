@@ -9,8 +9,12 @@ import SwiftUI
 
 struct HabitsView: View {
     
-    @EnvironmentObject var HabitViewModel : HabitViewModel
+    @EnvironmentObject var habitsViewModel : HabitViewModel
     @State var showingBottomSheet = false
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+    ]
     
     var body: some View {
         VStack{
@@ -20,8 +24,7 @@ struct HabitsView: View {
                     .fontWeight(.heavy)
                     .padding(0)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Text("0 / 0")
+                Text("0/\(habitsViewModel.habits.count)")
                     .padding(10)
                     .padding([.horizontal], 15)
                     .font(.title3)
@@ -30,41 +33,30 @@ struct HabitsView: View {
                     .cornerRadius(12)
             }
             .padding([.horizontal], 25)
-            .padding([.bottom], 50)
-            
-            
-            
-            HStack {
-                
-                VStack {
-                    Text("Lesen")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                    CircularProgressView(progress: 0.9)
+//            .padding([.bottom], 50)
+            ZStack {
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 10) {
+                        ForEach(habitsViewModel.habits, id: \.self) { habit in
+                            HabitTile(habit: habit)
+                                .background(Color(UIColor.darkGray))
+                                .cornerRadius(10)
+                        }
+                    }
+                    .padding([.bottom], 110)
                 }
-                VStack {
-                    Text("Meditieren")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                    CircularProgressView(progress: 0.86)
-                }
+                PrimaryButton(labelMessage: "neues Habit", symbol: "plus", action: {
+                    newHabit()
+                })
+                .frame(maxHeight: .infinity, alignment: .bottom)
+                .padding([.bottom], 50)
+            }
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            .sheet(isPresented: $showingBottomSheet) {
+                AddHabitSheetView(habitVM: habitsViewModel)
+                    .presentationDetents([.medium, .large])
             }
             
-            
-            
-            
-            PrimaryButton(labelMessage: "neues Habit", symbol: "plus", action: {
-                newHabit()
-            })
-            .frame(maxHeight: .infinity, alignment: .bottom)
-            
-        }
-        .padding([.bottom], 50)
-        
-        .frame(maxHeight: .infinity, alignment: .bottom)
-        .sheet(isPresented: $showingBottomSheet) {
-            AddHabitSheetView()
-                .presentationDetents([.medium, .large])
         }
     }
     
@@ -80,5 +72,5 @@ struct HabitsView_Previews: PreviewProvider {
         }
         .environmentObject(HabitViewModel())
     }
-        
+    
 }

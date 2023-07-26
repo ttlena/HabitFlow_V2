@@ -23,34 +23,13 @@ struct DailyHabitsComponent: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(habitsVM.habits, id: \.self) { habit in
-                        VStack() {
-                            HStack() {
-                                Image(habit.icon ?? "")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 20)
-                                Text(habit.title ?? "Unknown")
-                                    .foregroundColor(.white)
-                            }
-                            .padding()
-                            CircularProgressView(progress: habit.progress)
-                                .frame(width: 150)
-                            Text("\(habit.current)/\(habit.goal)")
-                        }
-                        .background(Color(UIColor.darkGray))
-                        .cornerRadius(10)
+                        HabitTile(habit: habit)
+                            .background(Color(UIColor.darkGray))
+                            .cornerRadius(10)
                     }
                 }
             }
             .frame(height: 500)
-            
-            Button("add") {
-                habitsVM.addRandomHabit()
-            }
-            Button("delete") {
-                habitsVM.deleteAll()
-            }
-            
         }
     }
 }
