@@ -35,7 +35,6 @@
 		A53384CE2A40F8E40057F231 /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384CD2A40F8E40057F231 /* HabitView.swift */; };
 		A53384D12A40F98F0057F231 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384D02A40F98F0057F231 /* ToDoListView.swift */; };
 		A53384D32A40F9B90057F231 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384D22A40F9B90057F231 /* ListRowView.swift */; };
-		A53384D52A40F9D50057F231 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384D42A40F9D50057F231 /* AddView.swift */; };
 		A53384EF2A4104130057F231 /* ToDo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384E72A4104130057F231 /* ToDo+CoreDataClass.swift */; };
 		A53384F02A4104130057F231 /* ToDo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384E82A4104130057F231 /* ToDo+CoreDataProperties.swift */; };
 		A53384F12A4104130057F231 /* Appointment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384E92A4104130057F231 /* Appointment+CoreDataClass.swift */; };
@@ -102,7 +101,6 @@
 		A53384CD2A40F8E40057F231 /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
 		A53384D02A40F98F0057F231 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		A53384D22A40F9B90057F231 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
-		A53384D42A40F9D50057F231 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		A53384E72A4104130057F231 /* ToDo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A53384E82A4104130057F231 /* ToDo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A53384E92A4104130057F231 /* Appointment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 			children = (
 				A53384852A40CE210057F231 /* ContentView.swift */,
 				A53384B62A40F2080057F231 /* NavigationBarView.swift */,
-				A53384D42A40F9D50057F231 /* AddView.swift */,
 				5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */,
 				5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */,
 				5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */,
@@ -469,7 +466,6 @@
 				A53A41312A41161F008D64D2 /* ToDoTodayComponent.swift in Sources */,
 				A53384B72A40F2080057F231 /* NavigationBarView.swift in Sources */,
 				A53384F12A4104130057F231 /* Appointment+CoreDataClass.swift in Sources */,
-				A53384D52A40F9D50057F231 /* AddView.swift in Sources */,
 				A53384B12A40CF3D0057F231 /* DataController.swift in Sources */,
 				5FFA70762A5573DC006B313F /* AddToDoSheetView.swift in Sources */,
 				5FE7AADF2A56C54500C03E3F /* HabitModel.swift in Sources */,
