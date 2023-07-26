@@ -6,9 +6,28 @@
 //
 
 import Foundation
+import CoreData
 
 class CalendarViewModel: ObservableObject {
+    private var dataController = DataController(name: "Model")
+    @Published var appointments: [Appointment] = []
     @Published var pickedDate = Date()
+    @Published var newEventTitle = ""
+    @Published var newEventDate = Date()
+    
+    init() {
+        fetchData()
+    }
+    
+    func fetchData() {
+        let request = NSFetchRequest<Appointment>(entityName: "Appointment")
+        
+        do {
+            appointments = try dataController.container.viewContext.fetch(request)
+        } catch {
+            print("CoreData Error at aAppointmets")
+        }
+    }
     
     func getCurrentWeekdays() -> [Date] {
         var calendar = Calendar.autoupdatingCurrent
@@ -38,5 +57,23 @@ class CalendarViewModel: ObservableObject {
         dateFormatter.dateFormat = "dd"
         let weekDay = dateFormatter.string(from: date)
         return weekDay
+    }
+    
+    func addNewAppointment() {
+        let newAppointment = Appointment(context: dataController.container.viewContext)
+        newAppointment.id = UUID()
+        newAppointment.title = newEventTitle
+        newAppointment.date = newEventDate
+        save()
+        fetchData()
+    }
+    
+    func resetInput() {
+        newEventTitle = ""
+        newEventDate = Date()
+    }
+    
+    func save() {
+        try? dataController.container.viewContext.save()
     }
 }

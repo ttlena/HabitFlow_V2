@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct AddCalendarSheetView: View {
-    
-    @State var textFieldText: String=""
-    @State var date = Date()
+    @EnvironmentObject var calendarVM: CalendarViewModel
     
     var body: some View {
         VStack {
@@ -21,7 +19,7 @@ struct AddCalendarSheetView: View {
                 .frame(maxWidth: .infinity, alignment: .topLeading)
             
      
-            TextField("Titel", text: $textFieldText)
+            TextField("Titel", text: $calendarVM.newEventTitle)
                 .padding(.horizontal)
                 .frame(height: 41)
                 .background(Color(UIColor.systemGray2))
@@ -30,13 +28,13 @@ struct AddCalendarSheetView: View {
             //Text("Standort")
             
 
-            DatePicker("Datum", selection: $date, in: Date()...)//.datePickerStyle(.graphical)
+            DatePicker("Datum", selection: $calendarVM.newEventDate, in: Date()...)//.datePickerStyle(.graphical)
                 .accentColor(.orange)
                 //.background(Color.gray.opacity(0.4), in: RoundedRectangle(cornerRadius: 20)).padding()
                 .environment(\.locale, Locale.init(identifier: "de_DE"))
             
             
-            Button(action: saveButtonPressed, label: {
+            Button(action: calendarVM.addNewAppointment, label: {
                 Text("Speichern")
                     .foregroundColor(.white)
                     .font(.title3)
@@ -52,9 +50,6 @@ struct AddCalendarSheetView: View {
         .padding(39)
     }
     
-    func saveButtonPressed() {
-        print("pressed")
-    }
 }
 
 struct AddCalendarSheetView_Previews: PreviewProvider {
