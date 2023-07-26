@@ -19,6 +19,7 @@ struct DailyHabitsComponent: View {
         VStack {
             Text("Tägliche Habits")
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .foregroundColor(.white)
             
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {

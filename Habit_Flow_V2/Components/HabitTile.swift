@@ -24,6 +24,7 @@ struct HabitTile: View {
             CircularProgressView(progress: habit.progress)
             Text("\(habit.current)/\(habit.goal)")
         }
+        .padding(10)
     }
 }
 
