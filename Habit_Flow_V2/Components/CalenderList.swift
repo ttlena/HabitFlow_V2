@@ -30,27 +30,26 @@ struct CalenderList: View {
     }
     
     var body: some View {
-        VStack{
-            LazyVGrid(columns: gridItems) {
-                HStack(alignment: .top) {
-                    HStack {
-                        Rectangle()
-                            .frame(width: 10, height: 20)
-                            .foregroundColor(recColor)
-                        Text(event)
-                            .lineLimit(1)
+            VStack{
+                LazyVGrid(columns: gridItems) {
+                    HStack(alignment: .top) {
+                        HStack {
+                            Rectangle()
+                                .frame(width: 10, height: 20)
+                                .foregroundColor(recColor)
+                            Text(event)
+                                .lineLimit(1)
+                        }
+                        Spacer()
                     }
-                    Spacer()
+                    Text(eventType)
+                        .fontWeight(.thin)
+                    Text(time)
+                        .lineLimit(1)
+                    Image(systemName: imageName)
+                        .foregroundColor(Color.orange)
                 }
-                Text(eventType)
-                    .fontWeight(.thin)
-                Text(time)
-                    .lineLimit(1)
-                Image(systemName: imageName)
-                    .foregroundColor(Color.orange)
-            }
-            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
-            
+                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
         }
     }
 }
