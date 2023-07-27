@@ -11,7 +11,7 @@ import CoreData
 class ToDosViewModel:ObservableObject {
     private var dataController = DataController(name: "Model")
     @Published var toDos: [ToDo] = []
-    @Published var toDosItemModels: [ItemModel] = []
+//    @Published var toDosItemModels: [ItemModel] = []
     
     init() {
         fetchData()
