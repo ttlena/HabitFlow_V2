@@ -7,18 +7,31 @@
 
 import Foundation
 import CoreData
+import Combine
 
 class CalendarViewModel: ObservableObject {
+    
+    
+    struct DailyAppointments {
+        var appointments: [Appointment] = []
+    }
+    
     private var dataController = DataController(name: "Model")
     @Published var appointments: [Appointment] = []
-    @Published var pickedDate = Date()
+    @Published var pickedDate: Date = Date()
     @Published var newEventTitle = ""
     @Published var newEventDate = Date()
     @Published var showingBottomSheet = false
+    @Published var structuredAppointmentsMap: Dictionary<Date, [Appointment]> = [:]
+    private var cancellables: Set<AnyCancellable> = []
+
 
     
     init() {
         fetchData()
+        deleteAllAppointments()
+        structuredAppointmentsMap.removeAll()
+        setupListener()
     }
     
     func fetchData() {
@@ -29,6 +42,35 @@ class CalendarViewModel: ObservableObject {
         } catch {
             print("CoreData Error at aAppointmets")
         }
+        createStructuredAppointments()
+    }
+    
+    func createStructuredAppointments() {
+        for event in appointments {
+            if let rawDate = event.date {
+                let date = extractClockComponentFromDate(date: rawDate)
+                if var appointmentsForDate = structuredAppointmentsMap[date] {
+                    if !appointmentsForDate.contains(event) {
+                        appointmentsForDate.append(event)
+                        structuredAppointmentsMap[date] = appointmentsForDate
+                    }
+                } else {
+                    structuredAppointmentsMap[date] = [event]
+                }
+            } else {
+                print("date nicht vorhanden")
+            }
+        }
+    }
+    
+    func extractClockComponentFromDate(date: Date) -> Date {
+        let calendar = Calendar.current
+
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        guard let extractedDate = calendar.date(from: dateComponents) else {
+            fatalError("Fehler beim Extrahieren des Datums aus date")
+        }
+        return extractedDate
     }
     
     func getCurrentWeekdays() -> [Date] {
@@ -46,18 +88,18 @@ class CalendarViewModel: ObservableObject {
         return week
     }
     /*
-    func getPreAndNextDays() -> [Date] {
-        var calendar = Calendar.autoupdatingCurrent
-        let today = calendar.startOfDay(for: Date())
-        var week : [Date] = []
-        
-        for i in -3...3 {
-            if let day = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
-                week += [day]
-            }
-        }
-        return week
-    }
+     func getPreAndNextDays() -> [Date] {
+     var calendar = Calendar.autoupdatingCurrent
+     let today = calendar.startOfDay(for: Date())
+     var week : [Date] = []
+     
+     for i in -3...3 {
+     if let day = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
+     week += [day]
+     }
+     }
+     return week
+     }
      */
     
     
@@ -65,7 +107,7 @@ class CalendarViewModel: ObservableObject {
     func getSevenWeekdays() -> [Date] {
         let calendar = Calendar.current
         let today = Date()
-
+        
         var weekdays: [Date] = []
         
         // Füge die drei Wochentage vor dem aktuellen Tag hinzu
@@ -88,15 +130,11 @@ class CalendarViewModel: ObservableObject {
                 }
             }
         }
-
+        
         return weekdays
     }
     
-    
-    
-    
-    
-    
+
     func getDateWeekday(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EE"
@@ -119,7 +157,8 @@ class CalendarViewModel: ObservableObject {
         newAppointment.date = newEventDate
         save()
         fetchData()
-        newDate()
+        toggleBottomSheet()
+        resetInput()
     }
     
     func deleteAppointment(obj: Appointment) {
@@ -137,18 +176,37 @@ class CalendarViewModel: ObservableObject {
         }
         save()
         fetchData()
+
     }
     
     func resetInput() {
         newEventTitle = ""
-        newEventDate = Date()
     }
     
-    func newDate() {
+    func toggleBottomSheet() {
         showingBottomSheet.toggle()
     }
     
     func save() {
         try? dataController.container.viewContext.save()
+    }
+    
+    private func setupListener() {
+        setupPickedDateListener()
+    }
+    
+    private func setupPickedDateListener() {
+        $pickedDate
+            .sink(receiveValue: { [weak self] newDate in
+                let currentDate = Date()
+                if let pickedDate = self?.pickedDate {
+                    if newDate > currentDate {
+                        self?.newEventDate = newDate
+                    } else {
+                        self?.newEventDate = currentDate
+                    }
+                }
+            })
+            .store(in: &cancellables)
     }
 }
