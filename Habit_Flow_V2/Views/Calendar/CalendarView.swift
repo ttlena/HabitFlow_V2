@@ -10,7 +10,6 @@ import SwiftUI
 struct CalendarView: View {
     
     @EnvironmentObject var calendar: CalendarViewModel
-    @State var showingBottomSheet = false
     
     var body: some View {
         VStack {
@@ -37,20 +36,16 @@ struct CalendarView: View {
             }
             
             PrimaryButton(labelMessage: "neuer Termin", symbol: "plus", action: {
-                newDate()
+                calendar.newDate()
             })
             .frame(maxHeight: .infinity, alignment: .bottom)
             
         }
         .padding([.bottom], 50)
-        .sheet(isPresented: $showingBottomSheet) {
+        .sheet(isPresented: $calendar.showingBottomSheet) {
             AddCalendarSheetView()
                 .presentationDetents([.medium, .large])
         }
-    }
-    
-    func newDate() {
-        showingBottomSheet.toggle()
     }
 }
 

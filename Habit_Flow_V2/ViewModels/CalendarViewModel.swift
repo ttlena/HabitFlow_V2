@@ -14,6 +14,8 @@ class CalendarViewModel: ObservableObject {
     @Published var pickedDate = Date()
     @Published var newEventTitle = ""
     @Published var newEventDate = Date()
+    @Published var showingBottomSheet = false
+
     
     init() {
         fetchData()
@@ -66,11 +68,16 @@ class CalendarViewModel: ObservableObject {
         newAppointment.date = newEventDate
         save()
         fetchData()
+        newDate()
     }
     
     func resetInput() {
         newEventTitle = ""
         newEventDate = Date()
+    }
+    
+    func newDate() {
+        showingBottomSheet.toggle()
     }
     
     func save() {
