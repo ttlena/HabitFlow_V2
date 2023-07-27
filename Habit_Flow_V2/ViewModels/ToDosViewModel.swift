@@ -11,7 +11,7 @@ import CoreData
 class ToDosViewModel:ObservableObject {
     private var dataController = DataController(name: "Model")
     @Published var toDos: [ToDo] = []
-    @Published var toDosItemModels: [ItemModel] = []
+   // @Published var toDosItemModels: [ItemModel] = []
     
     init() {
         fetchData()
@@ -57,7 +57,7 @@ class ToDosViewModel:ObservableObject {
     func updateItem(obj: ToDo) {
         print("update ToDo")
         if let item = toDos.first(where: {$0.id == obj.id}) {
-            item.isCompleted = true
+            item.isCompleted.toggle()
             save()
             fetchData()
         }

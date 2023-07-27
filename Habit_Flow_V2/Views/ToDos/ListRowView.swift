@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListRowView: View {
     
-    let item: ToDo
+    @StateObject var item: ToDo
     
     var body: some View {
         HStack {
