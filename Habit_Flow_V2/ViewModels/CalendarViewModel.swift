@@ -122,6 +122,15 @@ class CalendarViewModel: ObservableObject {
         newDate()
     }
     
+    func deleteAppointment(obj: Appointment) {
+        print("delete Appointment")
+        if let item = appointments.firstIndex(where: {$0.id == obj.id}) {
+            dataController.container.viewContext.delete(appointments.remove(at: item))
+        }
+        save()
+        fetchData()
+    }
+    
     func resetInput() {
         newEventTitle = ""
         newEventDate = Date()
