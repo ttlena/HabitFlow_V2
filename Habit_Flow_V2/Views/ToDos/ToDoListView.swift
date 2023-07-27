@@ -10,7 +10,8 @@ import SwiftUI
 struct ToDoListView: View {
     
     //@EnvironmentObject var toDoListViewModel : ToDoListViewModel
-    @StateObject var toDosViewModel : ToDosViewModel
+    @EnvironmentObject var toDosViewModel : ToDosViewModel
+    @StateObject var calendarViewModel: CalendarViewModel
 
     @State var showingBottomSheet = false
     
@@ -36,6 +37,7 @@ struct ToDoListView: View {
                 
             }
             .padding([.horizontal], 25)
+            WeeklyOverview(calendarViewModel: calendarViewModel)
             
             
             //WeeklyOverview()
@@ -97,9 +99,9 @@ struct ToDoListView: View {
 struct ToDoListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ToDoListView(toDosViewModel: ToDosViewModel())
+            ToDoListView(calendarViewModel: CalendarViewModel())
         }
-//        .environmentObject(ToDosViewModel())
+        .environmentObject(ToDosViewModel())
         
     }
 }

@@ -31,7 +31,7 @@ struct NavigationBar: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .tag(1)
                     .environmentObject(calendarViewModel)
-                ToDoListView(toDosViewModel: toDosViewModel)
+                ToDoListView(calendarViewModel: calendarViewModel)
                     .toolbar(.hidden, for: .tabBar)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .tag(2)
