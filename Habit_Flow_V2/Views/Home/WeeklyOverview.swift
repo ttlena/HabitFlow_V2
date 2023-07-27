@@ -10,7 +10,7 @@ import SwiftUI
 struct WeeklyOverview: View {
     @EnvironmentObject var navigationBarViewModel: NavigationBarViewModel
     @StateObject var calendarViewModel: CalendarViewModel
-
+    
     var body: some View {
         let weekdays = calendarViewModel.getCurrentWeekdays()
         ScrollView(.horizontal, showsIndicators: false){
@@ -25,8 +25,11 @@ struct WeeklyOverview: View {
                     .background(calendarViewModel.getDateDayNumber(date: day) == calendarViewModel.getDateDayNumber(date: Date.now) ? .orange : .gray)
                     .cornerRadius(10)
                     .onTapGesture {
-                        navigationBarViewModel.selectedTabIndex = 1
+                        if(navigationBarViewModel.selectedTabIndex == 0){
+                            navigationBarViewModel.selectedTabIndex = 1
+                        }
                         calendarViewModel.pickedDate = day
+                        
                     }
                 }
             }

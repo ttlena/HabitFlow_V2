@@ -75,7 +75,7 @@ struct ToDoListView: View {
         .padding([.bottom], 50)
         .frame(maxHeight: .infinity, alignment: .bottom)
         .sheet(isPresented: $showingBottomSheet) {
-            AddToDoSheetView(toDosViewModel:toDosViewModel)
+            AddToDoSheetView(toDosViewModel:toDosViewModel, pickedDate:calendarViewModel.pickedDate)
                 .presentationDetents([.medium, .large])
         }
         /*

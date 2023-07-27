@@ -27,11 +27,13 @@ class ToDosViewModel:ObservableObject {
         }
     }
     
-    func addItem(title: String) {
+    func addItem(title: String, date: Date) {
         let newToDo = ToDo(context: dataController.container.viewContext)
         newToDo.id = UUID()
         newToDo.isCompleted = false
         newToDo.title = title
+        newToDo.date = date
+        print(newToDo)
         save()
         fetchData()
     }

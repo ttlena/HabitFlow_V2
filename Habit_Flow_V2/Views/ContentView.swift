@@ -25,7 +25,7 @@ struct ContentView: View {
             HStack {
                 TextField("neues Todo", text:$name)
                 Button("Add") {
-                    toDosVM.addItem(title: name)
+                    toDosVM.addItem(title: name, date: Date())
                     name = ""
                 }
             }

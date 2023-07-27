@@ -10,6 +10,7 @@ import SwiftUI
 struct AddToDoSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var toDosViewModel: ToDosViewModel
+    @State var pickedDate : Date
     
     @State var textFieldText: String=""
     @State var alertTitle: String = ""
@@ -50,7 +51,7 @@ struct AddToDoSheetView: View {
     
     func saveButtonPressed() {
         if textIsAppropiate() {            
-            toDosViewModel.addItem(title: textFieldText)
+            toDosViewModel.addItem(title: textFieldText, date: pickedDate)
             presentationMode.wrappedValue.dismiss()
         }
     }
@@ -72,6 +73,6 @@ struct AddToDoSheetView: View {
 
 struct AddToDoSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        AddToDoSheetView(toDosViewModel:ToDosViewModel())
+        AddToDoSheetView(toDosViewModel:ToDosViewModel(), pickedDate: Date())
     }
 }
