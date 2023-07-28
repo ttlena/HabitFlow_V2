@@ -32,9 +32,15 @@ struct CalendarView: View {
 //            CalenderList(event: "Laufen", eventType: "Habit", time: "20:00", imageName: "checkmark", recColor: Color.red)
 //            CalenderList(event: "Arzt", eventType: "Termin", time: "23:00", imageName: "checkmark", recColor: Color.blue)
             ScrollView {
-                if let dailyAppointments = calendar.structuredAppointmentsMap[calendar.extractClockComponentFromDate(date: calendar.pickedDate)] {
+                if let dailyAppointments = calendar.structuredAppointmentsMap[calendar.deleteClockComponentFromDate(date: calendar.pickedDate)] {
                     ForEach(dailyAppointments, id: \.self) { event in
-                        CalenderList(event: event.title ?? "", eventType: "Termin", time: event.date?.formatted() ?? "", imageName: "checkmark", recColor: Color.red)
+                        CalenderList(
+                            event: event.title ?? "",
+                            eventType: "Termin",
+                            time: calendar.extractTimeFromDate(event.date ?? Date()),
+                            imageName: "checkmark",
+                            recColor: Color.red
+                        )
                     }
                 }
             }

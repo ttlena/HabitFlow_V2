@@ -48,7 +48,7 @@ class CalendarViewModel: ObservableObject {
     func createStructuredAppointments() {
         for event in appointments {
             if let rawDate = event.date {
-                let date = extractClockComponentFromDate(date: rawDate)
+                let date = deleteClockComponentFromDate(date: rawDate)
                 if var appointmentsForDate = structuredAppointmentsMap[date] {
                     if !appointmentsForDate.contains(event) {
                         appointmentsForDate.append(event)
@@ -63,7 +63,7 @@ class CalendarViewModel: ObservableObject {
         }
     }
     
-    func extractClockComponentFromDate(date: Date) -> Date {
+    func deleteClockComponentFromDate(date: Date) -> Date {
         let calendar = Calendar.current
 
         let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
@@ -71,6 +71,12 @@ class CalendarViewModel: ObservableObject {
             fatalError("Fehler beim Extrahieren des Datums aus date")
         }
         return extractedDate
+    }
+    
+    func extractTimeFromDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: date)
     }
     
     func getCurrentWeekdays() -> [Date] {
@@ -199,13 +205,11 @@ class CalendarViewModel: ObservableObject {
         $pickedDate
             .sink(receiveValue: { [weak self] newDate in
                 let currentDate = Date()
-                if let pickedDate = self?.pickedDate {
                     if newDate > currentDate {
                         self?.newEventDate = newDate
                     } else {
                         self?.newEventDate = currentDate
                     }
-                }
             })
             .store(in: &cancellables)
     }
