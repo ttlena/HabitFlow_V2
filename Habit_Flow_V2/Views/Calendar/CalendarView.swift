@@ -29,9 +29,9 @@ struct CalendarView: View {
             .background(Color.gray.opacity(0.4), in: RoundedRectangle(cornerRadius: 20)).padding()
             .environment(\.locale, Locale.init(identifier: "de_DE"))
             
-//            CalenderList(event: "Laufen", eventType: "Habit", time: "20:00", imageName: "checkmark", recColor: Color.red)
-//            CalenderList(event: "Arzt", eventType: "Termin", time: "23:00", imageName: "checkmark", recColor: Color.blue)
-            ScrollView {
+            //            CalenderList(event: "Laufen", eventType: "Habit", time: "20:00", imageName: "checkmark", recColor: Color.red)
+            //            CalenderList(event: "Arzt", eventType: "Termin", time: "23:00", imageName: "checkmark", recColor: Color.blue)
+            List {
                 if let dailyAppointments = calendar.structuredAppointmentsMap[calendar.deleteClockComponentFromDate(date: calendar.pickedDate)] {
                     ForEach(dailyAppointments, id: \.self) { event in
                         CalenderList(
@@ -44,13 +44,23 @@ struct CalendarView: View {
                             id: event.id.unsafelyUnwrapped
                         )
                     }
+                    .onDelete { indices in
+                        for index in indices {
+                            if index < dailyAppointments.count {
+                                calendar.deleteAppointment(index: index)
+                            }
+                        }
+                    }
                 }
             }
+            .listStyle(PlainListStyle())
+            // ...
+            
+            
             
             PrimaryButton(labelMessage: "neuer Termin", symbol: "plus", action: {
                 calendar.toggleBottomSheet()
             })
-            .frame(maxHeight: .infinity, alignment: .bottom)
             
         }
         .padding([.bottom], 50)

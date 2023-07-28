@@ -17,8 +17,6 @@ struct CalenderList: View {
     @Environment(\.colorScheme) var colorScheme
     @StateObject var calendarVM: CalendarViewModel
     var id : UUID
-
-
     
     let gridItems = [
         GridItem(),

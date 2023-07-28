@@ -34,8 +34,8 @@ class CalendarViewModel: ObservableObject {
     
     init() {
         fetchData()
-        deleteAllAppointments()
-        structuredAppointmentsMap.removeAll()
+        //deleteAllAppointments()
+        //structuredAppointmentsMap.removeAll()
         setupListener()
     }
     
@@ -205,10 +205,14 @@ class CalendarViewModel: ObservableObject {
         resetInput()
     }
     
-    func deleteAppointment(obj: Appointment) {
-        print("delete Appointment")
-        if let item = appointments.firstIndex(where: {$0.id == obj.id}) {
-            dataController.container.viewContext.delete(appointments.remove(at: item))
+    
+    func deleteAppointment( index: Int) {
+        if let dailyAppointments = structuredAppointmentsMap[deleteClockComponentFromDate(date: pickedDate)] {
+            let appointmentToDelete = dailyAppointments[index]
+            if let appointmentIndex = appointments.firstIndex(where: { $0.id == appointmentToDelete.id }) {
+                dataController.container.viewContext.delete(appointments.remove(at: appointmentIndex))
+                structuredAppointmentsMap.removeAll()
+            }
         }
         save()
         fetchData()
