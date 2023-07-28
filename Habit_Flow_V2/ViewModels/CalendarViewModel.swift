@@ -24,8 +24,8 @@ class CalendarViewModel: ObservableObject {
     @Published var showingBottomSheet = false
     @Published var structuredAppointmentsMap: Dictionary<Date, [Appointment]> = [:]
     private var cancellables: Set<AnyCancellable> = []
-
-
+    
+    
     
     init() {
         fetchData()
@@ -65,7 +65,7 @@ class CalendarViewModel: ObservableObject {
     
     func deleteClockComponentFromDate(date: Date) -> Date {
         let calendar = Calendar.current
-
+        
         let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
         guard let extractedDate = calendar.date(from: dateComponents) else {
             fatalError("Fehler beim Extrahieren des Datums aus date")
@@ -140,7 +140,7 @@ class CalendarViewModel: ObservableObject {
         return weekdays
     }
     
-
+    
     func getDateWeekday(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EE"
@@ -182,7 +182,7 @@ class CalendarViewModel: ObservableObject {
         }
         save()
         fetchData()
-
+        
     }
     
     func resetInput() {
@@ -205,12 +205,20 @@ class CalendarViewModel: ObservableObject {
         $pickedDate
             .sink(receiveValue: { [weak self] newDate in
                 let currentDate = Date()
-                    if newDate > currentDate {
-                        self?.newEventDate = newDate
-                    } else {
-                        self?.newEventDate = currentDate
-                    }
+                if newDate > currentDate {
+                    guard let unwrappedDate = self?.setTimeToCurrentTime(newDate) else { return }
+                    self?.newEventDate = unwrappedDate
+                } else {
+                    self?.newEventDate = currentDate
+                }
             })
             .store(in: &cancellables)
+    }
+    
+    func setTimeToCurrentTime(_ date: Date) -> Date {
+        let calendar = Calendar.current
+        let currentTime = Date()
+        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: currentTime)
+        return calendar.date(bySettingHour: timeComponents.hour ?? 0, minute: timeComponents.minute ?? 0, second: timeComponents.second ?? 0, of: date) ?? date
     }
 }
