@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct CalenderList: View {
     var event: String
@@ -13,6 +14,11 @@ struct CalenderList: View {
     var time : String
     var imageName: String
     var recColor: Color
+    @Environment(\.colorScheme) var colorScheme
+    @StateObject var calendarVM: CalendarViewModel
+    var id : UUID
+
+
     
     let gridItems = [
         GridItem(),
@@ -21,15 +27,22 @@ struct CalenderList: View {
         GridItem(),
     ]
     
-    init(event: String, eventType: String, time: String, imageName: String, recColor: Color) {
+    init(event: String, eventType: String, time: String, imageName: String, recColor: Color, calendarVM: CalendarViewModel, id: UUID) {
         self.event = event
         self.eventType = eventType
         self.time = time
         self.imageName = imageName
         self.recColor = recColor
+        self._calendarVM = StateObject(wrappedValue: calendarVM)
+        self.id = id
     }
     
     var body: some View {
+        Button(action: {
+            calendarVM.toggleBottomSheetEditAppointment() // id mitgeben (bzw in published speichern), datum mitgeben , id aus map bzw appointment
+            calendarVM.setCurrentEditedAppointmentById(id: self.id)
+            
+        }) {
             VStack{
                 LazyVGrid(columns: gridItems) {
                     HStack(alignment: .top) {
@@ -50,12 +63,16 @@ struct CalenderList: View {
                         .foregroundColor(Color.orange)
                 }
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+            }
+            .buttonStyle(PlainButtonStyle()) // Verwende PlainButtonStyle, um die Standardstile zu entfernen.
+            .foregroundColor(colorScheme == .dark ? .white : .black)
         }
     }
 }
 
 struct CalenderList_Previews: PreviewProvider {
     static var previews: some View {
-        CalenderList(event: "Trainieren", eventType: "Habit", time: "20:00-21:00", imageName: "checkmark",recColor: Color.red)
+        let calendarVM = CalendarViewModel()
+        return CalenderList(event: "Trainieren", eventType: "Habit", time: "20:00-21:00", imageName: "checkmark", recColor: Color.red, calendarVM: calendarVM, id: UUID())
     }
 }

@@ -39,7 +39,9 @@ struct CalendarView: View {
                             eventType: "Termin",
                             time: calendar.extractTimeFromDate(event.date ?? Date()),
                             imageName: "checkmark",
-                            recColor: Color.red
+                            recColor: Color.red,
+                            calendarVM: calendar,
+                            id: event.id.unsafelyUnwrapped
                         )
                     }
                 }
@@ -53,7 +55,7 @@ struct CalendarView: View {
         }
         .padding([.bottom], 50)
         .sheet(isPresented: $calendar.showingBottomSheet) {
-            AddCalendarSheetView()
+            AddCalendarSheetView(calendarVM: calendar)
                 .presentationDetents([.medium, .large])
         }
     }

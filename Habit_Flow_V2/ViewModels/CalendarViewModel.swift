@@ -23,7 +23,12 @@ class CalendarViewModel: ObservableObject {
     @Published var newEventDate = Date()
     @Published var showingBottomSheet = false
     @Published var structuredAppointmentsMap: Dictionary<Date, [Appointment]> = [:]
+    @Published var isAppointmentEdited = false
     private var cancellables: Set<AnyCancellable> = []
+    @Published var editedAppointment: Appointment?
+    @Published var editedTitle: String = ""
+    @Published var editedDate: Date = Date()
+    @Published var editedId: UUID = UUID()
     
     
     
@@ -108,6 +113,29 @@ class CalendarViewModel: ObservableObject {
      }
      */
     
+    func setCurrentEditedAppointmentById(id: UUID) {
+        if let appointment = getAppointmentById(id: id) {
+            editedAppointment = appointment
+            if let appointmentTitle = appointment.title {
+                editedTitle = appointmentTitle
+            }
+            if let appointmentDate = appointment.date {
+                editedDate = appointmentDate
+            }
+            if let appointmentId = appointment.id {
+                editedId = appointmentId
+            }
+        }
+    }
+    
+    
+    func getAppointmentById(id: UUID) -> Appointment? {
+        if let appointment = appointments.first(where: { $0.id == id }) {
+            return appointment
+        } else {
+            return nil
+        }
+    }
     
     
     func getSevenWeekdays() -> [Date] {
@@ -167,6 +195,16 @@ class CalendarViewModel: ObservableObject {
         resetInput()
     }
     
+    func editAppointment() {
+        editedAppointment?.id = editedId
+        editedAppointment?.date = editedDate
+        editedAppointment?.title = editedTitle
+        save()
+        fetchData()
+        toggleBottomSheet()
+        resetInput()
+    }
+    
     func deleteAppointment(obj: Appointment) {
         print("delete Appointment")
         if let item = appointments.firstIndex(where: {$0.id == obj.id}) {
@@ -191,6 +229,12 @@ class CalendarViewModel: ObservableObject {
     
     func toggleBottomSheet() {
         showingBottomSheet.toggle()
+        isAppointmentEdited = false
+    }
+    
+    func toggleBottomSheetEditAppointment() {
+        showingBottomSheet.toggle()
+        isAppointmentEdited = true
     }
     
     func save() {
