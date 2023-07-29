@@ -13,8 +13,7 @@ struct WeeklyOverview: View {
     
     var body: some View {
        
-        //let weekdays = navigationBarViewModel.selectedTabIndex == 0 ? calendarViewModel.getCurrentWeekdays() : calendarViewModel.getSevenWeekdays()
-        let weekdays = calendarViewModel.getCurrentWeekdays()
+        let weekdays = navigationBarViewModel.selectedTabIndex == 0 ? calendarViewModel.getCurrentWeekdays() : calendarViewModel.getSevenWeekdays()
         ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing: 10) {
                 ForEach(weekdays, id: \.self) { day in
