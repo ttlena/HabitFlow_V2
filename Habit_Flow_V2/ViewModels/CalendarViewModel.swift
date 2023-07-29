@@ -21,6 +21,7 @@ class CalendarViewModel: ObservableObject {
     @Published var pickedDate: Date = Date()
     @Published var newEventTitle = ""
     @Published var newEventDate = Date()
+    @Published var newEventEndDate = Date()
     @Published var showingBottomSheet = false
     @Published var structuredAppointmentsMap: Dictionary<Date, [Appointment]> = [:]
     @Published var isAppointmentEdited = false
@@ -29,7 +30,7 @@ class CalendarViewModel: ObservableObject {
     @Published var editedTitle: String = ""
     @Published var editedDate: Date = Date()
     @Published var editedId: UUID = UUID()
-    
+    @Published var editedEndDate: Date = Date()
     
     
     init() {
@@ -125,6 +126,9 @@ class CalendarViewModel: ObservableObject {
             if let appointmentId = appointment.id {
                 editedId = appointmentId
             }
+            if let appointmentEndDate = appointment.endDate {
+                editedEndDate = appointmentEndDate
+            }
         }
     }
     
@@ -189,6 +193,7 @@ class CalendarViewModel: ObservableObject {
         newAppointment.id = UUID()
         newAppointment.title = newEventTitle
         newAppointment.date = newEventDate
+        newAppointment.endDate = newEventEndDate
         save()
         fetchData()
         toggleBottomSheet()
@@ -199,9 +204,9 @@ class CalendarViewModel: ObservableObject {
         editedAppointment?.id = editedId
         editedAppointment?.date = editedDate
         editedAppointment?.title = editedTitle
+        toggleBottomSheetEditAppointment()
         save()
         fetchData()
-        toggleBottomSheet()
         resetInput()
     }
     
@@ -251,17 +256,46 @@ class CalendarViewModel: ObservableObject {
     
     private func setupPickedDateListener() {
         $pickedDate
-            .sink(receiveValue: { [weak self] newDate in
+            .sink { [weak self] newDate in
                 let currentDate = Date()
                 if newDate > currentDate {
-                    guard let unwrappedDate = self?.setTimeToCurrentTime(newDate) else { return }
-                    self?.newEventDate = unwrappedDate
+                    guard let currentTimeDate = self?.setTimeToCurrentTime(newDate) else { return }
+                    self?.newEventDate = currentTimeDate
+                    
+                    if let unwrappedCurrentTime = self?.addOneHour(to: currentTimeDate) {
+                        self?.newEventEndDate = unwrappedCurrentTime
+                    }
                 } else {
                     self?.newEventDate = currentDate
+                    if let unwrappedCurrentDate = self?.addOneHour(to: currentDate) {
+                        self?.newEventEndDate = unwrappedCurrentDate
+                    }
                 }
-            })
+            }
             .store(in: &cancellables)
     }
+    
+    /* private func setupEndDateValidationListener() {
+     $editedEndDate
+     .sink { [weak self] newEndDate in
+     guard let self = self else { return }
+     
+     let currentEditedDate = self?.editedDate
+     
+     if currentEditedDate >= newEndDate {
+     self.editedEndDate = currentEditedDate
+     } else {
+     self.editedEndDate = newEndDate
+     }
+     }
+     .store(in: &cancellables)
+     }*/
+    
+    func addOneHour(to date: Date) -> Date? {
+        let calendar = Calendar.current
+        return calendar.date(byAdding: .hour, value: 1, to: date)
+    }
+    
     
     func setTimeToCurrentTime(_ date: Date) -> Date {
         let calendar = Calendar.current
@@ -270,3 +304,4 @@ class CalendarViewModel: ObservableObject {
         return calendar.date(bySettingHour: timeComponents.hour ?? 0, minute: timeComponents.minute ?? 0, second: timeComponents.second ?? 0, of: date) ?? date
     }
 }
+

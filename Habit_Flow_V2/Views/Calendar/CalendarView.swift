@@ -38,6 +38,7 @@ struct CalendarView: View {
                             event: event.title ?? "",
                             eventType: "Termin",
                             time: calendar.extractTimeFromDate(event.date ?? Date()),
+                            endTime: calendar.extractTimeFromDate(event.endDate ?? Date()),
                             imageName: "checkmark",
                             recColor: Color.red,
                             calendarVM: calendar,
@@ -55,8 +56,6 @@ struct CalendarView: View {
             }
             .listStyle(PlainListStyle())
             // ...
-            
-            
             
             PrimaryButton(labelMessage: "neuer Termin", symbol: "plus", action: {
                 calendar.toggleBottomSheet()

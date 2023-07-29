@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AddCalendarSheetView: View {
     @StateObject var calendarVM: CalendarViewModel
-
+    
     var body: some View {
         VStack {
             if calendarVM.isAppointmentEdited {
@@ -18,9 +18,14 @@ struct AddCalendarSheetView: View {
                     .background(Color(UIColor.systemGray2))
                     .cornerRadius(12)
                 
-                DatePicker("Datum", selection: $calendarVM.editedDate, in: Date()...)
+                DatePicker("Datum (Beginn)", selection: $calendarVM.editedDate, in: Date()...)
                     .accentColor(.orange)
                     .environment(\.locale, Locale(identifier: "de_DE"))
+                
+                DatePicker("Datum (Ende)", selection: $calendarVM.editedEndDate, in: calendarVM.editedDate...)
+                    .accentColor(.orange)
+                    .environment(\.locale, Locale(identifier: "de_DE"))
+                
                 
                 Button(action: calendarVM.editAppointment, label: {
                     Text("Speichern")
@@ -48,7 +53,11 @@ struct AddCalendarSheetView: View {
                     .background(Color(UIColor.systemGray2))
                     .cornerRadius(12)
                 
-                DatePicker("Datum", selection: $calendarVM.newEventDate, in: Date()...)
+                DatePicker("Datum (Beginn)", selection: $calendarVM.newEventDate, in: Date()...)
+                    .accentColor(.orange)
+                    .environment(\.locale, Locale(identifier: "de_DE"))
+                
+                DatePicker("Datum (Ende)", selection: $calendarVM.newEventEndDate, in: calendarVM.newEventDate...)
                     .accentColor(.orange)
                     .environment(\.locale, Locale(identifier: "de_DE"))
                 
