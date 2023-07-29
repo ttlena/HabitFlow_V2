@@ -12,6 +12,8 @@ struct WeeklyOverview: View {
     @StateObject var calendarViewModel: CalendarViewModel
     
     var body: some View {
+       
+        //let weekdays = navigationBarViewModel.selectedTabIndex == 0 ? calendarViewModel.getCurrentWeekdays() : calendarViewModel.getSevenWeekdays()
         let weekdays = calendarViewModel.getCurrentWeekdays()
         ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing: 10) {

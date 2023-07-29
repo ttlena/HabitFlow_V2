@@ -45,6 +45,57 @@ class CalendarViewModel: ObservableObject {
         }
         return week
     }
+    /*
+    func getPreAndNextDays() -> [Date] {
+        var calendar = Calendar.autoupdatingCurrent
+        let today = calendar.startOfDay(for: Date())
+        var week : [Date] = []
+        
+        for i in -3...3 {
+            if let day = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
+                week += [day]
+            }
+        }
+        return week
+    }
+     */
+    
+    
+    
+    func getSevenWeekdays() -> [Date] {
+        let calendar = Calendar.current
+        let today = Date()
+
+        var weekdays: [Date] = []
+        
+        // Füge die drei Wochentage vor dem aktuellen Tag hinzu
+        if let threeDaysAgo = calendar.date(byAdding: .day, value: -3, to: today) {
+            for i in 0..<3 {
+                if let day = calendar.date(byAdding: .day, value: i, to: threeDaysAgo) {
+                    weekdays.append(day)
+                }
+            }
+        }
+        
+        // Füge den aktuellen Tag hinzu
+        weekdays.append(today)
+        
+        // Füge die drei Wochentage nach dem aktuellen Tag hinzu
+        if let threeDaysLater = calendar.date(byAdding: .day, value: 1, to: today) {
+            for i in 0..<3 {
+                if let day = calendar.date(byAdding: .day, value: i, to: threeDaysLater) {
+                    weekdays.append(day)
+                }
+            }
+        }
+
+        return weekdays
+    }
+    
+    
+    
+    
+    
     
     func getDateWeekday(date: Date) -> String {
         let dateFormatter = DateFormatter()
