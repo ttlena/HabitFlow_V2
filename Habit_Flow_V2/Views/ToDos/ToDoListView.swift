@@ -45,10 +45,20 @@ struct ToDoListView: View {
             
             //WeeklyOverview()
             
-            if(toDosViewModel.toDos.count == 0) {
-                Text("Noch keine ToDo's für heute")
-                    .font(.title3)
-                    .padding([.top], 100)
+            if(filteredToDos.count == 0) {
+                var text = ""
+                //heute
+                if(calendarViewModel.getDateDayNumber(date: Date()) == calendarViewModel.getDateDayNumber(date: calendarViewModel.pickedDate)) {
+                    Text("Noch keine ToDo's für heute")
+                        .font(.title3)
+                        .padding([.top], 100)
+                }else {
+                    Text("Noch keine ToDo's für diesen Tag")
+                        .font(.title3)
+                        .padding([.top], 100)
+                }
+                    
+                
             }
             
             
@@ -61,13 +71,30 @@ struct ToDoListView: View {
                                 toDosViewModel.updateItem(obj: item)
                             }
                         }
+                        .swipeActions(edge: .leading) {
+                                // Hier fügst du die Aktion hinzu, die bei einer Wischgeste nach rechts ausgeführt werden soll
+                                Button(action: {
+                                    
+                                        let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: item.date ?? Date())!
+                                        item.date = nextDay
+                                        toDosViewModel.updateItem(obj: item)
+                                    
+                                }) {
+                                    Label("Erledigt", systemImage: "arrow.uturn.forward")
+                                }
+                                .tint(.orange) // Ändere die Farbe der Aktion, wenn gewünscht
+                            }
+                    
+                    
                 }
                 .onDelete(perform: toDosViewModel.deleteItems)
                 .onMove(perform: toDosViewModel.moveItem)
             }
             .listStyle(InsetListStyle())
             
-            if(calendarViewModel.deleteClockComponentFromDate(date: calendarViewModel.pickedDate) <= calendarViewModel.deleteClockComponentFromDate(date: Date())) {
+            if(calendarViewModel.deleteClockComponentFromDate(date: calendarViewModel.pickedDate) == calendarViewModel.deleteClockComponentFromDate(date: Date()) ||
+                calendarViewModel.deleteClockComponentFromDate(date: calendarViewModel.pickedDate) >
+               calendarViewModel.deleteClockComponentFromDate(date: Date())) {
                 PrimaryButton(labelMessage: "neues ToDo", symbol: "plus", action: {
                     newToDo()
                 })
