@@ -12,9 +12,15 @@ class HabitViewModel:ObservableObject {
     private var dataController = DataController(name: "Model")
     @Published var habits: [Habit] = []
     @Published var newHabitTitle = ""
-    @Published var newHabitDuration: Int16 = 0
+    @Published var newHabitDuration: Int16?
     @Published var showAlert: Bool = false
     @Published var alertTitle = ""
+    @Published var selectedDays: [String] = []
+    @Published var habitMonthGoal: Int16?
+    @Published var habitYearGoal: Int16?
+    @Published var habitMonthProgress: Int16?
+    @Published var habitYearProgress: Int16?
+    
     
     init() {
         fetchData()
@@ -22,7 +28,7 @@ class HabitViewModel:ObservableObject {
     
     func fetchData() {
         let request = NSFetchRequest<Habit>(entityName: "Habit")
-//        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        //        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         do {
             habits = try dataController.container.viewContext.fetch(request)
         } catch {
@@ -30,11 +36,37 @@ class HabitViewModel:ObservableObject {
         }
     }
     
+    /*func calcMonthProgressStatistics() -> Int16{
+        
+    }
+    
+    func numberOfDaysInCurrentMonth() -> Int {
+    }*/
+
+    
+    //habitDuration auf monatstage rechnen
+    //habitDuration auf Jahrestage rechnen
+    //Jahre und monate konservieren
+    //Gesamt ?
+    
+    
+    func toggleDaySelection( day: String) {
+        if selectedDays.contains(day) {
+            selectedDays.removeAll(where: {$0 == day})
+            newHabitDuration = Int16(selectedDays.count)
+        } else {
+            selectedDays.append(day)
+            newHabitDuration = Int16(selectedDays.count)
+        }
+    }
+    
     func addData() {
         let newHabit = Habit(context: dataController.container.viewContext)
         newHabit.id = UUID()
         newHabit.title = newHabitTitle
-        newHabit.goal = newHabitDuration
+        if let unpackedNewHabitDuration = newHabitDuration {
+            newHabit.goal = unpackedNewHabitDuration
+        }
         save()
         fetchData()
     }
@@ -91,7 +123,7 @@ class HabitViewModel:ObservableObject {
         newHabitDuration = 0
         showAlert = false
     }
-        
+    
     func save() {
         try? dataController.container.viewContext.save()
     }

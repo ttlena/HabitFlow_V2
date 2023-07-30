@@ -10,6 +10,7 @@ import SwiftUI
 struct HabitsView: View {
     
     @EnvironmentObject var habitsViewModel : HabitViewModel
+    
     @State var showingBottomSheet = false
     let columns = [
         GridItem(.flexible()),

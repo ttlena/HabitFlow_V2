@@ -26,7 +26,7 @@ struct AddHabitSheetView: View {
                 .background(Color(UIColor.systemGray2))
                 .cornerRadius(12)
             
-            TextField("Dauer in Tagen", value: $habitVM.newHabitDuration, format: .number)
+            /*TextField("Häufigkeit in einer Woche", value: $habitVM.newHabitDuration, format: .number)
                 .keyboardType(.numberPad)
             //                        .onReceive(Just(durationInput)) { newValue in
             //                            let filtered = newValue.filter { "0123456789".contains($0) }
@@ -37,7 +37,12 @@ struct AddHabitSheetView: View {
                 .padding(.horizontal)
                 .frame(height: 41)
                 .background(Color(UIColor.systemGray2))
-                .cornerRadius(12)
+                .cornerRadius(12)*/
+
+            
+            VStack {
+                WeekPicker(habitVM: habitVM)
+            }
             
             Button(action: {
                 habitVM.saveNewHabit()
