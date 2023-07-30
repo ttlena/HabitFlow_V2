@@ -20,73 +20,23 @@ struct NavigationBar: View {
         TabItemData(image: "habits_icon", selectedImage: "habits_selected", title: "Habits")
     ]
     var body: some View {
-        VStack() {
-            TabView(selection: $navigationBarViewModel.selectedTabIndex) {
-                HomeView(habitViewModel: habitViewModel, toDosViewModel: toDosViewModel, calendarViewModel: calendarViewModel)
-                    .toolbar(.hidden, for: .tabBar)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .tag(0)
-                CalendarView()
-                    .toolbar(.hidden, for: .tabBar)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .tag(1)
-                    .environmentObject(calendarViewModel)
-                ToDoListView(calendarViewModel: calendarViewModel)
-                    .toolbar(.hidden, for: .tabBar)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .tag(2)
-                    .environmentObject(toDosViewModel)
-                HabitsView()
-                    .toolbar(.hidden, for: .tabBar)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .tag(3)
-                    .environmentObject(habitViewModel)
-            }
-            .environmentObject(navigationBarViewModel)
-            
-            TabBarView(tabBarItems: tabItems, selectedIndex: $navigationBarViewModel.selectedTabIndex)
-                .ignoresSafeArea()
+        TabView(selection: $navigationBarViewModel.selectedTabIndex) {
+            HomeView(habitViewModel: habitViewModel, toDosViewModel: toDosViewModel, calendarViewModel: calendarViewModel)
+                .tag(0)
+            CalendarView()
+                .tag(1)
+                .environmentObject(calendarViewModel)
+            ToDoListView(calendarViewModel: calendarViewModel)
+                .tag(2)
+                .environmentObject(toDosViewModel)
+            HabitsView()
+                .tag(3)
+                .environmentObject(habitViewModel)
         }
-        
-        
-        
-//        TabView(selection: $navigationBarViewModel.selectedTabIndex) {
-//            HomeView(habitViewModel: habitViewModel, toDosViewModel: toDosViewModel, calendarViewModel: calendarViewModel)
-//                .tag(0)
-//                .tabItem() {
-//                    VStack {
-//                        TabItemView(item: tabItems[0], isSelected: true)
-//                    }
-//                }
-//            CalendarView()
-//                .tag(1)
-//                .tabItem() {
-//                    Image("home_icon")
-//                    Text("Home")
-//
-//                }
-//                .environmentObject(calendarViewModel)
-//            ToDoListView(toDosViewModel: toDosViewModel)
-//                .tag(2)
-//                .tabItem() {
-//                    Image("todo_icon")
-//                    Text("To Do")
-//                        .foregroundColor(.white)
-//
-//                }
-//                .environmentObject(toDosViewModel)
-//            HabitsView()
-//                .tag(3)
-//                .tabItem() {
-//                    Image("HabitsIcon")
-//                    Text("Habits")
-//                        .foregroundColor(.white)
-//
-//                }
-//                .environmentObject(habitViewModel)
-//        }
-//        .background(.black)
-//        .environmentObject(navigationBarViewModel)
+        .environmentObject(navigationBarViewModel)
+        .safeAreaInset(edge: .bottom) {
+            TabBarView(tabBarItems: tabItems, selectedIndex: $navigationBarViewModel.selectedTabIndex)
+        }
     }
 }
 

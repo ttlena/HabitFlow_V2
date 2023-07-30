@@ -67,6 +67,16 @@ class ToDosViewModel:ObservableObject {
         }
     }
     
+    func shiftToNextDay (obj: ToDo) {
+        let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: obj.date ?? Date())!
+        obj.date = nextDay
+        if(obj.isCompleted){
+            obj.isCompleted.toggle()
+        }
+        save()
+        fetchData()
+    }
+    
     func moveItem(from: IndexSet, to: Int) {
         toDos.move(fromOffsets: from, toOffset: to)
     }
@@ -80,10 +90,10 @@ class ToDosViewModel:ObservableObject {
         }
     }
     
-    func updateFilteredToDos() {
-        /*filteredToDos = toDos.filter({ ToDo in
-            return ToDo.date == cvm.pickedDate
-        })*/
-        //filteredToDos = toDos.filter({ $0.date == cvm.pickedDate})
+    func updateFilteredToDos(pickedDate : Date) -> [ToDo] {
+        let calendar = Calendar.current
+        
+        let pickedDay = calendar.component(.day, from: pickedDate)
+        return toDos.filter({calendar.component(.day, from: $0.date!) == pickedDay})
     }
 }
