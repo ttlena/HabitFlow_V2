@@ -16,7 +16,10 @@ struct ToDoListView: View {
     @State var showingBottomSheet = false
     
     
+    
     var body: some View {
+        let filteredToDos = toDosViewModel.toDos.filter({calendarViewModel.deleteClockComponentFromDate(date: $0.date!) == calendarViewModel.deleteClockComponentFromDate(date: calendarViewModel.pickedDate)})
+        
         VStack {
             HStack{
                 Text("ToDo's")
@@ -25,7 +28,7 @@ struct ToDoListView: View {
                     .padding(0)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(String(toDosViewModel.toDos.filter{$0.isCompleted == true}.count) + " / " + String(toDosViewModel.toDos.count))
+                Text(String(filteredToDos.filter{$0.isCompleted == true}.count) + " / " + String(filteredToDos.count))
                     .padding(10)
                     .padding([.horizontal], 15)
                     .font(.title3)
@@ -50,10 +53,8 @@ struct ToDoListView: View {
             
             
             
-            
-            
             List {
-                ForEach(toDosViewModel.toDos) { item in
+                ForEach(filteredToDos) { item in
                     ListRowView(item: item)
                         .onTapGesture {
                             withAnimation(.linear(duration: 0)) {
@@ -66,10 +67,13 @@ struct ToDoListView: View {
             }
             .listStyle(InsetListStyle())
             
-            PrimaryButton(labelMessage: "neues ToDo", symbol: "plus", action: {
-                newToDo()
-            })
-            .frame(maxHeight: .infinity, alignment: .bottom)
+            if(calendarViewModel.deleteClockComponentFromDate(date: calendarViewModel.pickedDate) <= calendarViewModel.deleteClockComponentFromDate(date: Date())) {
+                PrimaryButton(labelMessage: "neues ToDo", symbol: "plus", action: {
+                    newToDo()
+                })
+                .frame(maxHeight: .infinity, alignment: .bottom)
+            }
+            
             
         }
         .padding([.bottom], 50)

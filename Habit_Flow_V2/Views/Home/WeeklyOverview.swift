@@ -28,8 +28,11 @@ struct WeeklyOverview: View {
                     .onTapGesture {
                         if(navigationBarViewModel.selectedTabIndex == 0){
                             navigationBarViewModel.selectedTabIndex = 1
+                            calendarViewModel.pickedDate = day
+                        }else if(navigationBarViewModel.selectedTabIndex == 2) {
+                            calendarViewModel.pickedDate = day
                         }
-                        calendarViewModel.pickedDate = day
+                        //calendarViewModel.pickedDate = day
                         
                     }
                 }

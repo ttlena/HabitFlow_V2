@@ -11,7 +11,9 @@ import CoreData
 class ToDosViewModel:ObservableObject {
     private var dataController = DataController(name: "Model")
     @Published var toDos: [ToDo] = []
+    @Published var filteredToDos: [ToDo] = []
    // @Published var toDosItemModels: [ItemModel] = []
+    
     
     init() {
         fetchData()
@@ -76,5 +78,12 @@ class ToDosViewModel:ObservableObject {
         } catch {
             print("speichern failed")
         }
+    }
+    
+    func updateFilteredToDos() {
+        /*filteredToDos = toDos.filter({ ToDo in
+            return ToDo.date == cvm.pickedDate
+        })*/
+        //filteredToDos = toDos.filter({ $0.date == cvm.pickedDate})
     }
 }
