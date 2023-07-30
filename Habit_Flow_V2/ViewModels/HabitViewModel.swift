@@ -18,6 +18,7 @@ class HabitViewModel:ObservableObject {
     
     init() {
         fetchData()
+        deleteAll()
     }
     
     func fetchData() {
@@ -94,5 +95,14 @@ class HabitViewModel:ObservableObject {
         
     func save() {
         try? dataController.container.viewContext.save()
+    }
+    
+    func countUpHabbitDuration(habit: Habit) {
+        if(habit.current < habit.goal) {
+            habit.current += 1
+        }
+        habit.progress = Double(habit.current) / Double(habit.goal)
+        save()
+        fetchData()
     }
 }

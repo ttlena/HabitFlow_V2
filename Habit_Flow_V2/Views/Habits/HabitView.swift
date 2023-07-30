@@ -38,7 +38,7 @@ struct HabitsView: View {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 10) {
                         ForEach(habitsViewModel.habits, id: \.self) { habit in
-                            HabitTile(habit: habit)
+                            HabitTile(habit: habit, habitVM: habitsViewModel)
                                 .background(Color(UIColor.darkGray))
                                 .cornerRadius(10)
                         }

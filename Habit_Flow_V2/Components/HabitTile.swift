@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HabitTile: View {
     let habit:Habit
+    @StateObject var habitVM: HabitViewModel
     
     var body: some View {
         VStack() {
@@ -21,15 +22,15 @@ struct HabitTile: View {
                     .foregroundColor(.white)
             }
             .padding()
-            CircularProgressView(progress: habit.progress)
+            CircularProgressView(progress: habit.progress, habitVM: habitVM, habit: habit)
             Text("\(habit.current)/\(habit.goal)")
-        }
+        } 
         .padding(10)
     }
 }
 
 struct HabitTile_Previews: PreviewProvider {
     static var previews: some View {
-        HabitTile(habit: Habit())
+        HabitTile(habit: Habit(), habitVM: HabitViewModel())
     }
 }

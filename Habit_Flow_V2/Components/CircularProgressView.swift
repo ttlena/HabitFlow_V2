@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CircularProgressView: View {
     let progress: Double
+    @StateObject var habitVM: HabitViewModel
+    var habit: Habit
+    
     var body: some View {
         ZStack() {
             Circle()
@@ -17,7 +20,7 @@ struct CircularProgressView: View {
                     lineWidth: 15
                 )
             Circle()
-                .trim(from: 0, to: progress) // 1
+                .trim(from: 0, to: habit.progress) // 1
                 .stroke(
                     Color.orange,
                     style: StrokeStyle(
@@ -26,12 +29,25 @@ struct CircularProgressView: View {
                     )
                 )
                 .rotationEffect(.degrees(-90))
-                .animation(.easeOut, value: progress)
+                .animation(.easeOut, value: habit.progress)
             Circle()
                 .foregroundColor(.clear)
-            Image("Plus")
-                .resizable()
-                .frame(width: 30, height: 30)
+            
+            if(habit.current >= habit.goal) {
+                Image(systemName: "checkmark")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.green) // Setze die Farbe des Symbols auf Grün
+                    .font(.system(size: 20, weight: .bold))
+            } else {
+                Button(action: {
+                    habitVM.countUpHabbitDuration(habit: habit)
+                }) {
+                    Image("Plus")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                }
+            }
         }
         .padding(20)
     }
@@ -39,6 +55,6 @@ struct CircularProgressView: View {
 
 struct CircularProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        CircularProgressView(progress: 0.4)
+        CircularProgressView(progress: 0.4, habitVM: HabitViewModel(), habit: Habit())
     }
 }

@@ -24,7 +24,7 @@ struct DailyHabitsComponent: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(habitsVM.habits, id: \.self) { habit in
-                        HabitTile(habit: habit)
+                        HabitTile(habit: habit, habitVM: habitsVM)
                             .background(Color(UIColor.darkGray))
                             .cornerRadius(10)
                     }
