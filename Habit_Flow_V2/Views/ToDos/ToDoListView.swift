@@ -16,7 +16,10 @@ struct ToDoListView: View {
     @State var alertTitle: String = ""
     
     var body: some View {
-        let filteredToDos = toDosViewModel.toDos.filter({calendarViewModel.deleteClockComponentFromDate(date: $0.date!) == calendarViewModel.deleteClockComponentFromDate(date: calendarViewModel.pickedDate)})
+        
+        let filteredToDos = toDosViewModel.updateFilteredToDos(pickedDate: calendarViewModel.pickedDate)
+        
+        //let filteredToDos = toDosViewModel.toDos.filter({calendarViewModel.deleteClockComponentFromDate(date: $0.date!) == calendarViewModel.deleteClockComponentFromDate(date: calendarViewModel.pickedDate)})
         
         VStack {
             HStack{
@@ -54,24 +57,27 @@ struct ToDoListView: View {
             List {
                 ForEach(filteredToDos) { item in
                     ListRowView(item: item)
-                        .onTapGesture {
-                            
-                            if(calendarViewModel.getDateDayNumber(date: item.date ?? Date()) != calendarViewModel.getDateDayNumber(date: Date())) {
-                                alertTitle = "Du kannst dieses ToDo noch nicht abhaken."
-                                showAlert.toggle()
-                            }else {
-                                withAnimation(.linear(duration: 0)) {
-                                    toDosViewModel.updateItem(obj: item)
-                                }
-                            }
-                        }
+                        .overlay(
+                                        Button(action: {
+                                            if calendarViewModel.getDateDayNumber(date: item.date ?? Date()) != calendarViewModel.getDateDayNumber(date: Date()) {
+                                                alertTitle = "Du kannst dieses ToDo noch nicht abhaken."
+                                                showAlert.toggle()
+                                            } else {
+                                                withAnimation(.linear(duration: 0)) {
+                                                    toDosViewModel.updateItem(obj: item)
+                                                }
+                                            }
+                                        }, label: {
+                                            // Du kannst hier ein "unsichtbares" Aussehen für den Button definieren
+                                            // Z.B. keine Hintergrundfarbe und keine Rahmenlinie
+                                            Color.clear
+                                        })
+                                    )
                         .swipeActions(edge: .leading) {
-                            // Hier fügst du die Aktion hinzu, die bei einer Wischgeste nach rechts ausgeführt werden soll
+                            
                             Button(action: {
                                 
-                                let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: item.date ?? Date())!
-                                item.date = nextDay
-                                toDosViewModel.updateItem(obj: item)
+                                toDosViewModel.shiftToNextDay(obj: item)
                                 
                             }) {
                                 Label("Erledigt", systemImage: "arrow.uturn.forward")
