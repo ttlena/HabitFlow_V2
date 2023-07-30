@@ -37,7 +37,7 @@ struct CircularProgressView: View {
                 Image(systemName: "checkmark")
                     .resizable()
                     .frame(width: 30, height: 30)
-                    .foregroundColor(.green) // Setze die Farbe des Symbols auf Grün
+                    .foregroundColor(.green)
                     .font(.system(size: 20, weight: .bold))
             } else {
                 Button(action: {

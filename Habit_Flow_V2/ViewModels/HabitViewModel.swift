@@ -18,7 +18,6 @@ class HabitViewModel:ObservableObject {
     
     init() {
         fetchData()
-        deleteAll()
     }
     
     func fetchData() {
