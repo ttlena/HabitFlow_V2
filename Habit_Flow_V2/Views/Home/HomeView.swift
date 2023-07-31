@@ -33,6 +33,7 @@ struct HomeView: View {
                 Spacer()
                     .frame(height: 25)
                 DailyHabitsComponent(habitsVM: habitViewModel)
+
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()

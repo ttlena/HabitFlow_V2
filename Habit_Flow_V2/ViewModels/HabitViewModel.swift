@@ -36,12 +36,86 @@ class HabitViewModel:ObservableObject {
         }
     }
     
-    /*func calcMonthProgressStatistics() -> Int16{
-        
+    func calcMonthGoalStatistics(habit: Habit) {
+       // habitMonthGoal = habit.goal * Int16(numberOfDaysInCurrentMonth())
+        if let previousGoals = habit.previousGoals {
+            if let previousGoalsFromCurrentMonth = previousGoals[currentMonth()] {
+                for current in previousGoalsFromCurrentMonth {
+                    if let unwrappedHabitMonthProgress = habitMonthProgress {
+                        habitMonthProgress = unwrappedHabitMonthProgress + current
+                    }
+                }
+            }
+        }
     }
     
+    func calcMonthProgressStatistic(habit: Habit) {
+        if let previousCurrents = habit.previousCurrents {
+            if let previousCurrentsFromCurrentMonth = previousCurrents[currentMonth()] {
+                for current in previousCurrentsFromCurrentMonth {
+                    if let unwrappedHabitMonthProgress = habitMonthProgress {
+                        habitMonthProgress = unwrappedHabitMonthProgress + current
+                    }
+                }
+            }
+        }
+    }
+    
+    func addCurrentToPreviousCurrentsList(habit: Habit) {
+        let currentMonthKey = currentMonth()
+        var previousCurrents = habit.previousCurrents ?? [:]
+        var previousCurrentsFromCurrentMonth = previousCurrents[currentMonthKey] ?? []
+        previousCurrentsFromCurrentMonth.append(habit.current)
+        previousCurrents[currentMonthKey] = previousCurrentsFromCurrentMonth
+        habit.previousCurrents = previousCurrents
+
+        do {
+            try habit.managedObjectContext?.save()
+        } catch {
+            // Fehlerbehandlung
+        }
+    }
+    
+    func addCurrentToPreviousGoalsList(habit: Habit) {
+        let goalMonthKey = currentMonth()
+        var previousGoals = habit.previousGoals ?? [:]
+        var previousGoalsFromCurrentMonth = previousGoals[goalMonthKey] ?? []
+        previousGoalsFromCurrentMonth.append(habit.goal)
+        previousGoals[goalMonthKey] = previousGoalsFromCurrentMonth
+        habit.previousGoals = previousGoals
+
+        do {
+            try habit.managedObjectContext?.save()
+        } catch {
+            // Fehlerbehandlung
+        }
+    }
+    
+    func currentMonth() -> Int {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let currentMonth = calendar.component(.month, from: currentDate)
+        return currentMonth
+    }
+    
+
+    
     func numberOfDaysInCurrentMonth() -> Int {
-    }*/
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let currentMonth = calendar.component(.month, from: currentDate)
+        let currentYear = calendar.component(.year, from: currentDate)
+
+        guard let firstDayOfNextMonth = calendar.date(from: DateComponents(year: currentYear, month: currentMonth + 1, day: 1)) else {
+            return 0
+        }
+        guard let lastDayOfMonth = calendar.date(byAdding: .day, value: -1, to: firstDayOfNextMonth) else {
+            return 0
+        }
+
+        let numberOfDays = calendar.component(.day, from: lastDayOfMonth)
+        return numberOfDays
+    }
 
     
     //habitDuration auf monatstage rechnen

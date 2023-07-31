@@ -50,6 +50,7 @@
 		A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59693622A43CB23003CF220 /* CalendarViewModel.swift */; };
 		A5B9707E2A70501D0039A193 /* HabitTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B9707D2A70501D0039A193 /* HabitTile.swift */; };
 		C5043B332A76BAF2008A5CC2 /* WeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5043B322A76BAF2008A5CC2 /* WeekPicker.swift */; };
+		C5043B372A770A7F008A5CC2 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5043B362A770A7F008A5CC2 /* TestView.swift */; };
 		C5444A2D2A560F23002D05EA /* CalenderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5444A2C2A560F23002D05EA /* CalenderList.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,7 @@
 		A59693622A43CB23003CF220 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		A5B9707D2A70501D0039A193 /* HabitTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTile.swift; sourceTree = "<group>"; };
 		C5043B322A76BAF2008A5CC2 /* WeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPicker.swift; sourceTree = "<group>"; };
+		C5043B362A770A7F008A5CC2 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		C5444A2C2A560F23002D05EA /* CalenderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,6 +274,7 @@
 				C5444A2C2A560F23002D05EA /* CalenderList.swift */,
 				A5B9707D2A70501D0039A193 /* HabitTile.swift */,
 				C5043B322A76BAF2008A5CC2 /* WeekPicker.swift */,
+				C5043B362A770A7F008A5CC2 /* TestView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */,
 				A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */,
 				A53384F62A4104130057F231 /* Habit+CoreDataProperties.swift in Sources */,
+				C5043B372A770A7F008A5CC2 /* TestView.swift in Sources */,
 				A53384BC2A40F2AA0057F231 /* DailyHabitsComponent.swift in Sources */,
 				A53384AF2A40CEA70057F231 /* Model.xcdatamodeld in Sources */,
 				A53384EF2A4104130057F231 /* ToDo+CoreDataClass.swift in Sources */,

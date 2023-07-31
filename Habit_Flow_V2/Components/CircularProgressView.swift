@@ -49,7 +49,7 @@ struct CircularProgressView: View {
                 }
             }
         }
-        .padding(20)
+        .padding(10)
     }
 }
 

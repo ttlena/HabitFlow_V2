@@ -21,16 +21,18 @@ struct DailyHabitsComponent: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(.white)
             
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
+            List {
+                LazyVGrid(columns: columns, spacing: 0) {
                     ForEach(habitsVM.habits, id: \.self) { habit in
                         HabitTile(habit: habit, habitVM: habitsVM)
-                            .background(Color(UIColor.darkGray))
-                            .cornerRadius(10)
+                            .frame(width: 175, height: 280) // Hier die gewünschte Breite und Höhe einstellen
+                        
                     }
                 }
             }
+            .listStyle(.plain)
             .frame(height: 500)
+            
         }
     }
 }
