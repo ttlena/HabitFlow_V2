@@ -9,27 +9,26 @@ import SwiftUI
 
 struct ToDoTodayComponent: View {
     @StateObject var toDosVM: ToDosViewModel
-    
+    @State var tappedIndex = -1
     var body: some View {
         Text("Heute")
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(.white)
         VStack() {
-            if toDosVM.toDos.isEmpty {
-                Text("Alle To Dos für heute erledigt!")
+            if toDosVM.toDosToday.isEmpty {
+                Text("Heute keine To Dos!")
                     .foregroundColor(.green)
             } else {
-                ForEach(toDosVM.toDos, id: \.self) { toDo in
-                    HStack {
-                        Text("\(toDo.title ?? "")")
+                if toDosVM.toDosTodayAllCompleted() {
+                    Text("Alle To Dos für heute erledigt!")
+                        .foregroundColor(.green)
+                } else {
+                    ForEach(Array(toDosVM.toDosToday.enumerated()), id: \.offset) { index, toDo in
+                        if !toDo.isCompleted {
+                           SingleTodayToDo(toDosVM: toDosVM, toDo: toDo)
+                        }
+                        
                     }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(.gray)
-                    .cornerRadius(10)
-                    .onTapGesture(perform: {
-                        toDosVM.updateItem(obj: toDo)
-                    })
                 }
             }
         }

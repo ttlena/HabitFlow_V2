@@ -48,6 +48,7 @@
 		A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41342A412D3C008D64D2 /* HabitViewModel.swift */; };
 		A59693612A43C3D6003CF220 /* NavigationBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */; };
 		A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59693622A43CB23003CF220 /* CalendarViewModel.swift */; };
+		A5B493E62A77E9010055B140 /* SingleTodayToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B493E52A77E9010055B140 /* SingleTodayToDo.swift */; };
 		A5B9707E2A70501D0039A193 /* HabitTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B9707D2A70501D0039A193 /* HabitTile.swift */; };
 		C5043B332A76BAF2008A5CC2 /* WeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5043B322A76BAF2008A5CC2 /* WeekPicker.swift */; };
 		C5043B372A770A7F008A5CC2 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5043B362A770A7F008A5CC2 /* TestView.swift */; };
@@ -116,6 +117,7 @@
 		A53A41342A412D3C008D64D2 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
 		A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModel.swift; sourceTree = "<group>"; };
 		A59693622A43CB23003CF220 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		A5B493E52A77E9010055B140 /* SingleTodayToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTodayToDo.swift; sourceTree = "<group>"; };
 		A5B9707D2A70501D0039A193 /* HabitTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTile.swift; sourceTree = "<group>"; };
 		C5043B322A76BAF2008A5CC2 /* WeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPicker.swift; sourceTree = "<group>"; };
 		C5043B362A770A7F008A5CC2 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				A53384B92A40F23C0057F231 /* HomeView.swift */,
 				A53A41322A41170A008D64D2 /* WeeklyOverview.swift */,
 				A53A41302A41161E008D64D2 /* ToDoTodayComponent.swift */,
+				A5B493E52A77E9010055B140 /* SingleTodayToDo.swift */,
 				A53384BB2A40F2AA0057F231 /* DailyHabitsComponent.swift */,
 			);
 			path = Home;
@@ -451,6 +454,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B493E62A77E9010055B140 /* SingleTodayToDo.swift in Sources */,
 				A5B9707E2A70501D0039A193 /* HabitTile.swift in Sources */,
 				5FE7AAE32A56C99D00C03E3F /* HabitListViewModel.swift in Sources */,
 				A53384F52A4104130057F231 /* Habit+CoreDataClass.swift in Sources */,

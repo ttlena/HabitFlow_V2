@@ -11,12 +11,13 @@ import CoreData
 class ToDosViewModel:ObservableObject {
     private var dataController = DataController(name: "Model")
     @Published var toDos: [ToDo] = []
-    @Published var filteredToDos: [ToDo] = []
+    @Published var toDosToday: [ToDo] = []
    // @Published var toDosItemModels: [ItemModel] = []
     
     
     init() {
         fetchData()
+        toDosToday = updateFilteredToDos(pickedDate: Date.now)
     }
     
     func fetchData() {
@@ -68,8 +69,12 @@ class ToDosViewModel:ObservableObject {
     }
     
     func shiftToNextDay (obj: ToDo) {
-        let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: obj.date ?? Date())!
+        let calendar = Calendar.current
+        let nextDay = calendar.date(byAdding: .day, value: 1, to: obj.date ?? Date())!
         obj.date = nextDay
+        if(calendar.component(.day, from: nextDay) == calendar.component(.day, from: Date.now)) {
+            toDosToday = updateFilteredToDos(pickedDate: Date.now)
+        }
         if(obj.isCompleted){
             obj.isCompleted.toggle()
         }
@@ -88,6 +93,15 @@ class ToDosViewModel:ObservableObject {
         } catch {
             print("speichern failed")
         }
+    }
+    
+    func toDosTodayAllCompleted() -> Bool {
+        for todo in toDosToday {
+            if !todo.isCompleted {
+                return false
+            }
+        }
+        return true
     }
     
     func updateFilteredToDos(pickedDate : Date) -> [ToDo] {
