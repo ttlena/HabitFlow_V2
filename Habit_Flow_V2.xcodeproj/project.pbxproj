@@ -41,8 +41,6 @@
 		A53384F22A4104130057F231 /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384EA2A4104130057F231 /* Appointment+CoreDataProperties.swift */; };
 		A53384F32A4104130057F231 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384EB2A4104130057F231 /* User+CoreDataClass.swift */; };
 		A53384F42A4104130057F231 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384EC2A4104130057F231 /* User+CoreDataProperties.swift */; };
-		A53384F52A4104130057F231 /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384ED2A4104130057F231 /* Habit+CoreDataClass.swift */; };
-		A53384F62A4104130057F231 /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384EE2A4104130057F231 /* Habit+CoreDataProperties.swift */; };
 		A53A41312A41161F008D64D2 /* ToDoTodayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41302A41161E008D64D2 /* ToDoTodayComponent.swift */; };
 		A53A41332A41170A008D64D2 /* WeeklyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41322A41170A008D64D2 /* WeeklyOverview.swift */; };
 		A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41342A412D3C008D64D2 /* HabitViewModel.swift */; };
@@ -50,6 +48,8 @@
 		A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59693622A43CB23003CF220 /* CalendarViewModel.swift */; };
 		A5B493E62A77E9010055B140 /* SingleTodayToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B493E52A77E9010055B140 /* SingleTodayToDo.swift */; };
 		A5B9707E2A70501D0039A193 /* HabitTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B9707D2A70501D0039A193 /* HabitTile.swift */; };
+		A5DAC60F2A7952BD00BD4CAA /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAC60D2A7952BD00BD4CAA /* Habit+CoreDataClass.swift */; };
+		A5DAC6102A7952BD00BD4CAA /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DAC60E2A7952BD00BD4CAA /* Habit+CoreDataProperties.swift */; };
 		C5043B332A76BAF2008A5CC2 /* WeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5043B322A76BAF2008A5CC2 /* WeekPicker.swift */; };
 		C5043B372A770A7F008A5CC2 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5043B362A770A7F008A5CC2 /* TestView.swift */; };
 		C537D7442A781E4A006F2D61 /* CircularMonthProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D7432A781E4A006F2D61 /* CircularMonthProgressView.swift */; };
@@ -112,8 +112,6 @@
 		A53384EA2A4104130057F231 /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A53384EB2A4104130057F231 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A53384EC2A4104130057F231 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A53384ED2A4104130057F231 /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A53384EE2A4104130057F231 /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A53A41302A41161E008D64D2 /* ToDoTodayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTodayComponent.swift; sourceTree = "<group>"; };
 		A53A41322A41170A008D64D2 /* WeeklyOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyOverview.swift; sourceTree = "<group>"; };
 		A53A41342A412D3C008D64D2 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
@@ -121,6 +119,8 @@
 		A59693622A43CB23003CF220 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		A5B493E52A77E9010055B140 /* SingleTodayToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTodayToDo.swift; sourceTree = "<group>"; };
 		A5B9707D2A70501D0039A193 /* HabitTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTile.swift; sourceTree = "<group>"; };
+		A5DAC60D2A7952BD00BD4CAA /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		A5DAC60E2A7952BD00BD4CAA /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		C5043B322A76BAF2008A5CC2 /* WeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPicker.swift; sourceTree = "<group>"; };
 		C5043B362A770A7F008A5CC2 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		C537D7432A781E4A006F2D61 /* CircularMonthProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularMonthProgressView.swift; sourceTree = "<group>"; };
@@ -318,14 +318,14 @@
 		A53384F72A41046A0057F231 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A5DAC60D2A7952BD00BD4CAA /* Habit+CoreDataClass.swift */,
+				A5DAC60E2A7952BD00BD4CAA /* Habit+CoreDataProperties.swift */,
 				A53384E72A4104130057F231 /* ToDo+CoreDataClass.swift */,
 				A53384E82A4104130057F231 /* ToDo+CoreDataProperties.swift */,
 				A53384E92A4104130057F231 /* Appointment+CoreDataClass.swift */,
 				A53384EA2A4104130057F231 /* Appointment+CoreDataProperties.swift */,
 				A53384EB2A4104130057F231 /* User+CoreDataClass.swift */,
 				A53384EC2A4104130057F231 /* User+CoreDataProperties.swift */,
-				A53384ED2A4104130057F231 /* Habit+CoreDataClass.swift */,
-				A53384EE2A4104130057F231 /* Habit+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -463,7 +463,6 @@
 				A5B493E62A77E9010055B140 /* SingleTodayToDo.swift in Sources */,
 				A5B9707E2A70501D0039A193 /* HabitTile.swift in Sources */,
 				5FE7AAE32A56C99D00C03E3F /* HabitListViewModel.swift in Sources */,
-				A53384F52A4104130057F231 /* Habit+CoreDataClass.swift in Sources */,
 				A51F031B2A70A53400210E38 /* TabItemData.swift in Sources */,
 				A53384F02A4104130057F231 /* ToDo+CoreDataProperties.swift in Sources */,
 				A53384C12A40F3340057F231 /* CalendarView.swift in Sources */,
@@ -476,6 +475,7 @@
 				A53384B42A40E9A60057F231 /* ToDosViewModel.swift in Sources */,
 				A51F031D2A70A62400210E38 /* TabItemView.swift in Sources */,
 				A53384BA2A40F23C0057F231 /* HomeView.swift in Sources */,
+				A5DAC6102A7952BD00BD4CAA /* Habit+CoreDataProperties.swift in Sources */,
 				A53A41332A41170A008D64D2 /* WeeklyOverview.swift in Sources */,
 				A53384F32A4104130057F231 /* User+CoreDataClass.swift in Sources */,
 				A53384862A40CE210057F231 /* ContentView.swift in Sources */,
@@ -496,8 +496,8 @@
 				A53384F42A4104130057F231 /* User+CoreDataProperties.swift in Sources */,
 				A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */,
 				A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */,
+				A5DAC60F2A7952BD00BD4CAA /* Habit+CoreDataClass.swift in Sources */,
 				C537D7462A783AED006F2D61 /* CircularYearProgressView.swift in Sources */,
-				A53384F62A4104130057F231 /* Habit+CoreDataProperties.swift in Sources */,
 				C5043B372A770A7F008A5CC2 /* TestView.swift in Sources */,
 				A53384BC2A40F2AA0057F231 /* DailyHabitsComponent.swift in Sources */,
 				A53384AF2A40CEA70057F231 /* Model.xcdatamodeld in Sources */,

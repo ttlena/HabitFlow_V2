@@ -24,8 +24,7 @@ class HabitViewModel:ObservableObject {
     
     init() {
         fetchData()
-        deleteAll()
-        
+        // deleteAll()
     }
     
     func fetchData() {
@@ -165,6 +164,7 @@ class HabitViewModel:ObservableObject {
         let newHabit = Habit(context: dataController.container.viewContext)
         newHabit.id = UUID()
         newHabit.title = newHabitTitle
+        newHabit.weekdays = selectedDays
         if let unpackedNewHabitDuration = newHabitDuration {
             newHabit.goal = unpackedNewHabitDuration
         }
@@ -172,19 +172,19 @@ class HabitViewModel:ObservableObject {
         fetchData()
     }
     
-    func addRandomHabit() {
-        let task = ["clean", "wash", "study", "workout"]
-        let chosenTask = task.randomElement()!
-        let habit = Habit(context: dataController.container.viewContext)
-        habit.id = UUID()
-        habit.icon = "Waterdrop"
-        habit.title = "\(chosenTask)"
-        habit.current = Int16.random(in: 0...10)
-        habit.goal = Int16.random(in: 5...100)
-        habit.progress = Double(habit.current) / Double(habit.goal)
-        save()
-        fetchData()
-    }
+//    func addRandomHabit() {
+//        let task = ["clean", "wash", "study", "workout"]
+//        let chosenTask = task.randomElement()!
+//        let habit = Habit(context: dataController.container.viewContext)
+//        habit.id = UUID()
+//        habit.icon = "Waterdrop"
+//        habit.title = "\(chosenTask)"
+//        habit.current = Int16.random(in: 0...10)
+//        habit.goal = Int16.random(in: 5...100)
+//        habit.progress = Double(habit.current) / Double(habit.goal)
+//        save()
+//        fetchData()
+//    }
     
     func deleteAll() {
         for habit in habits {
