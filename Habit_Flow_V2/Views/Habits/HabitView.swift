@@ -62,7 +62,7 @@ struct HabitsView: View {
                     newHabit()
                 })
                 .frame(maxHeight: .infinity, alignment: .bottom)
-                .padding([.bottom], 40)
+                .padding([.bottom], 50)
             }
             .frame(maxHeight: .infinity, alignment: .bottom)
             .sheet(isPresented: $showingBottomSheet) {
