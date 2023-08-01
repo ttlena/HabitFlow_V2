@@ -23,10 +23,9 @@ extension Habit {
     @NSManaged public var title: String?
     @NSManaged public var progress: Double
     @NSManaged public var origin: User?
-    @NSManaged public var previousCurrents: [Int: [Int16]]?
-    @NSManaged public var previousGoals: [Int: [Int16]]?
-
-
+    @NSManaged public var currentInMonth: Int16
+    @NSManaged public var currentInYear: Int16
+    @NSManaged public var previousCurrents: [Int: [Int16]]
 }
 
 extension Habit : Identifiable {

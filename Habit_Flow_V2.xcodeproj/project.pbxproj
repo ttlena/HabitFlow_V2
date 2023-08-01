@@ -52,6 +52,8 @@
 		A5B9707E2A70501D0039A193 /* HabitTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B9707D2A70501D0039A193 /* HabitTile.swift */; };
 		C5043B332A76BAF2008A5CC2 /* WeekPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5043B322A76BAF2008A5CC2 /* WeekPicker.swift */; };
 		C5043B372A770A7F008A5CC2 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5043B362A770A7F008A5CC2 /* TestView.swift */; };
+		C537D7442A781E4A006F2D61 /* CircularMonthProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D7432A781E4A006F2D61 /* CircularMonthProgressView.swift */; };
+		C537D7462A783AED006F2D61 /* CircularYearProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D7452A783AED006F2D61 /* CircularYearProgressView.swift */; };
 		C5444A2D2A560F23002D05EA /* CalenderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5444A2C2A560F23002D05EA /* CalenderList.swift */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +123,8 @@
 		A5B9707D2A70501D0039A193 /* HabitTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTile.swift; sourceTree = "<group>"; };
 		C5043B322A76BAF2008A5CC2 /* WeekPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPicker.swift; sourceTree = "<group>"; };
 		C5043B362A770A7F008A5CC2 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		C537D7432A781E4A006F2D61 /* CircularMonthProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularMonthProgressView.swift; sourceTree = "<group>"; };
+		C537D7452A783AED006F2D61 /* CircularYearProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularYearProgressView.swift; sourceTree = "<group>"; };
 		C5444A2C2A560F23002D05EA /* CalenderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -278,6 +282,8 @@
 				A5B9707D2A70501D0039A193 /* HabitTile.swift */,
 				C5043B322A76BAF2008A5CC2 /* WeekPicker.swift */,
 				C5043B362A770A7F008A5CC2 /* TestView.swift */,
+				C537D7432A781E4A006F2D61 /* CircularMonthProgressView.swift */,
+				C537D7452A783AED006F2D61 /* CircularYearProgressView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -490,11 +496,13 @@
 				A53384F42A4104130057F231 /* User+CoreDataProperties.swift in Sources */,
 				A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */,
 				A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */,
+				C537D7462A783AED006F2D61 /* CircularYearProgressView.swift in Sources */,
 				A53384F62A4104130057F231 /* Habit+CoreDataProperties.swift in Sources */,
 				C5043B372A770A7F008A5CC2 /* TestView.swift in Sources */,
 				A53384BC2A40F2AA0057F231 /* DailyHabitsComponent.swift in Sources */,
 				A53384AF2A40CEA70057F231 /* Model.xcdatamodeld in Sources */,
 				A53384EF2A4104130057F231 /* ToDo+CoreDataClass.swift in Sources */,
+				C537D7442A781E4A006F2D61 /* CircularMonthProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

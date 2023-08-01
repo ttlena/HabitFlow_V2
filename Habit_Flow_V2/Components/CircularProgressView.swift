@@ -34,11 +34,15 @@ struct CircularProgressView: View {
                 .foregroundColor(.clear)
             
             if(habit.current >= habit.goal) {
-                Image(systemName: "checkmark")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(.green)
-                    .font(.system(size: 20, weight: .bold))
+                Button(action: {
+                    habitVM.setCurrentTo0(habit: habit)
+                }) {
+                    Image(systemName: "checkmark")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.green)
+                        .font(.system(size: 20, weight: .bold))
+                }
             } else {
                 Button(action: {
                     habitVM.countUpHabbitDuration(habit: habit)
