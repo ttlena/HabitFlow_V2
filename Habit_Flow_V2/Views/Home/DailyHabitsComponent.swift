@@ -20,19 +20,28 @@ struct DailyHabitsComponent: View {
             Text("Tägliche Habits")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(.white)
-            
-            List {
-                LazyVGrid(columns: columns, spacing: 0) {
-                    ForEach(habitsVM.habits, id: \.self) { habit in
-                        HabitTile(habit: habit, habitVM: habitsVM)
-                            .frame(width: 175, height: 280) // Hier die gewünschte Breite und Höhe einstellen
-                        
+            if habitsVM.habits.isEmpty {
+                VStack {
+                    Text("Heute hast du kein Habit zu erfüllen!")
+                        .foregroundColor(.green)
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color(UIColor.darkGray))
+                .cornerRadius(10)
+            } else {
+                List {
+                    LazyVGrid(columns: columns, spacing: 0) {
+                        ForEach(habitsVM.habits, id: \.self) { habit in
+                            HabitTile(habit: habit, habitVM: habitsVM)
+                                .frame(width: 175, height: 280) // Hier die gewünschte Breite und Höhe einstellen
+                            
+                        }
                     }
                 }
+                .listStyle(.plain)
+                .frame(height: 500)
             }
-            .listStyle(.plain)
-            .frame(height: 500)
-            
         }
     }
 }

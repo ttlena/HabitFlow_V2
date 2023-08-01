@@ -21,8 +21,8 @@ struct SingleTodayToDo: View {
         .background(backgroundColor)
         .cornerRadius(10)
         .onTapGesture(perform: {
+            backgroundColor = Color.green
             withAnimation(.easeInOut(duration: 0.4)) {
-                backgroundColor = Color.green
                 toDosVM.updateItem(obj: toDo)
             }
         })
