@@ -20,6 +20,8 @@ class HabitViewModel:ObservableObject {
     @Published var habitYearGoal: Int16?
     @Published var habitMonthProgress: Int16?
     @Published var habitYearProgress: Int16?
+    @Published var editHabitTitle = ""
+    @Published var plusButtonClicked = false
     
     private let notificationCenter = NotificationCenter.default
     
@@ -505,6 +507,7 @@ class HabitViewModel:ObservableObject {
         
         save()
         fetchData()
+       // plusButtonClicked = false
     }
     
     func setCurrentTo0(habit: Habit) {
@@ -527,6 +530,13 @@ class HabitViewModel:ObservableObject {
         
         save()
         fetchData()
+       // plusButtonClicked = false
+    }
+    
+    func setEditHabit(habit: Habit) {
+        editHabitTitle = habit.title ?? "Unknown"
+        selectedDays = habit.weekdays ?? []
+    
     }
     
     /*
