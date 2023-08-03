@@ -22,17 +22,17 @@ class HabitViewModel:ObservableObject {
     @Published var habitYearProgress: Int16?
     @Published var editHabitTitle = ""
     @Published var plusButtonClicked = false
+    @Published var newWeekStarted = false
     
     private let notificationCenter = NotificationCenter.default
     
     
     
     init() {
-        let nextWeekDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date())!
-        
-        
+//        let nextWeekDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date())!
         fetchData()
-        deleteAll()
+        checkIfNewWeek()
+        //deleteAll()
     }
     
     func fetchData() {
@@ -410,25 +410,11 @@ class HabitViewModel:ObservableObject {
         newHabit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth_dependentOnCurrentDay(in: selectedDays))
         print(newHabit.goalInMonth)
         newHabit.goalInYear = Int16(occurrencesOfWeekdaysInCurrentYear_dependOnCurrentDay(in: selectedDays))
-        
         save()
         fetchData()
+        resetHabitEntry()
     }
-    
-    //    func addRandomHabit() {
-    //        let task = ["clean", "wash", "study", "workout"]
-    //        let chosenTask = task.randomElement()!
-    //        let habit = Habit(context: dataController.container.viewContext)
-    //        habit.id = UUID()
-    //        habit.icon = "Waterdrop"
-    //        habit.title = "\(chosenTask)"
-    //        habit.current = Int16.random(in: 0...10)
-    //        habit.goal = Int16.random(in: 5...100)
-    //        habit.progress = Double(habit.current) / Double(habit.goal)
-    //        save()
-    //        fetchData()
-    //    }
-    
+        
     func deleteAll() {
         for habit in habits {
             dataController.container.viewContext.delete(habit)
@@ -484,10 +470,16 @@ class HabitViewModel:ObservableObject {
         newHabitTitle = ""
         newHabitDuration = 0
         showAlert = false
+        selectedDays.removeAll()
     }
     
     func save() {
-        try? dataController.container.viewContext.save()
+        do {
+            try dataController.container.viewContext.save()
+            //print("saved!")
+        } catch {
+            print("speichern failed")
+        }
     }
     
     func countUpHabbitDuration(habit: Habit) {
@@ -537,6 +529,28 @@ class HabitViewModel:ObservableObject {
         editHabitTitle = habit.title ?? "Unknown"
         selectedDays = habit.weekdays ?? []
     
+    }
+    
+    func checkIfNewWeek() {
+        let date = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.weekday], from: date)
+        let dayOfWeek = components.weekday
+        print("Weekday \(dayOfWeek!)")
+        if !newWeekStarted && dayOfWeek == 5 {
+            newWeekStarted = true
+            resetCurrentOfWeek()
+        } else {
+            newWeekStarted = false
+        }
+    }
+    
+    func resetCurrentOfWeek() {
+        for habit in habits {
+            habit.current = 0
+        }
+        save()
+        fetchData()
     }
     
     /*
