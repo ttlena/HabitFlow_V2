@@ -22,6 +22,10 @@ class CalendarViewModel: ObservableObject {
     @Published var newEventTitle = ""
     @Published var newEventDate = Date()
     @Published var newEventEndDate = Date()
+    
+    @Published var newEventReminder: Bool = false
+    @Published var newEventReminderMinutes: Int = 0
+    
     @Published var showingBottomSheet = false
     @Published var structuredAppointmentsMap: Dictionary<Date, [Appointment]> = [:]
     @Published var isAppointmentEdited = false
@@ -31,6 +35,11 @@ class CalendarViewModel: ObservableObject {
     @Published var editedDate: Date = Date()
     @Published var editedId: UUID = UUID()
     @Published var editedEndDate: Date = Date()
+    
+    @Published var editedEventReminder: Bool = false
+    @Published var editedEventReminderMinutes: Int = 0
+    
+    let notificationManager = NotificationManager()
     
     
     init() {
@@ -129,6 +138,10 @@ class CalendarViewModel: ObservableObject {
             if let appointmentEndDate = appointment.endDate {
                 editedEndDate = appointmentEndDate
             }
+            
+            editedEventReminder = appointment.remindMe
+            editedEventReminderMinutes = appointment.reminderMinutes
+            
         }
     }
     
@@ -194,6 +207,14 @@ class CalendarViewModel: ObservableObject {
         newAppointment.title = newEventTitle
         newAppointment.date = newEventDate
         newAppointment.endDate = newEventEndDate
+        
+        newAppointment.remindMe = newEventReminder
+        newAppointment.reminderMinutes = newEventReminderMinutes
+        
+        if(newAppointment.remindMe) {
+            notificationManager.calendarNotification(minutesTilToDo: newEventReminderMinutes, terminTitle: newEventTitle, terminDate: newEventDate, terminId: newAppointment.id!)
+        }
+        
         save()
         fetchData()
         toggleBottomSheet()
@@ -201,9 +222,19 @@ class CalendarViewModel: ObservableObject {
     }
     
     func editAppointment() {
+        if((editedAppointment?.remindMe) != nil){
+            notificationManager.removeNotification(with: editedId)
+        }
         editedAppointment?.id = editedId
         editedAppointment?.date = editedDate
         editedAppointment?.title = editedTitle
+        
+        editedAppointment?.remindMe = editedEventReminder
+        editedAppointment?.reminderMinutes = editedEventReminderMinutes
+        if(editedEventReminder) {
+            notificationManager.calendarNotification(minutesTilToDo: editedEventReminderMinutes, terminTitle: editedTitle, terminDate: editedDate, terminId: (editedAppointment?.id)!)
+        }
+        
         toggleBottomSheetEditAppointment()
         save()
         fetchData()
@@ -234,6 +265,8 @@ class CalendarViewModel: ObservableObject {
     
     func resetInput() {
         newEventTitle = ""
+        newEventReminder = false
+        newEventReminderMinutes = 0
     }
     
     func toggleBottomSheet() {

@@ -47,10 +47,39 @@ class NotificationManager {
         UNUserNotificationCenter.current().add(request)
     }
     
+    func calendarNotification(minutesTilToDo: Int, terminTitle : String, terminDate : Date, terminId : UUID) {
+        let content = UNMutableNotificationContent()
+        content.title = "Du hast in " + String(minutesTilToDo) + " Minuten einen Termin."
+        content.subtitle = terminTitle
+        content.sound = .default
+        content.badge = 1
+        
+        let minutesToSubtract: TimeInterval = TimeInterval(minutesTilToDo)
+        
+        let dateTrigger = terminDate.addingTimeInterval(-minutesToSubtract * 60)
+        
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: dateTrigger)
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        let request = UNNotificationRequest(
+            identifier: terminId.uuidString,
+            content: content,
+            trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+        
+    }
+    
     
     func removeNotification(with identifier: String) {
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: [identifier])
-        
+    }
+    
+    func removeNotification(with identifier: UUID) {
+        let identifierString = identifier.uuidString
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [identifierString])
     }
 }

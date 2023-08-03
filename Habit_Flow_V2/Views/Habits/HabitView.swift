@@ -71,6 +71,7 @@ struct HabitsView: View {
             }
             
         }
+        .onAppear{UIApplication.shared.applicationIconBadgeNumber = 0}
     }
     
     func newHabit() {

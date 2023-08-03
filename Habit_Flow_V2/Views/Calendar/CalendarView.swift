@@ -39,6 +39,7 @@ struct CalendarView: View {
                             eventType: "Termin",
                             time: calendar.extractTimeFromDate(event.date ?? Date()),
                             endTime: calendar.extractTimeFromDate(event.endDate ?? Date()),
+                            
                             imageName: "checkmark",
                             recColor: Color.red,
                             calendarVM: calendar,
@@ -62,6 +63,7 @@ struct CalendarView: View {
             })
             
         }
+        .onAppear{UIApplication.shared.applicationIconBadgeNumber = 0}
         .padding([.bottom], 50)
         .sheet(isPresented: $calendar.showingBottomSheet) {
             AddCalendarSheetView(calendarVM: calendar)
