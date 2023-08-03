@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct Habit_Flow_V2App: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     @StateObject private var dataController = DataController.shared
     var body: some Scene {
         WindowGroup {

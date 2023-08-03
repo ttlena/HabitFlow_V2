@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F20CEEB2A7AC18F005230BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20CEEA2A7AC18F005230BC /* AppDelegate.swift */; };
+		5F20CEED2A7AC42B005230BC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20CEEC2A7AC42B005230BC /* NotificationManager.swift */; };
 		5F4A080D2A55A24D009D1AED /* AddCalendarSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */; };
 		5FE7AADF2A56C54500C03E3F /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7AADE2A56C54500C03E3F /* HabitModel.swift */; };
 		5FE7AAE32A56C99D00C03E3F /* HabitListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7AAE22A56C99D00C03E3F /* HabitListViewModel.swift */; };
@@ -75,6 +77,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F20CEEA2A7AC18F005230BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5F20CEEC2A7AC42B005230BC /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalendarSheetView.swift; sourceTree = "<group>"; };
 		5FE7AADE2A56C54500C03E3F /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
 		5FE7AAE22A56C99D00C03E3F /* HabitListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListViewModel.swift; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				A53384832A40CE210057F231 /* Habit_Flow_V2App.swift */,
+				5F20CEEA2A7AC18F005230BC /* AppDelegate.swift */,
+				5F20CEEC2A7AC42B005230BC /* NotificationManager.swift */,
 				A53384C22A40F3D20057F231 /* Components */,
 				A53384B52A40F1C00057F231 /* Views */,
 				A53384B22A40E98C0057F231 /* ViewModels */,
@@ -460,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F20CEEB2A7AC18F005230BC /* AppDelegate.swift in Sources */,
 				A5B493E62A77E9010055B140 /* SingleTodayToDo.swift in Sources */,
 				A5B9707E2A70501D0039A193 /* HabitTile.swift in Sources */,
 				5FE7AAE32A56C99D00C03E3F /* HabitListViewModel.swift in Sources */,
@@ -471,6 +478,7 @@
 				A53384C42A40F3FA0057F231 /* PrimaryButton.swift in Sources */,
 				A53384F22A4104130057F231 /* Appointment+CoreDataProperties.swift in Sources */,
 				C5444A2D2A560F23002D05EA /* CalenderList.swift in Sources */,
+				5F20CEED2A7AC42B005230BC /* NotificationManager.swift in Sources */,
 				A59693612A43C3D6003CF220 /* NavigationBarViewModel.swift in Sources */,
 				A53384B42A40E9A60057F231 /* ToDosViewModel.swift in Sources */,
 				A51F031D2A70A62400210E38 /* TabItemView.swift in Sources */,

@@ -14,6 +14,8 @@ class ToDosViewModel:ObservableObject {
     @Published var toDosToday: [ToDo] = []
    // @Published var toDosItemModels: [ItemModel] = []
     
+    let notificationManager = NotificationManager()
+    
     
     init() {
         fetchData()
@@ -36,7 +38,7 @@ class ToDosViewModel:ObservableObject {
         newToDo.isCompleted = false
         newToDo.title = title
         newToDo.date = date
-        print(newToDo)
+        //print(newToDo)
         save()
         fetchData()
     }
@@ -51,7 +53,7 @@ class ToDosViewModel:ObservableObject {
     }
     
     func deleteItem(obj: ToDo) {
-        print("delete ToDo")
+        //print("delete ToDo")
         if let item = toDos.firstIndex(where: {$0.id == obj.id}) {
             dataController.container.viewContext.delete(toDos.remove(at: item))
         }
@@ -60,7 +62,7 @@ class ToDosViewModel:ObservableObject {
     }
     
     func updateItem(obj: ToDo) {
-        print("update ToDo")
+        //print("update ToDo")
         if let item = toDos.first(where: {$0.id == obj.id}) {
             item.isCompleted.toggle()
             save()
@@ -89,7 +91,7 @@ class ToDosViewModel:ObservableObject {
     func save() {
         do {
             try dataController.container.viewContext.save()
-            print("saved!")
+            //print("saved!")
         } catch {
             print("speichern failed")
         }
@@ -108,6 +110,15 @@ class ToDosViewModel:ObservableObject {
         let calendar = Calendar.current
         
         let pickedDay = calendar.component(.day, from: pickedDate)
-        return toDos.filter({calendar.component(.day, from: $0.date!) == pickedDay})
+        let filteredToDos = toDos.filter({calendar.component(.day, from: $0.date!) == pickedDay})
+        //wenn es nicht erledigte ToDos gibt, wird eine Notification geplant
+        if(filteredToDos.filter{$0.isCompleted == false}.count > 0) {
+            notificationManager.toDoNoification(numberOfUndoneToDos: filteredToDos.filter{$0.isCompleted == false}.count)
+        //ändert sich die Liste in der zwischenzeit, werden vorher geplante Notifications gelöscht
+        }else {
+            notificationManager.removeNotification(with: "habitFlow.toDoNotification")
+        }
+        return filteredToDos
+        
     }
 }

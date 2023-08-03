@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct ToDoListView: View {
     @EnvironmentObject var toDosViewModel : ToDosViewModel
     @StateObject var calendarViewModel: CalendarViewModel
@@ -100,6 +101,7 @@ struct ToDoListView: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
+        .onAppear{UIApplication.shared.applicationIconBadgeNumber = 0}
         .padding([.bottom], 50)
         .frame(maxHeight: .infinity, alignment: .bottom)
         .sheet(isPresented: $showingBottomSheet) {
