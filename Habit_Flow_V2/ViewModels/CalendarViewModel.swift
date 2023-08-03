@@ -25,6 +25,7 @@ class CalendarViewModel: ObservableObject {
     
     @Published var newEventReminder: Bool = false
     @Published var newEventReminderMinutes: Int = 0
+    @Published var newEventColor: String = "red"
     
     @Published var showingBottomSheet = false
     @Published var structuredAppointmentsMap: Dictionary<Date, [Appointment]> = [:]
@@ -38,6 +39,7 @@ class CalendarViewModel: ObservableObject {
     
     @Published var editedEventReminder: Bool = false
     @Published var editedEventReminderMinutes: Int = 0
+    @Published var editedEventColor: String = "red"
     
     let notificationManager = NotificationManager()
     

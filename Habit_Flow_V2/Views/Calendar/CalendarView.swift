@@ -10,24 +10,56 @@ import SwiftUI
 struct CalendarView: View {
     
     @EnvironmentObject var calendar: CalendarViewModel
+    @State private var showDatePicker = true
     
     var body: some View {
         VStack {
-            Text("Kalender")
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .padding(0)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding([.horizontal], 25)
-            DatePicker(
-                "Start Date",
-                selection: $calendar.pickedDate,
-                displayedComponents: [.date]
-            )
-            .datePickerStyle(.graphical)
-            .accentColor(.orange)
-            .background(Color.gray.opacity(0.4), in: RoundedRectangle(cornerRadius: 20)).padding()
-            .environment(\.locale, Locale.init(identifier: "de_DE"))
+                   Text("Kalender")
+                       .font(.largeTitle)
+                       .fontWeight(.heavy)
+                       .padding(0)
+                       .frame(maxWidth: .infinity, alignment: .leading)
+                       .padding([.horizontal], 25)
+                   
+                   VStack {
+                       HStack {
+                           Text("Datum")
+                               .foregroundColor(.primary)
+                               .font(.headline)
+                           
+                           Spacer()
+                           
+                           Text(dateFormatter.string(from: calendar.pickedDate))
+                               .foregroundColor(.orange)
+                               .font(.headline)
+                           
+                           Image(systemName: showDatePicker ? "chevron.up" : "chevron.down")
+                               .foregroundColor(.primary)
+                               .font(.headline)
+                               .padding(.leading, 8)
+                       }
+                       .padding()
+                       .background(Color.gray.opacity(0.4))
+                       .cornerRadius(20)
+                       .onTapGesture {
+                           withAnimation(.easeInOut) {
+                               showDatePicker.toggle()
+                           }
+                       }
+                       .frame(height: showDatePicker ? nil : 60) // Ändere die Höhe des Kalenderfeldes, wenn er eingeklappt ist.
+                       
+                       if showDatePicker {
+                           DatePicker(
+                               "Start Date",
+                               selection: $calendar.pickedDate,
+                               displayedComponents: [.date]
+                           )
+                           .datePickerStyle(.graphical)
+                           .accentColor(.orange)
+                           .environment(\.locale, Locale(identifier: "de_DE"))
+                           .padding(.bottom)
+                       }
+                   }
             
             //            CalenderList(event: "Laufen", eventType: "Habit", time: "20:00", imageName: "checkmark", recColor: Color.red)
             //            CalenderList(event: "Arzt", eventType: "Termin", time: "23:00", imageName: "checkmark", recColor: Color.blue)
@@ -41,7 +73,7 @@ struct CalendarView: View {
                             endTime: calendar.extractTimeFromDate(event.endDate ?? Date()),
                             
                             imageName: "checkmark",
-                            recColor: Color.red,
+                            recColor: Color.green,
                             calendarVM: calendar,
                             id: event.id.unsafelyUnwrapped
                         )
@@ -67,9 +99,14 @@ struct CalendarView: View {
         .padding([.bottom], 50)
         .sheet(isPresented: $calendar.showingBottomSheet) {
             AddCalendarSheetView(calendarVM: calendar)
-                .presentationDetents([.medium, .large])
+                .presentationDetents([.large])
         }
     }
+    var dateFormatter: DateFormatter {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            return formatter
+        }
 }
 
 struct CalendarView_Previews: PreviewProvider {
