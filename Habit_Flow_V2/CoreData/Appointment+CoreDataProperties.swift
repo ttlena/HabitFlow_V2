@@ -21,6 +21,8 @@ extension Appointment {
     @NSManaged public var title: String?
     @NSManaged public var origin: User?
     @NSManaged public var endDate: Date?
+    @NSManaged public var remindMe: Bool
+    @NSManaged public var reminderMinutes: Int
 
 
 }

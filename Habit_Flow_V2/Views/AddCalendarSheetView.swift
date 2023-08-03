@@ -6,7 +6,7 @@ struct AddCalendarSheetView: View {
     var body: some View {
         VStack {
             if calendarVM.isAppointmentEdited {
-                Text("Ereignis bearbeiten")
+                Text("Termin bearbeiten")
                     .font(.title)
                     .fontWeight(.heavy)
                     .padding(0.0)
@@ -27,6 +27,38 @@ struct AddCalendarSheetView: View {
                     .environment(\.locale, Locale(identifier: "de_DE"))
                 
                 
+                
+                Toggle(isOn: $calendarVM.editedEventReminder, label: {
+                                Text("Erinnerung")
+                            })
+                .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(12)
+
+                ScrollView {
+                    if calendarVM.editedEventReminder {
+                        VStack {
+                            Text("Erinnerung  \(calendarVM.editedEventReminderMinutes) Minuten vor beginn")
+                                .padding(.vertical)
+                            
+                            Picker("Anzahl von Minuten", selection: $calendarVM.editedEventReminderMinutes) {
+                                ForEach(0...120, id: \.self) { minute in
+                                    Text("\(minute) Minuten")
+                                }
+                            }
+                            .pickerStyle(WheelPickerStyle())
+                            .frame(height: 150)
+                            .clipped()
+                            .padding(.horizontal)
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(12)
+                        }
+                    }
+                }
+                
+                
+                
                 Button(action: calendarVM.editAppointment, label: {
                     Text("Speichern")
                         .foregroundColor(.white)
@@ -41,7 +73,7 @@ struct AddCalendarSheetView: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 
             } else {
-                Text("Neues Ereignis")
+                Text("Neuer Termin")
                     .font(.title)
                     .fontWeight(.heavy)
                     .padding(0.0)
@@ -60,6 +92,38 @@ struct AddCalendarSheetView: View {
                 DatePicker("Datum (Ende)", selection: $calendarVM.newEventEndDate, in: calendarVM.newEventDate...)
                     .accentColor(.orange)
                     .environment(\.locale, Locale(identifier: "de_DE"))
+                
+                
+                
+                Toggle(isOn: $calendarVM.newEventReminder, label: {
+                                Text("Erinnerung")
+                            })
+                .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(12)
+
+                ScrollView {
+                    if calendarVM.newEventReminder {
+                        VStack {
+                            Text("Erinnerung  \(calendarVM.newEventReminderMinutes) Minuten vor beginn")
+                                .padding(.vertical)
+                            
+                            Picker("Anzahl von Minuten", selection: $calendarVM.newEventReminderMinutes) {
+                                ForEach(0...120, id: \.self) { minute in
+                                    Text("\(minute) Minuten")
+                                }
+                            }
+                            .pickerStyle(WheelPickerStyle())
+                            .frame(height: 150)
+                            .clipped()
+                            .padding(.horizontal)
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(12)
+                        }
+                    }
+                }
+                
                 
                 Button(action: calendarVM.addNewAppointment, label: {
                     Text("Speichern")
