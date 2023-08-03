@@ -212,6 +212,7 @@ class CalendarViewModel: ObservableObject {
         
         newAppointment.remindMe = newEventReminder
         newAppointment.reminderMinutes = newEventReminderMinutes
+        newAppointment.color = newEventColor
         
         if(newAppointment.remindMe) {
             notificationManager.calendarNotification(minutesTilToDo: newEventReminderMinutes, terminTitle: newEventTitle, terminDate: newEventDate, terminId: newAppointment.id!)

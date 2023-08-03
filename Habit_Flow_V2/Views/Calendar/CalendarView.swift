@@ -73,7 +73,8 @@ struct CalendarView: View {
                             endTime: calendar.extractTimeFromDate(event.endDate ?? Date()),
                             
                             imageName: "checkmark",
-                            recColor: Color.green,
+                            //recColor: Color(.green),
+                            recColor: colorFromString(event.color ?? "red"),
                             calendarVM: calendar,
                             id: event.id.unsafelyUnwrapped
                         )
@@ -107,6 +108,21 @@ struct CalendarView: View {
             formatter.dateStyle = .medium
             return formatter
         }
+    
+    func colorFromString(_ colorName: String) -> Color {
+        switch colorName.lowercased() {
+        case "red":
+            return .red
+        case "blue":
+            return .blue
+        case "green":
+            return .green
+        case "orange":
+            return .orange
+        default:
+            return .black
+        }
+    }
 }
 
 struct CalendarView_Previews: PreviewProvider {

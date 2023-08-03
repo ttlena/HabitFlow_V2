@@ -1,47 +1,14 @@
 import SwiftUI
 
-struct EventColor: Identifiable {
-    let id = UUID()
-    let name: String // Ändern Sie den Typ auf String
-    let color: Color
-}
-
-let colorPalette: [EventColor] = [
-    EventColor(name: "Red", color: .red),
-    EventColor(name: "Blue", color: .blue),
-    EventColor(name: "Green", color: .green),
-    EventColor(name: "Orange", color: .orange)
-]
-
-struct ColorPickerView: View {
-    @Binding var selectedColorName: String? // Hinzufügen des ausgewählten Farbnamen-Bindings
-
-    var body: some View {
-        HStack {
-            ForEach(colorPalette) { color in
-                Button(action: {
-                    selectedColorName = color.name // Den ausgewählten Farbnamen setzen
-                }) {
-                    Circle()
-                        .fill(color.color)
-                        .frame(width: 30, height: 30)
-                        .overlay(
-                            Circle()
-                                .stroke(Color.white, lineWidth: selectedColorName == color.name ? 3 : 0)
-                        )
-                }
-            }
-        }
-        .padding(.horizontal)
-    }
-}
-
-
 
 struct AddCalendarSheetView: View {
     @StateObject var calendarVM: CalendarViewModel
     
-    @State private var selectedColorName: String?
+    @State private var selectedColorIndex = 0
+       
+       // Define an array of colors to choose from
+    let colorPalette: [Color] = [.red, .blue, .green, .orange]
+
     
     var body: some View {
         VStack {
@@ -139,7 +106,17 @@ struct AddCalendarSheetView: View {
                                 .font(.headline)
                                 .padding(.top)
 
-                ColorPickerView(selectedColorName: $selectedColorName)
+               
+                Picker("Event Color", selection: $selectedColorIndex) {
+                                ForEach(colorPalette.indices, id: \.self) { index in
+                                    Text("\(colorName(for: colorPalette[index]))")
+                                }
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(12)
 
                 
                 Toggle(isOn: $calendarVM.newEventReminder, label: {
@@ -187,7 +164,21 @@ struct AddCalendarSheetView: View {
             }
         }
         .padding(39)
+        .onChange(of: selectedColorIndex, perform: { value in
+                    // Update the selected color in the view model
+                    calendarVM.newEventColor = colorName(for: colorPalette[value])
+                })
     }
+    
+    func colorName(for color: Color) -> String {
+            switch color {
+            case .red: return "Red"
+            case .blue: return "Blue"
+            case .green: return "Green"
+            case .orange: return "Orange"
+            default: return "Unknown"
+            }
+        }
 }
 
 struct AddCalendarSheetView_Previews: PreviewProvider {
