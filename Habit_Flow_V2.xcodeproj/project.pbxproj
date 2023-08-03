@@ -11,7 +11,6 @@
 		5F20CEED2A7AC42B005230BC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20CEEC2A7AC42B005230BC /* NotificationManager.swift */; };
 		5F4A080D2A55A24D009D1AED /* AddCalendarSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */; };
 		5FE7AADF2A56C54500C03E3F /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7AADE2A56C54500C03E3F /* HabitModel.swift */; };
-		5FE7AAE32A56C99D00C03E3F /* HabitListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7AAE22A56C99D00C03E3F /* HabitListViewModel.swift */; };
 		5FFA70762A5573DC006B313F /* AddToDoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */; };
 		5FFA70782A5577D7006B313F /* AddHabitSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */; };
 		A51F03182A70A48200210E38 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F03172A70A48200210E38 /* TabBarView.swift */; };
@@ -82,7 +81,6 @@
 		5F20CEEC2A7AC42B005230BC /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalendarSheetView.swift; sourceTree = "<group>"; };
 		5FE7AADE2A56C54500C03E3F /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
-		5FE7AAE22A56C99D00C03E3F /* HabitListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListViewModel.swift; sourceTree = "<group>"; };
 		5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoSheetView.swift; sourceTree = "<group>"; };
 		5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitSheetView.swift; sourceTree = "<group>"; };
 		A51F03172A70A48200210E38 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -239,7 +237,6 @@
 				A53A41342A412D3C008D64D2 /* HabitViewModel.swift */,
 				A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */,
 				A59693622A43CB23003CF220 /* CalendarViewModel.swift */,
-				5FE7AAE22A56C99D00C03E3F /* HabitListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -472,7 +469,6 @@
 				5F20CEEB2A7AC18F005230BC /* AppDelegate.swift in Sources */,
 				A5B493E62A77E9010055B140 /* SingleTodayToDo.swift in Sources */,
 				A5B9707E2A70501D0039A193 /* HabitTile.swift in Sources */,
-				5FE7AAE32A56C99D00C03E3F /* HabitListViewModel.swift in Sources */,
 				A51F031B2A70A53400210E38 /* TabItemData.swift in Sources */,
 				A53384F02A4104130057F231 /* ToDo+CoreDataProperties.swift in Sources */,
 				A53384C12A40F3340057F231 /* CalendarView.swift in Sources */,
