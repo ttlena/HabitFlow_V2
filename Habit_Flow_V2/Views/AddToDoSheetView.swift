@@ -61,6 +61,7 @@ struct AddToDoSheetView: View {
     func saveButtonPressed() {
         if textIsAppropiate() {            
             toDosViewModel.addItem(title: textFieldText, date: pickedDate)
+            toDosViewModel.filteredToDos = toDosViewModel.updateFilteredToDos(pickedDate: pickedDate)
             presentationMode.wrappedValue.dismiss()
         }
     }

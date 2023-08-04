@@ -13,6 +13,7 @@ class ToDosViewModel:ObservableObject {
     @Published var toDos: [ToDo] = []
     @Published var toDosToday: [ToDo] = []
    // @Published var toDosItemModels: [ItemModel] = []
+    @Published var filteredToDos: [ToDo] = []
     
     let notificationManager = NotificationManager()
     
@@ -27,6 +28,7 @@ class ToDosViewModel:ObservableObject {
         do {
             toDos = try dataController.container.viewContext.fetch(request)
             toDosToday = updateFilteredToDos(pickedDate: Date.now)
+//            filteredToDos = toDosToday
         } catch {
             print("CoreData Error")
         }
@@ -45,7 +47,7 @@ class ToDosViewModel:ObservableObject {
     
     func deleteItems(at offsets:IndexSet) {
         for offset in offsets {
-            let toDo = toDos[offset]
+            let toDo = filteredToDos[offset]
             dataController.container.viewContext.delete(toDo)
         }
         save()
