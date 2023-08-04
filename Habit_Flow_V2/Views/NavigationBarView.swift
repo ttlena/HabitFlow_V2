@@ -12,6 +12,7 @@ struct NavigationBar: View {
     @StateObject var calendarViewModel = CalendarViewModel()
     @StateObject var toDosViewModel = ToDosViewModel()
     @StateObject var habitViewModel = HabitViewModel()
+    @StateObject var userViewModel: UserViewModel
     
     let tabItems:[TabItemData] = [
         TabItemData(image: "home_icon", selectedImage: "home_selected", title: "Home"),
@@ -21,7 +22,7 @@ struct NavigationBar: View {
     ]
     var body: some View {
         TabView(selection: $navigationBarViewModel.selectedTabIndex) {
-            HomeView(habitViewModel: habitViewModel, toDosViewModel: toDosViewModel, calendarViewModel: calendarViewModel)
+            HomeView(habitViewModel: habitViewModel, toDosViewModel: toDosViewModel, calendarViewModel: calendarViewModel, userViewModel: userViewModel)
                 .tag(0)
             CalendarView(habitVM: habitViewModel)
                 .tag(1)
@@ -43,6 +44,6 @@ struct NavigationBar: View {
 
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBar()
+        NavigationBar(userViewModel: UserViewModel())
     }
 }

@@ -182,6 +182,7 @@ struct IntroView: View {
         if(textIsAppropiate()) {
             presentationMode.wrappedValue.dismiss()
             pageIndex += 1
+            userViewModel.user.name = textFieldInput
         }
     }
     

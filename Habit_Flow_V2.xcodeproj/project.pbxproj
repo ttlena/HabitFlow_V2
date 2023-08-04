@@ -15,6 +15,8 @@
 		5F4A080D2A55A24D009D1AED /* AddCalendarSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */; };
 		5FA0DC1B2A7D72ED0053CAED /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA0DC1A2A7D72ED0053CAED /* UserViewModel.swift */; };
 		5FA0DC1D2A7D80EE0053CAED /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA0DC1C2A7D80EE0053CAED /* ImagePicker.swift */; };
+		5FA0DC222A7D971A0053CAED /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA0DC202A7D971A0053CAED /* User+CoreDataClass.swift */; };
+		5FA0DC232A7D971A0053CAED /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA0DC212A7D971A0053CAED /* User+CoreDataProperties.swift */; };
 		5FE7AADF2A56C54500C03E3F /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7AADE2A56C54500C03E3F /* HabitModel.swift */; };
 		5FFA70762A5573DC006B313F /* AddToDoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */; };
 		5FFA70782A5577D7006B313F /* AddHabitSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */; };
@@ -51,8 +53,6 @@
 		A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41342A412D3C008D64D2 /* HabitViewModel.swift */; };
 		A5688B452A7D01E800635978 /* DateKeeper+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5688B432A7D01E800635978 /* DateKeeper+CoreDataClass.swift */; };
 		A5688B462A7D01E800635978 /* DateKeeper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5688B442A7D01E800635978 /* DateKeeper+CoreDataProperties.swift */; };
-		A5688B492A7D020100635978 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5688B472A7D020100635978 /* User+CoreDataClass.swift */; };
-		A5688B4A2A7D020100635978 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5688B482A7D020100635978 /* User+CoreDataProperties.swift */; };
 		A59693612A43C3D6003CF220 /* NavigationBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */; };
 		A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59693622A43CB23003CF220 /* CalendarViewModel.swift */; };
 		A5B493E62A77E9010055B140 /* SingleTodayToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B493E52A77E9010055B140 /* SingleTodayToDo.swift */; };
@@ -93,6 +93,8 @@
 		5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalendarSheetView.swift; sourceTree = "<group>"; };
 		5FA0DC1A2A7D72ED0053CAED /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		5FA0DC1C2A7D80EE0053CAED /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		5FA0DC202A7D971A0053CAED /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		5FA0DC212A7D971A0053CAED /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		5FE7AADE2A56C54500C03E3F /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
 		5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoSheetView.swift; sourceTree = "<group>"; };
 		5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitSheetView.swift; sourceTree = "<group>"; };
@@ -132,8 +134,6 @@
 		A53A41342A412D3C008D64D2 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
 		A5688B432A7D01E800635978 /* DateKeeper+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateKeeper+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		A5688B442A7D01E800635978 /* DateKeeper+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateKeeper+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		A5688B472A7D020100635978 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		A5688B482A7D020100635978 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModel.swift; sourceTree = "<group>"; };
 		A59693622A43CB23003CF220 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		A5B493E52A77E9010055B140 /* SingleTodayToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTodayToDo.swift; sourceTree = "<group>"; };
@@ -370,8 +370,8 @@
 		A53384F72A41046A0057F231 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				A5688B472A7D020100635978 /* User+CoreDataClass.swift */,
-				A5688B482A7D020100635978 /* User+CoreDataProperties.swift */,
+				5FA0DC202A7D971A0053CAED /* User+CoreDataClass.swift */,
+				5FA0DC212A7D971A0053CAED /* User+CoreDataProperties.swift */,
 				A5688B432A7D01E800635978 /* DateKeeper+CoreDataClass.swift */,
 				A5688B442A7D01E800635978 /* DateKeeper+CoreDataProperties.swift */,
 				A5DAC60D2A7952BD00BD4CAA /* Habit+CoreDataClass.swift */,
@@ -516,11 +516,9 @@
 			files = (
 				5F20CEEB2A7AC18F005230BC /* AppDelegate.swift in Sources */,
 				A5B493E62A77E9010055B140 /* SingleTodayToDo.swift in Sources */,
-				A5688B4A2A7D020100635978 /* User+CoreDataProperties.swift in Sources */,
 				A5B9707E2A70501D0039A193 /* HabitTile.swift in Sources */,
 				A51F031B2A70A53400210E38 /* TabItemData.swift in Sources */,
 				A53384F02A4104130057F231 /* ToDo+CoreDataProperties.swift in Sources */,
-				A5688B492A7D020100635978 /* User+CoreDataClass.swift in Sources */,
 				A53384C12A40F3340057F231 /* CalendarView.swift in Sources */,
 				5F20CEF82A7D3719005230BC /* PageModel.swift in Sources */,
 				5FA0DC1B2A7D72ED0053CAED /* UserViewModel.swift in Sources */,
@@ -558,10 +556,12 @@
 				A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */,
 				A5DAC60F2A7952BD00BD4CAA /* Habit+CoreDataClass.swift in Sources */,
 				C537D7462A783AED006F2D61 /* CircularYearProgressView.swift in Sources */,
+				5FA0DC222A7D971A0053CAED /* User+CoreDataClass.swift in Sources */,
 				C5043B372A770A7F008A5CC2 /* TestView.swift in Sources */,
 				A5688B462A7D01E800635978 /* DateKeeper+CoreDataProperties.swift in Sources */,
 				5F20CEFA2A7D3ADF005230BC /* PageView.swift in Sources */,
 				A53384BC2A40F2AA0057F231 /* DailyHabitsComponent.swift in Sources */,
+				5FA0DC232A7D971A0053CAED /* User+CoreDataProperties.swift in Sources */,
 				5F20CEFC2A7D42B0005230BC /* IntroView.swift in Sources */,
 				A53384AF2A40CEA70057F231 /* Model.xcdatamodeld in Sources */,
 				A53384EF2A4104130057F231 /* ToDo+CoreDataClass.swift in Sources */,

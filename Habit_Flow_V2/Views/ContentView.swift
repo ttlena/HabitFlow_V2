@@ -14,7 +14,7 @@ struct ContentView: View {
         if(userViewModel.user.firstStart) {
             IntroView(userViewModel: userViewModel)
         }else {
-            NavigationBar()
+            NavigationBar(userViewModel: userViewModel)
                 .environment(\.managedObjectContext, dataController.container.viewContext)
         }
         
