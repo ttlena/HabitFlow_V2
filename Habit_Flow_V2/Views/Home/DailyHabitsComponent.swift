@@ -55,18 +55,9 @@ struct DailyHabitsComponent: View {
                     LazyVGrid(columns: columns, spacing: 0) {
                         ForEach(habitsVM.habitsTodayRemovingList, id: \.self) { habit in
                             HabitTile(habit: habit, habitVM: habitsVM)
-                                .frame(width: 175, height: 280) // Hier die gewünschte Breite und Höhe einstellen
+                                .frame(width: 175, height: 280) 
                             
                         }
-                        /*.onAppear {
-                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                         // Hier kommt der Code, der nach 1 Sekunde ausgeführt wird
-                         // In diesem Beispiel setzen wir nur einen boolschen Wert im HabitViewModel
-                         // um zu zeigen, dass der habit in der HabitTile aktualisiert werden soll
-                         habitsVM.habitsTodayRemovingList = habitsVM.showOnlyUncheckedHabits(habitsToday: habitsVM.habitsTodayRemovingList)
-                         }
-                         
-                         }*/
                     }
                 }
                 .listStyle(.plain)

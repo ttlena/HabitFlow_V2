@@ -45,7 +45,6 @@ struct ToDoListView: View {
                     filterToDos()
                 }
             if(toDosViewModel.filteredToDos.count == 0) {
-                //heute
                 if(calendarViewModel.getDateDayNumber(date: Date()) == calendarViewModel.getDateDayNumber(date: calendarViewModel.pickedDate)) {
                     Text("Noch keine ToDo's für heute")
                         .font(.title3)
@@ -136,7 +135,6 @@ struct ToDoListView: View {
     
     private func filterToDos() {
         print("-------filteredTodos called")
-        //        self.filteredToDos = toDosViewModel.updateFilteredToDos(pickedDate: calendarViewModel.pickedDate)
         toDosViewModel.filteredToDos = toDosViewModel.updateFilteredToDos(pickedDate: calendarViewModel.pickedDate)
     }
     

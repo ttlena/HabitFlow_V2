@@ -3,10 +3,10 @@ import SwiftUI
 struct HabitTile: View {
     let habit: Habit
     @StateObject var habitVM: HabitViewModel
-    @State private var selectedTab = 0 // To track the currently selected tab
-    @State private var showDeleteButton = false // To track when to show the delete button
+    @State private var selectedTab = 0
+    @State private var showDeleteButton = false
     @State var showingBottomSheet = false
-    @State private var highlighted = false // Variable zum Hervorheben der Kachel
+    @State private var highlighted = false
     @State private var color = Color(UIColor.darkGray).opacity(0.8)
     
     var weekdays = ["mo", "di", "mi", "do", "fr", "sa", "so"]
@@ -66,7 +66,7 @@ struct HabitTile: View {
                             .foregroundColor(.white)
                             .bold()
                             .font(.system(size: 22))
-
+                        
                     }
                     CircularMonthProgressView(progress: habit.progress, habitVM: habitVM, habit: habit)
                     Text("\(habit.currentInMonth)/\(habit.goalInMonth)")
@@ -80,7 +80,7 @@ struct HabitTile: View {
                             .foregroundColor(.white)
                             .bold()
                             .font(.system(size: 22))
-
+                        
                     }
                     CircularYearProgressView(progress: habit.progress, habitVM: habitVM, habit: habit)
                     Text("\(habit.currentInYear)/\(habit.goalInYear)")
@@ -112,8 +112,6 @@ struct HabitTile: View {
                     Button(action: {
                         habitVM.deleteHabit(habit: habit)
                         showDeleteButton = false
-                        
-                        print("moin")
                     }) {
                         Image(systemName: "xmark.circle.fill")
                             .font(.system(size: 25))
@@ -125,21 +123,14 @@ struct HabitTile: View {
                             .onTapGesture {
                                 habitVM.deleteHabit(habit: habit)
                                 showDeleteButton = false
-                                
                             }
-                        
                     }
-                    
                 }
             }
                 .frame(maxWidth: .infinity, alignment: .topTrailing)
         )
         .onTapGesture {
             showDeleteButton = false
-            highlighted = true
-            
-            editHabit()
-            
         }
         .onLongPressGesture(minimumDuration: 0.5, maximumDistance: .infinity, pressing: { isPressing in
             if isPressing {
@@ -152,29 +143,6 @@ struct HabitTile: View {
             showDeleteButton = true
             print("test")
         })
-        .sheet(isPresented: $showingBottomSheet) {
-            EditHabitSheetView(habitVM: habitVM, habit: habit)
-                .presentationDetents([.medium, .large])
-        }
-        
-    }
-    
-    
-    func editHabit() {
-        if !habitVM.plusButtonClicked {
-            
-            color =  Color(UIColor.systemGray2).opacity(0.8)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                highlighted = false
-                color =  Color(UIColor.darkGray).opacity(0.8)
-                
-            }
-            habitVM.setEditHabit(habit: habit)
-            showingBottomSheet.toggle()
-            
-            
-        }
-        habitVM.plusButtonClicked = false
     }
 }
 

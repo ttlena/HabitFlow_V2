@@ -30,7 +30,7 @@ struct WeeklyOverview: View {
                     .frame(width: 35)
                     .padding()
                     .background(backgroundColor(for: day , pickedDate: calendarViewModel.pickedDate))
-                    //.background(calendarViewModel.getDateDayNumber(date: day) == calendarViewModel.getDateDayNumber(date: Date.now) ? Color(UIColor(red: 1, green: 0.6, blue: 0, alpha: 1)) : Color(UIColor.systemGray5))
+
                     .cornerRadius(10)
                     .onTapGesture {
                         if(navigationBarViewModel.selectedTabIndex == 0){
@@ -38,9 +38,7 @@ struct WeeklyOverview: View {
                             calendarViewModel.pickedDate = day
                         }else if(navigationBarViewModel.selectedTabIndex == 2) {
                             calendarViewModel.pickedDate = day
-                        }
-                        //calendarViewModel.pickedDate = day
-                        
+                        }                        
                     }
                 }
             }

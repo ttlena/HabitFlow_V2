@@ -13,6 +13,8 @@ struct CalendarView: View {
     @State private var showDatePicker = true
     @StateObject  var habitVM: HabitViewModel
     
+
+    
     var body: some View {
         VStack {
             Text("Kalender")
@@ -58,13 +60,8 @@ struct CalendarView: View {
                     .datePickerStyle(.graphical)
                     .accentColor(.orange)
                     .environment(\.locale, Locale(identifier: "de_DE"))
-                    //.padding(.bottom)
                 }
             }
-            
-            
-            //            CalenderList(event: "Laufen", eventType: "Habit", time: "20:00", imageName: "checkmark", recColor: Color.red)
-            //            CalenderList(event: "Arzt", eventType: "Termin", time: "23:00", imageName: "checkmark", recColor: Color.blue)
             
             VStack {
                 List {
@@ -72,14 +69,13 @@ struct CalendarView: View {
                         Text("Termine")
                         
                         ForEach(dailyAppointments, id: \.self) { event in
-                            CalenderList(
+                            CalendarElement(
                                 event: event.title ?? "",
-                                eventType: "Termin",
+                                eventType: "",
                                 time: calendar.extractTimeFromDate(event.date ?? Date()),
                                 endTime: calendar.extractTimeFromDate(event.endDate ?? Date()),
                                 
                                 imageName: "checkmark",
-                                //recColor: Color(.green),
                                 recColor: colorFromString(event.color ?? "red"),
                                 calendarVM: calendar,
                                 id: event.id.unsafelyUnwrapped,
@@ -95,10 +91,18 @@ struct CalendarView: View {
                         }
                         
                     }
-                    if habitVM.pickedToadayHabits != [] {
+                    if habitVM.pickedTodayHabits != [] {
                         Text("Habits")
-                        ForEach(habitVM.pickedToadayHabits) { habit in
-                            CalenderList(event: habit.title ?? "", eventType: "", time: "", endTime: "", imageName: "", recColor: Color.blue, calendarVM: calendar, id: habit.id.unsafelyUnwrapped, isHabit: true)
+                        ForEach(habitVM.pickedTodayHabits) { habit in
+                            CalendarElement(
+                                event: habit.title ?? "",
+                                eventType: "", time: "",
+                                endTime: "", imageName: "",
+                                recColor: Color.blue,
+                                calendarVM: calendar,
+                                id: habit.id.unsafelyUnwrapped,
+                                isHabit: true
+                            )
                         }
                     }
                     
@@ -119,7 +123,10 @@ struct CalendarView: View {
                 .presentationDetents([.large])
         }
         .onChange(of: calendar.pickedDate) { newDate in
-            habitVM.pickedToadayHabits = habitVM.getHabitsBasedOnWeekday(pickedDate: calendar.pickedDate)
+            habitVM.pickedTodayHabits = habitVM.getHabitsBasedOnWeekday(pickedDate: calendar.pickedDate)
+        }
+        .onAppear {
+            habitVM.pickedTodayHabits = habitVM.getHabitsBasedOnWeekday(pickedDate: calendar.pickedDate)
         }
     }
     var dateFormatter: DateFormatter {

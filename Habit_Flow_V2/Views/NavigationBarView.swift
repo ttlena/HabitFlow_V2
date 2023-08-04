@@ -34,7 +34,6 @@ struct NavigationBar: View {
                 .tag(3)
                 .environmentObject(habitViewModel)
         }
-        //.onAppear{UIApplication.shared.applicationIconBadgeNumber = 0}
         .environmentObject(navigationBarViewModel)
         .safeAreaInset(edge: .bottom) {
             TabBarView(tabBarItems: tabItems, selectedIndex: $navigationBarViewModel.selectedTabIndex)

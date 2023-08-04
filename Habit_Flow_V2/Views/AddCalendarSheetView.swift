@@ -62,8 +62,6 @@ struct AddCalendarSheetView: View {
                            .background(Color(UIColor.systemGray5))
                            .cornerRadius(12)
                 
-                
-                
                 Toggle(isOn: $calendarVM.editedEventReminder, label: {
                     Text("Erinnerung")
                 })
@@ -92,8 +90,6 @@ struct AddCalendarSheetView: View {
                         }
                     }
                 }
-                
-                
                 
                 Button(action: editButtonPressed, label: {
                     Text("Speichern")

@@ -8,7 +8,7 @@
 import SwiftUI
 import Foundation
 
-struct CalenderList: View {
+struct CalendarElement: View {
     var event: String
     var eventType : String
     var time : String
@@ -70,7 +70,7 @@ struct CalenderList: View {
                 }
                 
             }
-            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)) // Hier habe ich den linken und rechten Paddingwert auf 20 gesetzt, du kannst sie nach Bedarf anpassen.
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)) 
             .buttonStyle(PlainButtonStyle())
             .foregroundColor(colorScheme == .dark ? .white : .black)
         }
@@ -80,6 +80,6 @@ struct CalenderList: View {
 struct CalenderList_Previews: PreviewProvider {
     static var previews: some View {
         let calendarVM = CalendarViewModel()
-        return CalenderList(event: "Trainieren", eventType: "Habit", time: "20:00", endTime: "22:00", imageName: "checkmark", recColor: Color.red, calendarVM: calendarVM, id: UUID(), isHabit: false)
+        return CalendarElement(event: "Trainieren", eventType: "Habit", time: "20:00", endTime: "22:00", imageName: "checkmark", recColor: Color.red, calendarVM: calendarVM, id: UUID(), isHabit: false)
     }
 }

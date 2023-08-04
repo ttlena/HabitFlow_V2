@@ -20,7 +20,7 @@ struct CircularProgressView: View {
                     lineWidth: 15
                 )
             Circle()
-                .trim(from: 0, to: habit.progress) // 1
+                .trim(from: 0, to: habit.progress)
                 .stroke(
                     Color.orange,
                     style: StrokeStyle(
@@ -34,16 +34,12 @@ struct CircularProgressView: View {
                 .foregroundColor(.clear)
             
             if(habit.current >= habit.goal) {
-                Button(action: {
-                    habitVM.plusButtonClicked = true
-                    habitVM.setCurrentTo0(habit: habit)
-                }) {
-                    Image(systemName: "checkmark")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.green)
-                        .font(.system(size: 20, weight: .bold))
-                }
+                Image(systemName: "checkmark")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.green)
+                    .font(.system(size: 20, weight: .bold))
+                
             } else {
                 Button(action: {
                     habitVM.plusButtonClicked = true

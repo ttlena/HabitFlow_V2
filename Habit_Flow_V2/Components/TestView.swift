@@ -26,7 +26,7 @@ struct TestView: View {
                     Text("Tab 2")
                 }
         }
-        .tabViewStyle(.page) // This enables swiping between tabs
+        .tabViewStyle(.page) 
     }
 }
 

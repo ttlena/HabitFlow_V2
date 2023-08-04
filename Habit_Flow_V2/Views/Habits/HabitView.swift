@@ -34,24 +34,13 @@ struct HabitsView: View {
                     .cornerRadius(12)
             }
             .padding([.horizontal], 25)
-            //            .padding([.bottom], 50)
             ZStack {
-                /*ScrollView {
-                 LazyVGrid(columns: columns, spacing: 10) {
-                 ForEach(habitsViewModel.habits, id: \.self) { habit in
-                 HabitTile(habit: habit, habitVM: habitsViewModel)
-                 .background(Color(UIColor.darkGray))
-                 .cornerRadius(10)
-                 }
-                 }
-                 .padding([.bottom], 110)
-                 }*/
                 List {
                     LazyVGrid(columns: columns, spacing: 0) {
                         
                         ForEach(habitsViewModel.habits, id: \.self) { habit in
                             HabitTile(habit: habit, habitVM: habitsViewModel)
-                                .frame(width: 190, height: 280) // Hier die gewünschte Breite und Höhe einstellen
+                                .frame(width: 190, height: 280)
 
                         }
                     }
@@ -80,13 +69,10 @@ struct HabitsView: View {
     func newHabit() {
         showingBottomSheet.toggle()
         habitsViewModel.resetHabitEntry()
-        //
     }
     
-    // Helper function to calculate the height of HabitTile based on its content
     func calculateHabitTileHeight(for geometry: GeometryProxy) -> CGFloat {
-        // You can modify this calculation based on your design requirements
-        return min(geometry.size.width * 0.5, 200) // For example, limiting the height to be half of the width or 200 points, whichever is smaller
+        return min(geometry.size.width * 0.5, 200)
     }
 }
 

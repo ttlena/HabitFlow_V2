@@ -39,12 +39,7 @@ struct CircularMonthProgressView: View {
                     .frame(width: 30, height: 30)
                     .foregroundColor(.green)
                     .font(.system(size: 20, weight: .bold))
-            } else {
-                /*Image("Plus")
-                    .resizable()
-                    .frame(width: 30, height: 30)*/
-                
-            }
+            } 
         }
         .padding(10)
     }

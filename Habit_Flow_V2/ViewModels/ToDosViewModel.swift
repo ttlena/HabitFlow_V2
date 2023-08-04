@@ -93,7 +93,6 @@ class ToDosViewModel:ObservableObject {
     func save() {
         do {
             try dataController.container.viewContext.save()
-            //print("saved!")
         } catch {
             print("ToDoVM - speichern failed")
         }
@@ -118,10 +117,8 @@ class ToDosViewModel:ObservableObject {
             }
             
             return calendar.component(.day, from: date) == pickedDay})
-        //wenn es nicht erledigte ToDos gibt, wird eine Notification geplant
         if(filteredToDos.filter{$0.isCompleted == false}.count > 0) {
             notificationManager.toDoNoification(numberOfUndoneToDos: filteredToDos.filter{$0.isCompleted == false}.count)
-        //ändert sich die Liste in der zwischenzeit, werden vorher geplante Notifications gelöscht
         }else {
             notificationManager.removeNotification(with: "habitFlow.toDoNotification")
         }

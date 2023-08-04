@@ -39,7 +39,6 @@
 		A53384BC2A40F2AA0057F231 /* DailyHabitsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384BB2A40F2AA0057F231 /* DailyHabitsComponent.swift */; };
 		A53384C12A40F3340057F231 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384C02A40F3340057F231 /* CalendarView.swift */; };
 		A53384C42A40F3FA0057F231 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384C32A40F3FA0057F231 /* PrimaryButton.swift */; };
-		A53384C92A40F7860057F231 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384C82A40F7860057F231 /* ItemModel.swift */; };
 		A53384CB2A40F8110057F231 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384CA2A40F8110057F231 /* CircularProgressView.swift */; };
 		A53384CE2A40F8E40057F231 /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384CD2A40F8E40057F231 /* HabitView.swift */; };
 		A53384D12A40F98F0057F231 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384D02A40F98F0057F231 /* ToDoListView.swift */; };
@@ -63,8 +62,7 @@
 		C5043B372A770A7F008A5CC2 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5043B362A770A7F008A5CC2 /* TestView.swift */; };
 		C537D7442A781E4A006F2D61 /* CircularMonthProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D7432A781E4A006F2D61 /* CircularMonthProgressView.swift */; };
 		C537D7462A783AED006F2D61 /* CircularYearProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D7452A783AED006F2D61 /* CircularYearProgressView.swift */; };
-		C5444A2D2A560F23002D05EA /* CalenderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5444A2C2A560F23002D05EA /* CalenderList.swift */; };
-		C56DB1172A844F3200F5D1FE /* EditHabitSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56DB1162A844F3200F5D1FE /* EditHabitSheetView.swift */; };
+		C5444A2D2A560F23002D05EA /* CalendarElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5444A2C2A560F23002D05EA /* CalendarElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,7 +118,6 @@
 		A53384BB2A40F2AA0057F231 /* DailyHabitsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyHabitsComponent.swift; sourceTree = "<group>"; };
 		A53384C02A40F3340057F231 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		A53384C32A40F3FA0057F231 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
-		A53384C82A40F7860057F231 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		A53384CA2A40F8110057F231 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		A53384CD2A40F8E40057F231 /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
 		A53384D02A40F98F0057F231 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
@@ -144,8 +141,7 @@
 		C5043B362A770A7F008A5CC2 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		C537D7432A781E4A006F2D61 /* CircularMonthProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularMonthProgressView.swift; sourceTree = "<group>"; };
 		C537D7452A783AED006F2D61 /* CircularYearProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularYearProgressView.swift; sourceTree = "<group>"; };
-		C5444A2C2A560F23002D05EA /* CalenderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderList.swift; sourceTree = "<group>"; };
-		C56DB1162A844F3200F5D1FE /* EditHabitSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitSheetView.swift; sourceTree = "<group>"; };
+		C5444A2C2A560F23002D05EA /* CalendarElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,7 +290,6 @@
 				A53384B62A40F2080057F231 /* NavigationBarView.swift */,
 				5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */,
 				5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */,
-				C56DB1162A844F3200F5D1FE /* EditHabitSheetView.swift */,
 				5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */,
 				A53384BF2A40F2F40057F231 /* Calendar */,
 				A53384CC2A40F8D50057F231 /* Habits */,
@@ -330,7 +325,7 @@
 				A51F03192A70A4E300210E38 /* Customized TabBar */,
 				A53384C32A40F3FA0057F231 /* PrimaryButton.swift */,
 				A53384CA2A40F8110057F231 /* CircularProgressView.swift */,
-				C5444A2C2A560F23002D05EA /* CalenderList.swift */,
+				C5444A2C2A560F23002D05EA /* CalendarElement.swift */,
 				A5B9707D2A70501D0039A193 /* HabitTile.swift */,
 				C5043B322A76BAF2008A5CC2 /* WeekPicker.swift */,
 				C5043B362A770A7F008A5CC2 /* TestView.swift */,
@@ -344,8 +339,6 @@
 			isa = PBXGroup;
 			children = (
 				A53384AD2A40CEA70057F231 /* Model.xcdatamodeld */,
-				A53384C82A40F7860057F231 /* ItemModel.swift */,
-				5FE7AADE2A56C54500C03E3F /* HabitModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -522,11 +515,10 @@
 				A53384C12A40F3340057F231 /* CalendarView.swift in Sources */,
 				5F20CEF82A7D3719005230BC /* PageModel.swift in Sources */,
 				5FA0DC1B2A7D72ED0053CAED /* UserViewModel.swift in Sources */,
-				A53384C92A40F7860057F231 /* ItemModel.swift in Sources */,
 				A51F03182A70A48200210E38 /* TabBarView.swift in Sources */,
 				A53384C42A40F3FA0057F231 /* PrimaryButton.swift in Sources */,
 				A53384F22A4104130057F231 /* Appointment+CoreDataProperties.swift in Sources */,
-				C5444A2D2A560F23002D05EA /* CalenderList.swift in Sources */,
+				C5444A2D2A560F23002D05EA /* CalendarElement.swift in Sources */,
 				5F20CEED2A7AC42B005230BC /* NotificationManager.swift in Sources */,
 				A59693612A43C3D6003CF220 /* NavigationBarViewModel.swift in Sources */,
 				A53384B42A40E9A60057F231 /* ToDosViewModel.swift in Sources */,
@@ -543,7 +535,6 @@
 				A53384B12A40CF3D0057F231 /* DataController.swift in Sources */,
 				5FFA70762A5573DC006B313F /* AddToDoSheetView.swift in Sources */,
 				A529CF302A7C402700C9E4A1 /* DateService.swift in Sources */,
-				5FE7AADF2A56C54500C03E3F /* HabitModel.swift in Sources */,
 				A53384D12A40F98F0057F231 /* ToDoListView.swift in Sources */,
 				A53384CE2A40F8E40057F231 /* HabitView.swift in Sources */,
 				A53384D32A40F9B90057F231 /* ListRowView.swift in Sources */,
@@ -551,7 +542,6 @@
 				A53384842A40CE210057F231 /* Habit_Flow_V2App.swift in Sources */,
 				5FFA70782A5577D7006B313F /* AddHabitSheetView.swift in Sources */,
 				A53384CB2A40F8110057F231 /* CircularProgressView.swift in Sources */,
-				C56DB1172A844F3200F5D1FE /* EditHabitSheetView.swift in Sources */,
 				A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */,
 				A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */,
 				A5DAC60F2A7952BD00BD4CAA /* Habit+CoreDataClass.swift in Sources */,

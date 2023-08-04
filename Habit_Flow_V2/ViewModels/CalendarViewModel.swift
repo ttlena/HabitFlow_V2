@@ -42,12 +42,12 @@ class CalendarViewModel: ObservableObject {
     @Published var editedEventColor: String = "red"
     
     let notificationManager = NotificationManager()
-    
+    private var dateService:DateService
+
     
     init() {
+        self.dateService = DateService()
         fetchData()
-        //deleteAllAppointments()
-        //structuredAppointmentsMap.removeAll()
         setupListener()
     }
     
@@ -111,23 +111,6 @@ class CalendarViewModel: ObservableObject {
         return week
     }
     
-   
-    
-
-    /*
-     func getPreAndNextDays() -> [Date] {
-     var calendar = Calendar.autoupdatingCurrent
-     let today = calendar.startOfDay(for: Date())
-     var week : [Date] = []
-     
-     for i in -3...3 {
-     if let day = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
-     week += [day]
-     }
-     }
-     return week
-     }
-     */
     
     func setCurrentEditedAppointmentById(id: UUID) {
         if let appointment = getAppointmentById(id: id) {
@@ -320,22 +303,7 @@ class CalendarViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-    
-    /* private func setupEndDateValidationListener() {
-     $editedEndDate
-     .sink { [weak self] newEndDate in
-     guard let self = self else { return }
-     
-     let currentEditedDate = self?.editedDate
-     
-     if currentEditedDate >= newEndDate {
-     self.editedEndDate = currentEditedDate
-     } else {
-     self.editedEndDate = newEndDate
-     }
-     }
-     .store(in: &cancellables)
-     }*/
+
     
     func addOneHour(to date: Date) -> Date? {
         let calendar = Calendar.current
