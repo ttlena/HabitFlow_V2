@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  Habit_Flow_V2
 //
-//  Created by Lena Ngo on 04.08.23.
+//  Created by Marc Bachmann on 04.08.23.
 //
 //
 
@@ -17,15 +17,15 @@ extension User {
     }
 
     @NSManaged public var birthday: Date?
+    @NSManaged public var firstStart: Bool
     @NSManaged public var id: UUID?
     @NSManaged public var name: UUID?
+    @NSManaged public var profilePicture: Data?
+    @NSManaged public var userName: String?
     @NSManaged public var appointments: NSSet?
-    @NSManaged public var habits: NSSet?
     @NSManaged public var datekeeper: DateKeeper?
+    @NSManaged public var habits: NSSet?
     @NSManaged public var todos: NSSet?
-    @NSManaged public var firstStart: Bool
-    @NSManaged public var profilePicture: String
-    @NSManaged public var userName: String
 
 }
 

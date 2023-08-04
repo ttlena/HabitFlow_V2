@@ -18,13 +18,28 @@ struct HomeView: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     HStack {
-                        Text("Hallo " + userViewModel.user.userName + "!")
+                        Text("Hallo " + (userViewModel.user.userName ??  "Du") + "!")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
                             .padding([.top, .bottom, .trailing], 20.0)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundColor(.white)
-                        Image("ProfilePic")
+                        
+                        if let imageData = userViewModel.user.profilePicture{
+                            if let image = UIImage(data: imageData) {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 80, height: 80)
+                                    .clipShape(Circle())
+                                }
+                        }else {
+                            Image("defaultProfilePicture")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .clipShape(Circle())
+                        }
                     }
                     Spacer()
                         .frame(height: 40)

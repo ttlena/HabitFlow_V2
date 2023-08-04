@@ -181,6 +181,9 @@ struct IntroView: View {
     func incrementPageProfile() {
         if(textIsAppropiate()) {
             userViewModel.user.userName = textFieldInput
+            if let profilePicturePresent = selectedImage{
+                userViewModel.user.profilePicture = selectedImage!.jpegData(compressionQuality: 0.8)
+            }
             presentationMode.wrappedValue.dismiss()
             pageIndex += 1
         }
