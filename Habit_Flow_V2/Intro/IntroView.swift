@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct IntroView: View {
+    @Environment(\.presentationMode) var presentationMode
     @State private var pageIndex = 0
     @StateObject var userViewModel: UserViewModel
     private let pages: [Page] = Page.samplePages
@@ -18,6 +19,8 @@ struct IntroView: View {
     @State private var showImagePicker: Bool = false
     
     @State var textFieldInput: String = ""
+    @State var alertTitle: String = ""
+    @State var showAlert: Bool = false
     
     var body: some View {
         TabView(selection: $pageIndex) {
@@ -104,7 +107,7 @@ struct IntroView: View {
 
                         Spacer()
                         
-                        Button("Weiter", action: incrementPage)
+                        Button("Weiter", action: incrementPageProfile)
                             .foregroundColor(.white)
                             .font(.title3)
                             .fontWeight(.semibold)
@@ -137,6 +140,8 @@ struct IntroView: View {
         .animation(.easeInOut, value: pageIndex)
         .tabViewStyle(.page)
         .indexViewStyle(.page(backgroundDisplayMode: .interactive))
+        .alert(isPresented: $showAlert, content: getAlert)
+
         .onAppear {
             dotAppearance.currentPageIndicatorTintColor = .orange
             dotAppearance.pageIndicatorTintColor = .gray
@@ -159,6 +164,27 @@ struct IntroView: View {
     func toggleFirstStarted() {
         userViewModel.toggleFirstStarted()
     }
+    
+    func textIsAppropiate() -> Bool {
+        if textFieldInput.count < 1 {
+            alertTitle = "Gebe noch deinen Namen ein"
+            showAlert.toggle()
+            return false
+        }
+        return true
+    }
+    
+    func getAlert() -> Alert {
+        return Alert(title: Text(alertTitle))
+    }
+    
+    func incrementPageProfile() {
+        if(textIsAppropiate()) {
+            presentationMode.wrappedValue.dismiss()
+            pageIndex += 1
+        }
+    }
+    
 }
 
 struct IntroView_Previews: PreviewProvider {
