@@ -24,6 +24,7 @@ struct WeekPicker: View {
                         }
                 }
             }
+  
         }
         .padding(.vertical)
     }
