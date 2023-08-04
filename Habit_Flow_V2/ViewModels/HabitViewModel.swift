@@ -10,7 +10,6 @@ import CoreData
 
 class HabitViewModel:ObservableObject {
     private var dataController = DataController(name: "Model")
-    private let dataService = DateService()
     @Published var habits: [Habit] = []
     @Published var habitsToday: [Habit] = []
     @Published var newHabitTitle = ""
@@ -38,11 +37,7 @@ class HabitViewModel:ObservableObject {
     init() {
         self.dateService = DateService()
         fetchData()
-        if dateService.checkIfNewWeek() {
-            for habit in habits {
-                setCurrentTo0(habit: habit)
-            }
-        }
+//        checkIfResetNecessary()
     }
     
     func fetchData() {
@@ -58,6 +53,58 @@ class HabitViewModel:ObservableObject {
             self.habitsTodayRemovingList = self.habitsToday
             self.habitsTodayRemovingList = self.showOnlyUncheckedHabits(habitsToday: self.habitsTodayRemovingList)
         }
+    }
+    
+    func checkIfResetNecessary() {
+        if dateService.checkIfNewWeek() {
+            for habit in habits {
+                habit.current = 0
+                habit.progress = Double(habit.current) / Double(habit.goal)
+                habit.goal = Int16(habit.weekdays?.count ?? 0)
+            }
+        }
+        
+        if dateService.checkIfNewMonth() {
+            print("-------new month")
+            for habit in habits {
+                habit.currentInMonth = 0
+                habit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth(in: habit.weekdays ?? []))
+            }
+        }
+        
+        if dateService.checkIfNewYear() {
+            for habit in habits {
+                habit.currentInYear = 0
+                habit.goalInYear = Int16(occurrencesOfWeekdaysInCurrentYear(in: habit.weekdays ?? []))
+            }
+        }
+        save()
+        fetchData()
+    }
+    
+    func setCurrentTo0(habit: Habit) {
+//        if (habit.current == habit.goal) {
+            habit.current = 0
+            habit.progress = Double(habit.current) / Double(habit.goal)
+            habit.goal = Int16(habit.weekdays?.count ?? 0)
+
+//        }
+        print("set current to 0 aufgerufen")
+//        if (habit.currentInMonth == habit.goalInMonth) {
+//            habit.currentInMonth = 0
+//            habit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth(in: habit.weekdays ?? []))
+//
+//
+//        }
+
+        if(habit.currentInYear == habit.goalInYear) {
+            habit.currentInYear = 0
+            habit.goalInYear = Int16(occurrencesOfWeekdaysInCurrentYear(in: habit.weekdays ?? []))
+        }
+
+        save()
+        fetchData()
+       // plusButtonClicked = false
     }
     
     func getHabitsBasedOnWeekday(pickedDate: Date) -> [Habit] {
@@ -471,7 +518,7 @@ class HabitViewModel:ObservableObject {
             try dataController.container.viewContext.save()
             //print("saved!")
         } catch {
-            print("speichern failed")
+            print("HabitVM - speichern failed")
         }
     }
     
@@ -542,42 +589,12 @@ class HabitViewModel:ObservableObject {
     
 
     
-    func setCurrentTo0(habit: Habit) {
-//        if (habit.current == habit.goal) {
-            habit.current = 0
-            habit.progress = Double(habit.current) / Double(habit.goal)
-            habit.goal = Int16(habit.weekdays?.count ?? 0)
-            
-//        }
-        if (habit.currentInMonth == habit.goalInMonth) {
-            habit.currentInMonth = 0
-            habit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth(in: habit.weekdays ?? []))
-
-            
-        }
-        
-        if(habit.currentInYear == habit.goalInYear) {
-            habit.currentInYear = 0
-            habit.goalInYear = Int16(occurrencesOfWeekdaysInCurrentYear(in: habit.weekdays ?? []))
-        }
-        
-        save()
-        fetchData()
-       // plusButtonClicked = false
-    }
+   
     
     func setEditHabit(habit: Habit) {
         editHabitTitle = habit.title ?? "Unknown"
         selectedDays = habit.weekdays ?? []
     
-    }
-    
-    func resetCurrentOfWeek() {
-        for habit in habits {
-            setCurrentTo0(habit: habit)
-        }
-        save()
-        fetchData()
     }
     
     /*

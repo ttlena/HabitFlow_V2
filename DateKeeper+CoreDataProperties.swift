@@ -19,6 +19,8 @@ extension DateKeeper {
     @NSManaged public var lastWeek: Int64
     @NSManaged public var nextWeekStarted: Bool
     @NSManaged public var currentWeek: Int64
+    @NSManaged public var currentMonth: Int64
+    @NSManaged public var currentYear: Int64
     @NSManaged public var id: UUID?
     @NSManaged public var origin: User?
 

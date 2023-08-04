@@ -95,7 +95,7 @@ class ToDosViewModel:ObservableObject {
             try dataController.container.viewContext.save()
             //print("saved!")
         } catch {
-            print("speichern failed")
+            print("ToDoVM - speichern failed")
         }
     }
     

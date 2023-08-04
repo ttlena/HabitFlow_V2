@@ -16,7 +16,7 @@ struct HabitsView: View {
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
-
+    
     var body: some View {
         VStack{
             HStack{
@@ -71,7 +71,10 @@ struct HabitsView: View {
             }
             
         }
-        .onAppear{UIApplication.shared.applicationIconBadgeNumber = 0}
+        .onAppear{
+            UIApplication.shared.applicationIconBadgeNumber = 0
+            habitsViewModel.checkIfResetNecessary()
+        }
     }
     
     func newHabit() {
