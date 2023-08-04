@@ -21,10 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
            // Diese Methode wird jedes Mal ausgeführt, wenn die App in den Vordergrund geholt wird.
-           // Führe hier den gewünschten Code aus.
-
-           // Beispiel: Zeige eine Nachricht in der Konsole an.
            UIApplication.shared.applicationIconBadgeNumber = 0
-           print("Die App wurde geöffnet!")
        }
 }

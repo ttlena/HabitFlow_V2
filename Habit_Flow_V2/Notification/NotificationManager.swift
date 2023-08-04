@@ -33,7 +33,6 @@ class NotificationManager {
         content.sound = .default
         content.badge = 1
         
-        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
         var dateComponents = DateComponents()
         dateComponents.hour = 21
         dateComponents.minute = 00
@@ -42,6 +41,26 @@ class NotificationManager {
         
         let request = UNNotificationRequest(
             identifier: "habitFlow.toDoNotification",
+            content: content,
+            trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+    }
+    
+    func habitsNotification(numberOfOpenHabits: Int) {
+        let content = UNMutableNotificationContent()
+        content.title = "Do hast noch Habits zu erledigen!"
+        content.subtitle = "Erledige noch " + String(numberOfOpenHabits) + " Habits um deinen Streak zu behalten!"
+        content.sound = .default
+        content.badge = 1
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = 20
+        dateComponents.minute = 00
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        let request = UNNotificationRequest(
+            identifier: "habitFlow.habitNotification",
             content: content,
             trigger: trigger)
         UNUserNotificationCenter.current().add(request)

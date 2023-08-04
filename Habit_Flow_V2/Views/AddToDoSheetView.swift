@@ -52,7 +52,7 @@ struct AddToDoSheetView: View {
         .alert(isPresented: $showAlert, content: getAlert)
         .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now()) {
-                        isTextFieldFocused = true // Fokuszustand beim Aufrufen der View setzen
+                        isTextFieldFocused = true 
                     }
                 }
         

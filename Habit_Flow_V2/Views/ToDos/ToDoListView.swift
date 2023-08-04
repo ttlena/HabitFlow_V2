@@ -61,22 +61,20 @@ struct ToDoListView: View {
                 ForEach(toDosViewModel.filteredToDos) { item in
                     ListRowView(item: item)
                         .overlay(
-                            Button(action: {
-                                if calendarViewModel.getDateDayNumber(date: item.date ?? Date()) != calendarViewModel.getDateDayNumber(date: Date()) {
-                                    alertTitle = "Du kannst dieses ToDo noch nicht abhaken."
-                                    showAlert.toggle()
-                                } else {
-                                    withAnimation(.linear(duration: 0)) {
-                                        toDosViewModel.updateItem(obj: item)
-                                    }
-                                    triggerHapticFeedback()
-                                }
-                            }, label: {
-                                // Du kannst hier ein "unsichtbares" Aussehen für den Button definieren
-                                // Z.B. keine Hintergrundfarbe und keine Rahmenlinie
-                                Color.clear
-                            })
-                        )
+                                        Button(action: {
+                                            if calendarViewModel.getDateDayNumber(date: item.date ?? Date()) != calendarViewModel.getDateDayNumber(date: Date()) {
+                                                alertTitle = "Du kannst dieses ToDo noch nicht abhaken."
+                                                showAlert.toggle()
+                                            } else {
+                                                withAnimation(.linear(duration: 0)) {
+                                                    toDosViewModel.updateItem(obj: item)
+                                                }
+                                                triggerHapticFeedback()
+                                            }
+                                        }, label: {
+                                            Color.clear
+                                        })
+                                    )
                         .swipeActions(edge: .leading) {
                             
                             Button(action: {
@@ -86,7 +84,7 @@ struct ToDoListView: View {
                             }) {
                                 Label("Erledigt", systemImage: "arrow.uturn.forward")
                             }
-                            .tint(.orange) // Ändere die Farbe der Aktion, wenn gewünscht
+                            .tint(.orange)
                         }
                 }
                 .onDelete{ indexSet in
@@ -116,16 +114,9 @@ struct ToDoListView: View {
         .frame(maxHeight: .infinity, alignment: .bottom)
         .sheet(isPresented: $showingBottomSheet) {
             AddToDoSheetView(toDosViewModel:toDosViewModel, pickedDate:calendarViewModel.pickedDate)
-                .presentationDetents([.medium, .large])
+                .presentationDetents([.large])
         }
-        /*
-         .navigationTitle("ToDo's")
-         .navigationBarItems(
-         leading: EditButton(),
-         trailing:
-         NavigationLink("Add", destination: AddView())
-         )
-         */
+        
     }
     
     func newToDo() {
