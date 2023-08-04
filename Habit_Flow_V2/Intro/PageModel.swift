@@ -18,7 +18,8 @@ struct Page: Identifiable, Equatable {
     
     static var samplePages: [Page] = [
     Page(name: "Wilkommen bei Habit Flow", description: "Description Test", imageUrl: "Success", tag: 0),
-    Page(name: "Alles unter einem Hut", description: "Habit Flow fasst einen Kalender, deine ToDo Liste sowie deine Habits in einer App zusammen.", imageUrl: "Success", tag: 1),
-    Page(name: "Benachrichtigungen", description: "Lasse Benachrichtigungen zu, damit du keine Termine verpasst und deine ToDo's und Habits jeden Tag erledigst", imageUrl: "Notification", tag: 2),
-    Page(name: "Los geht's!", description: "Du bist nun startklar.", imageUrl: "Done", tag: 3)]
+    Page(name: "Alles unter einem Hut", description: "Habit Flow fasst einen Kalender, deine ToDo Liste sowie deine Habits in einer App zusammen.", imageUrl: "Leader", tag: 1),
+    Page(name: "Benachrichtigungen", description: "Lasse Benachrichtigungen zu, damit du keine Termine verpasst und deine ToDo's und Habits jeden Tag erledigst.", imageUrl: "Notification", tag: 2),
+    Page(name: "Ein letzter Schritt", description: "Füge noch deinen Namen und Profilbild hinzu, damit wir dich kennen lernen.", imageUrl: "Welcome", tag: 3),
+    Page(name: "Los geht's!", description: "Du bist nun startklar.", imageUrl: "Done", tag: 4)]
 }
