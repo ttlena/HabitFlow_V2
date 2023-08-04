@@ -180,6 +180,7 @@ struct IntroView: View {
     
     func incrementPageProfile() {
         if(textIsAppropiate()) {
+            userViewModel.user.userName = textFieldInput
             presentationMode.wrappedValue.dismiss()
             pageIndex += 1
         }

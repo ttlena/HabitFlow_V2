@@ -25,6 +25,7 @@ extension User {
     @NSManaged public var todos: NSSet?
     @NSManaged public var firstStart: Bool
     @NSManaged public var profilePicture: String
+    @NSManaged public var userName: String
 
 }
 

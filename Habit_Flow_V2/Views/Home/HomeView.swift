@@ -11,13 +11,14 @@ struct HomeView: View {
     @StateObject var habitViewModel: HabitViewModel
     @StateObject var toDosViewModel: ToDosViewModel
     @StateObject var calendarViewModel: CalendarViewModel
+    @StateObject var userViewModel: UserViewModel
     
     var body: some View {
         VStack {
             ScrollView(showsIndicators: false) {
                 VStack {
                     HStack {
-                        Text("Hallo Jens!")
+                        Text("Hallo " + userViewModel.user.userName + "!")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
                             .padding([.top, .bottom, .trailing], 20.0)
@@ -50,6 +51,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(habitViewModel: HabitViewModel(), toDosViewModel: ToDosViewModel(), calendarViewModel: CalendarViewModel())
+        HomeView(habitViewModel: HabitViewModel(), toDosViewModel: ToDosViewModel(), calendarViewModel: CalendarViewModel(), userViewModel: UserViewModel())
     }
 }

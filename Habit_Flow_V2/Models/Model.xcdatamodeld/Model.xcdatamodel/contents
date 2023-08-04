@@ -47,6 +47,7 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="profilePicture" optional="YES" attributeType="String"/>
+        <attribute name="userName" optional="YES" attributeType="String"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="origin" inverseEntity="Appointment"/>
         <relationship name="datekeeper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DateKeeper" inverseName="origin" inverseEntity="DateKeeper"/>
         <relationship name="habits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Habit" inverseName="origin" inverseEntity="Habit"/>
