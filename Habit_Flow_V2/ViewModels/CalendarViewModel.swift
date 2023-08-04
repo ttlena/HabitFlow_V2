@@ -110,6 +110,10 @@ class CalendarViewModel: ObservableObject {
         }
         return week
     }
+    
+   
+    
+
     /*
      func getPreAndNextDays() -> [Date] {
      var calendar = Calendar.autoupdatingCurrent

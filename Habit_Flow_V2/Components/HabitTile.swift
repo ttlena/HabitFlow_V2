@@ -120,7 +120,7 @@ struct HabitTile: View {
                             .foregroundColor(.red)
                             .background(Color.white)
                             .clipShape(Circle())
-                            .padding(.top, -126)
+                            .padding(.top, -140)
                             .padding(.trailing, 3)
                             .onTapGesture {
                                 habitVM.deleteHabit(habit: habit)

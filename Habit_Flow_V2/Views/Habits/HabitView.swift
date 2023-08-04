@@ -20,7 +20,7 @@ struct HabitsView: View {
     var body: some View {
         VStack{
             HStack{
-                Text("Daily Habits")
+                Text("Habits")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                     .padding(0)
