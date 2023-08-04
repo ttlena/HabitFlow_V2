@@ -16,6 +16,8 @@ struct AddToDoSheetView: View {
     @State var alertTitle: String = ""
     @State var showAlert: Bool = false
     
+    @FocusState private var isTextFieldFocused: Bool
+    
     let fieldBackground = Color(red: 84, green: 84, blue:84)
     
     var body: some View {
@@ -31,6 +33,7 @@ struct AddToDoSheetView: View {
                 .frame(height: 41)
                 .background(Color(UIColor.systemGray2))
                 .cornerRadius(12)
+                .focused($isTextFieldFocused)
             Button(action: saveButtonPressed, label: {
                 Text("Speichern")
                     .foregroundColor(.white)
@@ -47,6 +50,12 @@ struct AddToDoSheetView: View {
         }
         .padding(39)
         .alert(isPresented: $showAlert, content: getAlert)
+        .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now()) {
+                        isTextFieldFocused = true // Fokuszustand beim Aufrufen der View setzen
+                    }
+                }
+        
     }
     
     func saveButtonPressed() {

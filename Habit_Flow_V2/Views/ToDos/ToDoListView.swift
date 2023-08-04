@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import CoreHaptics
+
 
 
 struct ToDoListView: View {
@@ -15,6 +17,8 @@ struct ToDoListView: View {
     @State var showingBottomSheet = false
     @State var showAlert: Bool = false
     @State var alertTitle: String = ""
+    
+    @State private var feedbackGenerator: UIImpactFeedbackGenerator? = nil
     
     var body: some View {
         
@@ -67,6 +71,7 @@ struct ToDoListView: View {
                                                 withAnimation(.linear(duration: 0)) {
                                                     toDosViewModel.updateItem(obj: item)
                                                 }
+                                                triggerHapticFeedback()
                                             }
                                         }, label: {
                                             // Du kannst hier ein "unsichtbares" Aussehen für den Button definieren
@@ -124,6 +129,13 @@ struct ToDoListView: View {
     
     func getAlert() -> Alert {
         return Alert(title: Text(alertTitle))
+    }
+    
+    func triggerHapticFeedback() {
+        feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        feedbackGenerator?.prepare()
+        feedbackGenerator?.impactOccurred()
+        feedbackGenerator = nil
     }
     
 }
