@@ -34,18 +34,31 @@ struct HabitsView: View {
                     .cornerRadius(12)
             }
             .padding([.horizontal], 25)
+            
+            
+            if(habitsViewModel.habits.count <= 0){
+                
+                Text("Noch keine Habits angelegt.")
+                    .font(.title3)
+                    //.frame(alignment: .leading)
+                    .padding([.top], 180)
+            }
+            
             ZStack {
-                List {
-                    LazyVGrid(columns: columns, spacing: 0) {
-                        
-                        ForEach(habitsViewModel.habits, id: \.self) { habit in
-                            HabitTile(habit: habit, habitVM: habitsViewModel)
-                                .frame(width: 190, height: 280)
+            
+                    List {
+                        LazyVGrid(columns: columns, spacing: 0) {
+                            
+                            ForEach(habitsViewModel.habits, id: \.self) { habit in
+                                HabitTile(habit: habit, habitVM: habitsViewModel)
+                                    .frame(width: 190, height: 280)
 
+                            }
                         }
                     }
-                }
-                .listStyle(.plain)
+                    .listStyle(.plain)
+                
+               
                 
                 PrimaryButton(labelMessage: "neues Habit", symbol: "plus", action: {
                     newHabit()
