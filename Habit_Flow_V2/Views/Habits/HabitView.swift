@@ -16,7 +16,7 @@ struct HabitsView: View {
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
-    
+
     var body: some View {
         VStack{
             HStack{
@@ -76,6 +76,7 @@ struct HabitsView: View {
     
     func newHabit() {
         showingBottomSheet.toggle()
+        habitsViewModel.resetHabitEntry()
         //
     }
     

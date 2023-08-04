@@ -23,7 +23,7 @@ struct NavigationBar: View {
         TabView(selection: $navigationBarViewModel.selectedTabIndex) {
             HomeView(habitViewModel: habitViewModel, toDosViewModel: toDosViewModel, calendarViewModel: calendarViewModel)
                 .tag(0)
-            CalendarView()
+            CalendarView(habitVM: habitViewModel)
                 .tag(1)
                 .environmentObject(calendarViewModel)
             ToDoListView(calendarViewModel: calendarViewModel)

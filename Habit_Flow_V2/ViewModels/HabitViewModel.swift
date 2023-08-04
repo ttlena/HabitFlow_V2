@@ -462,6 +462,7 @@ class HabitViewModel:ObservableObject {
         newHabitTitle = ""
         newHabitDuration = 0
         showAlert = false
+        selectedDays = []
     }
     
     func save() {
