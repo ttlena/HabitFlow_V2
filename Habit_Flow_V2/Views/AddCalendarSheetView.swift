@@ -7,7 +7,12 @@ struct AddCalendarSheetView: View {
     @State private var selectedColorIndex = 0
        
        // Define an array of colors to choose from
-    let colorPalette: [Color] = [.red, .blue, .green, .orange]
+    let colorPalette: [(name: String, color: Color)] = [
+        (name: "Rot", color: .red),
+        (name: "Blau", color: .blue),
+        (name: "Grün", color: .green),
+        (name: "Gelb", color: .yellow)
+        ]
 
     
     var body: some View {
@@ -101,22 +106,34 @@ struct AddCalendarSheetView: View {
                     .environment(\.locale, Locale(identifier: "de_DE"))
                 
                 
-                Text("Event Color")
+                Text("Termin Farbe")
                                 .foregroundColor(.primary)
                                 .font(.headline)
                                 .padding(.top)
 
                
-                Picker("Event Color", selection: $selectedColorIndex) {
-                                ForEach(colorPalette.indices, id: \.self) { index in
-                                    Text("\(colorName(for: colorPalette[index]))")
-                                }
-                            }
-                            .pickerStyle(SegmentedPickerStyle())
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color(UIColor.systemGray5))
-                            .cornerRadius(12)
+                HStack(spacing: 4) { // Hinzugefügter Spacing zwischen den Buttons
+                               ForEach(colorPalette.indices, id: \.self) { index in
+                                   Button(action: {
+                                       selectedColorIndex = index
+                                       calendarVM.newEventColor = colorPalette[index].name // Übergebe die SwiftUI-Farbe
+                                   }) {
+                                       Text("\(colorPalette[index].name)")
+                                           .foregroundColor(.white)
+                                           .frame(maxWidth: .infinity)
+                                           .frame(height: 30) // Begrenze die Höhe der Buttons
+                                           .padding(.horizontal, 8) // Füge horizontalen Padding hinzu
+                                           .background(
+                                               index == selectedColorIndex ? colorPalette[index].color : Color.clear // Hervorheben der ausgewählten Farbe
+                                           )
+                                           .cornerRadius(15) // Runde die Ecken
+                                           .lineLimit(1) // Begrenze den Text auf eine Zeile
+                                   }
+                               }
+                           }
+                           .padding()
+                           .background(Color(UIColor.systemGray5))
+                           .cornerRadius(12)
 
                 
                 Toggle(isOn: $calendarVM.newEventReminder, label: {
@@ -149,7 +166,7 @@ struct AddCalendarSheetView: View {
                 }
                 
                 
-                Button(action: calendarVM.addNewAppointment, label: {
+                Button(action: saveButtonPressed, label: {
                     Text("Speichern")
                         .foregroundColor(.white)
                         .font(.title3)
@@ -165,20 +182,14 @@ struct AddCalendarSheetView: View {
         }
         .padding(39)
         .onChange(of: selectedColorIndex, perform: { value in
-                    // Update the selected color in the view model
-                    calendarVM.newEventColor = colorName(for: colorPalette[value])
+                    // Aktualisiere die ausgewählte Farbe im ViewModel
+                    calendarVM.newEventColor = colorPalette[selectedColorIndex].name
                 })
     }
-    
-    func colorName(for color: Color) -> String {
-            switch color {
-            case .red: return "Red"
-            case .blue: return "Blue"
-            case .green: return "Green"
-            case .orange: return "Orange"
-            default: return "Unknown"
-            }
-        }
+    func saveButtonPressed() {
+        calendarVM.addNewAppointment()
+        selectedColorIndex = 0
+    }
 }
 
 struct AddCalendarSheetView_Previews: PreviewProvider {

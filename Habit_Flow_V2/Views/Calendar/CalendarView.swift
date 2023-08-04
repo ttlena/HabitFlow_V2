@@ -111,16 +111,16 @@ struct CalendarView: View {
     
     func colorFromString(_ colorName: String) -> Color {
         switch colorName.lowercased() {
-        case "red":
+        case "rot":
             return .red
-        case "blue":
+        case "blau":
             return .blue
-        case "green":
+        case "grün":
             return .green
-        case "orange":
-            return .orange
+        case "gelb":
+            return .yellow
         default:
-            return .black
+            return .red
         }
     }
 }
