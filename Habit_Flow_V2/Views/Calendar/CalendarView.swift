@@ -39,7 +39,7 @@ struct CalendarView: View {
                                .padding(.leading, 8)
                        }
                        .padding()
-                       .background(Color.gray.opacity(0.4))
+                       .background(Color(UIColor.systemGray5))
                        .cornerRadius(20)
                        .onTapGesture {
                            withAnimation(.easeInOut) {

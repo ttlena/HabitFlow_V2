@@ -144,6 +144,10 @@ class CalendarViewModel: ObservableObject {
             editedEventReminder = appointment.remindMe
             editedEventReminderMinutes = appointment.reminderMinutes
             
+            if let appointmentColor = appointment.color {
+                editedEventColor = appointmentColor
+            }
+            
         }
     }
     
@@ -237,7 +241,7 @@ class CalendarViewModel: ObservableObject {
         if(editedEventReminder) {
             notificationManager.calendarNotification(minutesTilToDo: editedEventReminderMinutes, terminTitle: editedTitle, terminDate: editedDate, terminId: (editedAppointment?.id)!)
         }
-        
+        editedAppointment?.color = editedEventColor
         toggleBottomSheetEditAppointment()
         save()
         fetchData()
