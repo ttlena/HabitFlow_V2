@@ -24,8 +24,6 @@ struct ToDoListView: View {
         
         let filteredToDos = toDosViewModel.updateFilteredToDos(pickedDate: calendarViewModel.pickedDate)
         
-        //let filteredToDos = toDosViewModel.toDos.filter({calendarViewModel.deleteClockComponentFromDate(date: $0.date!) == calendarViewModel.deleteClockComponentFromDate(date: calendarViewModel.pickedDate)})
-        
         VStack {
             HStack{
                 Text("ToDo's")
@@ -74,8 +72,6 @@ struct ToDoListView: View {
                                                 triggerHapticFeedback()
                                             }
                                         }, label: {
-                                            // Du kannst hier ein "unsichtbares" Aussehen für den Button definieren
-                                            // Z.B. keine Hintergrundfarbe und keine Rahmenlinie
                                             Color.clear
                                         })
                                     )
@@ -88,7 +84,7 @@ struct ToDoListView: View {
                             }) {
                                 Label("Erledigt", systemImage: "arrow.uturn.forward")
                             }
-                            .tint(.orange) // Ändere die Farbe der Aktion, wenn gewünscht
+                            .tint(.orange)
                         }
                 }
                 .onDelete(perform: toDosViewModel.deleteItems)
@@ -111,16 +107,9 @@ struct ToDoListView: View {
         .frame(maxHeight: .infinity, alignment: .bottom)
         .sheet(isPresented: $showingBottomSheet) {
             AddToDoSheetView(toDosViewModel:toDosViewModel, pickedDate:calendarViewModel.pickedDate)
-                .presentationDetents([.medium, .large])
+                .presentationDetents([.large])
         }
-        /*
-         .navigationTitle("ToDo's")
-         .navigationBarItems(
-         leading: EditButton(),
-         trailing:
-         NavigationLink("Add", destination: AddView())
-         )
-         */
+        
     }
     
     func newToDo() {
