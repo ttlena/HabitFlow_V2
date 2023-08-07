@@ -20,7 +20,7 @@ struct DailyHabitsComponent: View {
             Text("Heutige Habits")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(.white)
-            if habitsVM.habits.isEmpty {
+            if habitsVM.habitsToday.isEmpty {
                 VStack {
                     Text("Heute hast du kein Habit zu erfüllen!")
                         .foregroundColor(.green)
@@ -32,7 +32,7 @@ struct DailyHabitsComponent: View {
             } else {
                 List {
                     LazyVGrid(columns: columns, spacing: 0) {
-                        ForEach(habitsVM.getHabitsBasedOnWeekday(habits: habitsVM.habits, pickedDate: Date()), id: \.self) { habit in
+                        ForEach(habitsVM.habitsToday, id: \.self) { habit in
                             HabitTile(habit: habit, habitVM: habitsVM)
                                 .frame(width: 175, height: 280) // Hier die gewünschte Breite und Höhe einstellen
                             

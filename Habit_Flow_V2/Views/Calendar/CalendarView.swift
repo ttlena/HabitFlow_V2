@@ -94,7 +94,7 @@ struct CalendarView: View {
                         }
                         Text("Habits")
 
-                        ForEach(habitVM.getHabitsBasedOnWeekday(habits: habitVM.habits, pickedDate: calendar.pickedDate)) { habit in
+                        ForEach(habitVM.getHabitsBasedOnWeekday(pickedDate: calendar.pickedDate)) { habit in
                             CalenderList(event: habit.title ?? "", eventType: "", time: "", endTime: "", imageName: "", recColor: Color.blue, calendarVM: calendar, id: habit.id.unsafelyUnwrapped)
                         }
                     }

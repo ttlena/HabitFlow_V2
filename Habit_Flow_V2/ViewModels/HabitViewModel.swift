@@ -12,6 +12,7 @@ class HabitViewModel:ObservableObject {
     private var dataController = DataController(name: "Model")
     private let dataService = DateService()
     @Published var habits: [Habit] = []
+    @Published var habitsToday: [Habit] = []
     @Published var newHabitTitle = ""
     @Published var newHabitDuration: Int16?
     @Published var showAlert: Bool = false
@@ -46,12 +47,13 @@ class HabitViewModel:ObservableObject {
         //        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         do {
             habits = try dataController.container.viewContext.fetch(request)
+            habitsToday = getHabitsBasedOnWeekday(pickedDate: Date())
         } catch {
             print("CoreData Error")
         }
     }
     
-    func getHabitsBasedOnWeekday(habits: [Habit], pickedDate: Date) -> [Habit] {
+    func getHabitsBasedOnWeekday(pickedDate: Date) -> [Habit] {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E"
         dateFormatter.locale = Locale(identifier: "de_DE")
