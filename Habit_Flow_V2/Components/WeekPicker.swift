@@ -18,7 +18,7 @@ struct WeekPicker: View {
                         .bold()
                         .foregroundColor(.white)
                         .frame(width: 40, height: 40)
-                        .background(habitVM.selectedDays.contains(day) ? Color.orange.cornerRadius(25) : Color.gray.cornerRadius(25))
+                        .background(habitVM.selectedDays.contains(day.lowercased()) ? Color.orange.cornerRadius(25) : Color.gray.cornerRadius(25))
                         .onTapGesture {
                             habitVM.toggleDaySelection(day: day)
                         }

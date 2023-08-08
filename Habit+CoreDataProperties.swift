@@ -27,6 +27,8 @@ extension Habit {
     @NSManaged public var title: String?
     @NSManaged public var weekdays: [String]?
     @NSManaged public var origin: User?
+    @NSManaged public var goalInMonth: Int16
+    @NSManaged public var goalInYear: Int16
 }
 
 extension Habit : Identifiable {

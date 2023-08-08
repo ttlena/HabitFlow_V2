@@ -20,7 +20,7 @@ struct CircularYearProgressView: View {
                     lineWidth: 15
                 )
             Circle()
-                .trim(from: 0, to: Double(habit.currentInYear) / Double(habitVM.calcYearGoalStatistics(habit: habit))) // 1
+                .trim(from: 0, to: Double(habit.currentInYear) / Double(habit.goalInYear)) // 1
                 .stroke(
                     Color.orange,
                     style: StrokeStyle(
@@ -29,11 +29,11 @@ struct CircularYearProgressView: View {
                     )
                 )
                 .rotationEffect(.degrees(-90))
-                .animation(.easeOut, value: Double(habit.currentInYear) / Double(habitVM.calcYearGoalStatistics(habit: habit)))
+                .animation(.easeOut, value: Double(habit.currentInYear) / Double(habit.goalInYear))
             Circle()
                 .foregroundColor(.clear)
             
-            if(habit.currentInYear >= habitVM.calcYearGoalStatistics(habit: habit)) {
+            if(habit.currentInYear >= habit.goalInYear) {
                 Image(systemName: "checkmark")
                     .resizable()
                     .frame(width: 30, height: 30)

@@ -21,10 +21,16 @@ class HabitViewModel:ObservableObject {
     @Published var habitMonthProgress: Int16?
     @Published var habitYearProgress: Int16?
     
+    private let notificationCenter = NotificationCenter.default
+    
+    
     
     init() {
+        let nextWeekDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date())!
+        
+        
         fetchData()
-        // deleteAll()
+        deleteAll()
     }
     
     func fetchData() {
@@ -37,16 +43,29 @@ class HabitViewModel:ObservableObject {
         }
     }
     
-    func calcMonthGoalStatistics(habit: Habit) -> Int16 {
-        //habitMonthGoal = habit.goal * Int16(numberOfDaysInCurrentMonth())
-        let goal = habit.goal * Int16(numberOfDaysInCurrentMonth())
-        
-        return goal
-    }
-    
-    func calcYearGoalStatistics(habit: Habit) -> Int16 {
-        return habit.goal * Int16(numberOfDaysInCurrentYear())
-    }
+    /*  func calcMonthGoalStatistics(habit: Habit) -> Int16 {
+     //habitMonthGoal = habit.goal * Int16(numberOfDaysInCurrentMonth())
+     //let goal = habit.goal * Int16(numberOfDaysInCurrentMonth())
+     
+     if let weekdays = habit.weekdays {
+     let goal = Int16(occurrencesOfWeekdaysInCurrentMonth(in: weekdays))
+     return goal
+     } else {
+     print("Keine Wochentage angegeben.")
+     return 0
+     }
+     }
+     
+     func calcYearGoalStatistics(habit: Habit) -> Int16 {
+     //return habit.goal * Int16(numberOfDaysInCurrentYear())
+     if let weekdays = habit.weekdays {
+     let goal = Int16(occurrencesOfWeekdaysInCurrentYear(in: weekdays))
+     return goal
+     } else {
+     print("Keine Wochentage angegeben.")
+     return 0
+     }
+     }*/
     
     func calcMonthProgressStatistic(habit: Habit) -> Int16 {
         /* guard let previousCurrentsFromCurrentMonth = habit.previousCurrents?[currentMonth()] else {
@@ -109,7 +128,6 @@ class HabitViewModel:ObservableObject {
     }
     
     
-    
     func numberOfDaysInCurrentMonth() -> Int {
         let calendar = Calendar.current
         let currentDate = Date()
@@ -126,6 +144,224 @@ class HabitViewModel:ObservableObject {
         let numberOfDays = calendar.component(.day, from: lastDayOfMonth)
         return numberOfDays
     }
+    
+    
+    
+    func occurrencesOfWeekdaysInCurrentMonth(in weekdays: [String]) -> Int {
+        // Hole den aktuellen Kalender
+        let calendar = Calendar.current
+        
+        // Hole das aktuelle Datum
+        let currentDate = Date()
+        
+        // Hole das Jahr und den Monat aus dem aktuellen Datum
+        let year = calendar.component(.year, from: currentDate)
+        let month = calendar.component(.month, from: currentDate)
+        
+        // Erstelle ein DateComponents-Objekt mit dem ersten Tag des aktuellen Monats
+        var firstDateComponents = DateComponents()
+        firstDateComponents.year = year
+        firstDateComponents.month = month
+        firstDateComponents.day = 1
+        let firstDate = calendar.date(from: firstDateComponents)!
+        
+        // Erstelle ein DateComponents-Objekt mit dem ersten Tag des nächsten Monats
+        var nextMonthComponents = DateComponents()
+        nextMonthComponents.month = 1
+        let nextMonthDate = calendar.date(byAdding: nextMonthComponents, to: firstDate)!
+        
+        // Schleife über alle Tage des aktuellen Monats
+        var currentDateInLoop = firstDate
+        var occurrences = 0
+        
+        while currentDateInLoop < nextMonthDate {
+            // Hole den Wochentag des aktuellen Datums (z.B. "mo", "di" usw.)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "E"
+            let weekdayString = dateFormatter.string(from: currentDateInLoop).lowercased()
+            
+            // Prüfe, ob der Wochentag in der Eingabe enthalten ist
+            if weekdays.contains(String(weekdayString.dropLast())) {
+                occurrences += 1
+            }
+            
+            // Gehe zum nächsten Tag
+            currentDateInLoop = calendar.date(byAdding: .day, value: 1, to: currentDateInLoop)!
+        }
+        
+        return occurrences
+    }
+    
+    func occurrencesOfWeekdaysInCurrentMonth_dependentOnCurrentDay(in weekdays: [String]) -> Int {
+        // Hole den aktuellen Kalender
+        let calendar = Calendar.current
+        
+        // Hole das aktuelle Datum
+        let currentDate = Date()
+        
+        // Hole das Jahr und den Monat aus dem aktuellen Datum
+        let year = calendar.component(.year, from: currentDate)
+        let month = calendar.component(.month, from: currentDate)
+        
+        // Erstelle ein DateComponents-Objekt mit dem ersten Tag des aktuellen Monats
+        var firstDateComponents = DateComponents()
+        firstDateComponents.year = year
+        firstDateComponents.month = month
+        firstDateComponents.day = 1
+        let firstDate = calendar.date(from: firstDateComponents)!
+        
+        // Erstelle ein DateComponents-Objekt mit dem ersten Tag des nächsten Monats
+        var nextMonthComponents = DateComponents()
+        nextMonthComponents.month = 1
+        let nextMonthDate = calendar.date(byAdding: nextMonthComponents, to: firstDate)!
+        
+        // Schleife über alle Tage des aktuellen Monats
+        var currentDateInLoop = currentDate
+        var occurrences = 0
+        
+        while currentDateInLoop < nextMonthDate {
+            // Hole den Wochentag des aktuellen Datums (z.B. "mo", "di" usw.)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "E"
+            let weekdayString = dateFormatter.string(from: currentDateInLoop).lowercased()
+            
+            // Prüfe, ob der Wochentag in der Eingabe enthalten ist
+            if weekdays.contains(String(weekdayString.dropLast())) {
+                occurrences += 1
+            }
+            
+            // Gehe zum nächsten Tag
+            currentDateInLoop = calendar.date(byAdding: .day, value: 1, to: currentDateInLoop)!
+        }
+        
+        return occurrences
+    }
+    
+    
+    func occurrencesOfWeekdaysInCurrentWeek_dependOnCurrentDay(in weekdays: [String]) -> Int {
+        // Hole den aktuellen Kalender
+        let calendar = Calendar.current
+        
+        // Hole das aktuelle Datum
+        let currentDate = Date()
+        
+        // Ermittle den Start- und Endtag der aktuellen Woche
+        var startDate: Date = currentDate
+        var interval: TimeInterval = 0
+        _ = calendar.dateInterval(of: .weekOfYear, start: &startDate, interval: &interval, for: currentDate)
+        let endDate = startDate.addingTimeInterval(interval - 1)
+        
+        // Schleife über alle Tage der aktuellen Woche
+        var currentDateInLoop = currentDate
+        var occurrences = 0
+        
+        while currentDateInLoop <= endDate {
+            // Hole den Wochentag des aktuellen Datums (z.B. "mo", "di" usw.)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "E"
+            let weekdayString = dateFormatter.string(from: currentDateInLoop).lowercased()
+            
+            // Prüfe, ob der Wochentag in der Eingabe enthalten ist
+            if weekdays.contains(String(weekdayString.dropLast())) {
+                occurrences += 1
+            }
+            
+            // Gehe zum nächsten Tag
+            currentDateInLoop = calendar.date(byAdding: .day, value: 1, to: currentDateInLoop)!
+        }
+        
+        return occurrences
+    }
+    
+    
+    func occurrencesOfWeekdaysInCurrentYear(in weekdays: [String]) -> Int {
+        // Hole den aktuellen Kalender
+        let calendar = Calendar.current
+        
+        // Hole das aktuelle Datum
+        let currentDate = Date()
+        
+        // Hole das Jahr aus dem aktuellen Datum
+        let year = calendar.component(.year, from: currentDate)
+        
+        // Erstelle ein DateComponents-Objekt mit dem ersten Tag des aktuellen Jahres
+        var firstDateComponents = DateComponents()
+        firstDateComponents.year = year
+        firstDateComponents.month = 1
+        firstDateComponents.day = 1
+        let firstDateOfYear = calendar.date(from: firstDateComponents)!
+        
+        // Erstelle ein DateComponents-Objekt mit dem ersten Tag des nächsten Jahres
+        var nextYearComponents = DateComponents()
+        nextYearComponents.year = 1
+        let nextYearDate = calendar.date(byAdding: nextYearComponents, to: firstDateOfYear)!
+        
+        // Schleife über alle Tage des aktuellen Jahres
+        var currentDateInLoop = firstDateOfYear
+        var occurrences = 0
+        
+        while currentDateInLoop < nextYearDate {
+            // Hole den Wochentag des aktuellen Datums (z.B. "mo", "di" usw.)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "E"
+            let weekdayString = dateFormatter.string(from: currentDateInLoop).lowercased()
+            
+            // Prüfe, ob der Wochentag in der Eingabe enthalten ist
+            if weekdays.contains(String(weekdayString.dropLast())) {
+                occurrences += 1
+            }
+            
+            // Gehe zum nächsten Tag
+            currentDateInLoop = calendar.date(byAdding: .day, value: 1, to: currentDateInLoop)!
+        }
+        
+        return occurrences
+    }
+    
+    func occurrencesOfWeekdaysInCurrentYear_dependOnCurrentDay(in weekdays: [String]) -> Int {
+        // Hole den aktuellen Kalender
+        let calendar = Calendar.current
+        
+        // Hole das aktuelle Datum
+        let currentDate = Date()
+        
+        // Hole das Jahr aus dem aktuellen Datum
+        let year = calendar.component(.year, from: currentDate)
+        
+        // Erstelle ein DateComponents-Objekt mit dem ersten Tag des aktuellen Jahres
+        var firstDateComponents = DateComponents()
+        firstDateComponents.year = year
+        firstDateComponents.month = 1
+        firstDateComponents.day = 1
+        let firstDateOfYear = calendar.date(from: firstDateComponents)!
+        
+        // Erstelle ein DateComponents-Objekt mit dem ersten Tag des nächsten Jahres
+        var nextYearComponents = DateComponents()
+        nextYearComponents.year = 1
+        let nextYearDate = calendar.date(byAdding: nextYearComponents, to: firstDateOfYear)!
+        
+        // Schleife über alle Tage des aktuellen Jahres
+        var currentDateInLoop = currentDate
+        var occurrences = 0
+        
+        while currentDateInLoop < nextYearDate {
+            // Hole den Wochentag des aktuellen Datums (z.B. "mo", "di" usw.)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "E"
+            let weekdayString = dateFormatter.string(from: currentDateInLoop).lowercased()
+            
+            // Prüfe, ob der Wochentag in der Eingabe enthalten ist
+            if weekdays.contains(String(weekdayString.dropLast())) {
+                occurrences += 1
+            }
+            
+            // Gehe zum nächsten Tag
+            currentDateInLoop = calendar.date(byAdding: .day, value: 1, to: currentDateInLoop)!
+        }
+        
+        return occurrences
+    }
+    
     
     func numberOfDaysInCurrentYear() -> Int {
         let calendar = Calendar.current
@@ -151,11 +387,11 @@ class HabitViewModel:ObservableObject {
     
     
     func toggleDaySelection( day: String) {
-        if selectedDays.contains(day) {
-            selectedDays.removeAll(where: {$0 == day})
+        if selectedDays.contains(day.lowercased()) {
+            selectedDays.removeAll(where: {$0 == day.lowercased()})
             newHabitDuration = Int16(selectedDays.count)
         } else {
-            selectedDays.append(day)
+            selectedDays.append(day.lowercased())
             newHabitDuration = Int16(selectedDays.count)
         }
     }
@@ -165,26 +401,31 @@ class HabitViewModel:ObservableObject {
         newHabit.id = UUID()
         newHabit.title = newHabitTitle
         newHabit.weekdays = selectedDays
-        if let unpackedNewHabitDuration = newHabitDuration {
-            newHabit.goal = unpackedNewHabitDuration
-        }
+        // if let unpackedNewHabitDuration = newHabitDuration {
+        newHabit.goal = Int16(occurrencesOfWeekdaysInCurrentWeek_dependOnCurrentDay(in: selectedDays))//unpackedNewHabitDuration
+        print(newHabit.goal)
+        //}
+        newHabit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth_dependentOnCurrentDay(in: selectedDays))
+        print(newHabit.goalInMonth)
+        newHabit.goalInYear = Int16(occurrencesOfWeekdaysInCurrentYear_dependOnCurrentDay(in: selectedDays))
+        
         save()
         fetchData()
     }
     
-//    func addRandomHabit() {
-//        let task = ["clean", "wash", "study", "workout"]
-//        let chosenTask = task.randomElement()!
-//        let habit = Habit(context: dataController.container.viewContext)
-//        habit.id = UUID()
-//        habit.icon = "Waterdrop"
-//        habit.title = "\(chosenTask)"
-//        habit.current = Int16.random(in: 0...10)
-//        habit.goal = Int16.random(in: 5...100)
-//        habit.progress = Double(habit.current) / Double(habit.goal)
-//        save()
-//        fetchData()
-//    }
+    //    func addRandomHabit() {
+    //        let task = ["clean", "wash", "study", "workout"]
+    //        let chosenTask = task.randomElement()!
+    //        let habit = Habit(context: dataController.container.viewContext)
+    //        habit.id = UUID()
+    //        habit.icon = "Waterdrop"
+    //        habit.title = "\(chosenTask)"
+    //        habit.current = Int16.random(in: 0...10)
+    //        habit.goal = Int16.random(in: 5...100)
+    //        habit.progress = Double(habit.current) / Double(habit.goal)
+    //        save()
+    //        fetchData()
+    //    }
     
     func deleteAll() {
         for habit in habits {
@@ -270,16 +511,123 @@ class HabitViewModel:ObservableObject {
         if (habit.current == habit.goal) {
             habit.current = 0
             habit.progress = Double(habit.current) / Double(habit.goal)
+            habit.goal = Int16(habit.weekdays?.count ?? 0)
+            
         }
-        if (habit.currentInMonth == calcMonthGoalStatistics(habit: habit)) {
+        if (habit.currentInMonth == habit.goalInMonth) {
             habit.currentInMonth = 0
+            habit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth(in: selectedDays))
+            
         }
         
-        if(habit.currentInYear == calcYearGoalStatistics(habit: habit)) {
+        if(habit.currentInYear == habit.goalInYear) {
             habit.currentInYear = 0
+            habit.goalInYear = Int16(occurrencesOfWeekdaysInCurrentYear(in: selectedDays))
         }
         
         save()
         fetchData()
     }
+    
+    /*
+     //    private let notificationCenter = NotificationCenter.default
+     
+     /*init() {
+      // Observer registrieren, um auf Datumänderungen zu reagieren
+      notificationCenter.addObserver(self, selector: #selector(handleDateChangeNotification(_:)), name: UIApplication.significantTimeChangeNotification, object: nil)
+      }*/
+     
+     deinit {
+     // Observer entfernen, um Speicherlecks zu vermeiden
+     notificationCenter.removeObserver(self, name: UIApplication.significantTimeChangeNotification, object: nil)
+     }
+     
+     // Funktion, die prüft, ob eine neue Woche begonnen hat
+     func isNewWeek() -> Bool {
+     let calendar = Calendar.current
+     let today = Date()
+     let lastWeek = calendar.date(byAdding: .weekOfYear, value: -1, to: today)!
+     
+     let todayComponents = calendar.dateComponents([.weekOfYear], from: today)
+     let lastWeekComponents = calendar.dateComponents([.weekOfYear], from: lastWeek)
+     
+     // Wenn die Kalenderwoche der letzten Woche kleiner ist als die aktuelle Kalenderwoche, ist eine neue Woche gestartet.
+     return todayComponents.weekOfYear! > lastWeekComponents.weekOfYear!    }
+     // Funktion, die bei einer Datumänderung aufgerufen wird
+     @objc private func handleDateChangeNotification(_ notification: Notification) {
+     if isNewWeek() {
+     print("Eine neue Woche hat begonnen. Führe bestimmte Aktionen aus.")
+     // Hier kannst du die gewünschten Aktionen einfügen, die ausgeführt werden sollen, wenn eine neue Woche startet.
+     }
+     }
+     
+     
+     func setSimulationDate(date: Date) {
+     let calendar = Calendar.current
+     let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+     let newDate = calendar.date(from: components)!
+     
+     if #available(iOS 14.0, *) {
+     let selector = NSSelectorFromString("_setManualSystemDate:")
+     if ProcessInfo.processInfo.responds(to: selector) {
+     ProcessInfo.processInfo.perform(selector, with: newDate)
+     }
+     }
+     }
+     
+     }
+     
+     /*
+      class WeekChangeObserver {
+      init() {
+      NotificationCenter.default.addObserver(self, selector: #selector(weekDidChange), name: .NSCalendarDayChanged, object: nil)
+      }
+      
+      @objc private func weekDidChange() {
+      // Diese Methode wird aufgerufen, wenn eine neue Woche beginnt
+      print("Neue Woche hat begonnen!")
+      // Führe hier die gewünschten Aktionen für den Wochenwechsel aus
+      }
+      }
+      */
+     import UIKit
+     
+     
+     class MyViewController: UIViewController {
+     
+     override func viewDidLoad() {
+     super.viewDidLoad()
+     
+     // Observer registrieren, um auf Datumänderungen zu reagieren
+     NotificationCenter.default.addObserver(self, selector: #selector(handleDateChangeNotification(_:)), name: UIApplication.significantTimeChangeNotification, object: nil)
+     }
+     
+     // Funktion, die prüft, ob eine neue Woche begonnen hat
+     func isNewWeek() -> Bool {
+     let calendar = Calendar.current
+     let today = Date()
+     let lastWeek = calendar.date(byAdding: .weekOfYear, value: -1, to: today)!
+     
+     let todayComponents = calendar.dateComponents([.weekOfYear], from: today)
+     let lastWeekComponents = calendar.dateComponents([.weekOfYear], from: lastWeek)
+     
+     // Wenn die Kalenderwoche der letzten Woche kleiner ist als die aktuelle Kalenderwoche, ist eine neue Woche gestartet.
+     return todayComponents.weekOfYear! > lastWeekComponents.weekOfYear!
+     
+     }
+     
+     // Funktion, die bei einer Datumänderung aufgerufen wird
+     @objc func handleDateChangeNotification(_ notification: Notification) {
+     if isNewWeek() {
+     print("Eine neue Woche hat begonnen. Führe bestimmte Aktionen aus.")
+     // Hier kannst du die gewünschten Aktionen einfügen, die ausgeführt werden sollen, wenn eine neue Woche startet.
+     }
+     }
+     
+     deinit {
+     // Observer entfernen, um Speicherlecks zu vermeiden
+     NotificationCenter.default.removeObserver(self, name: UIApplication.significantTimeChangeNotification, object: nil)
+     }
+     }
+     */
 }

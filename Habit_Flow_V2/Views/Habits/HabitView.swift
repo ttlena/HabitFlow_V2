@@ -75,6 +75,7 @@ struct HabitsView: View {
     
     func newHabit() {
         showingBottomSheet.toggle()
+        //
     }
     
     // Helper function to calculate the height of HabitTile based on its content

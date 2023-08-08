@@ -20,7 +20,7 @@ struct CircularMonthProgressView: View {
                     lineWidth: 15
                 )
             Circle()
-                .trim(from: 0, to: Double(habit.currentInMonth) / Double(habitVM.calcMonthGoalStatistics(habit: habit))) // 1
+                .trim(from: 0, to: Double(habit.currentInMonth) / Double(habit.goalInMonth)) // 1
                 .stroke(
                     Color.orange,
                     style: StrokeStyle(
@@ -29,11 +29,11 @@ struct CircularMonthProgressView: View {
                     )
                 )
                 .rotationEffect(.degrees(-90))
-                .animation(.easeOut, value: Double(habit.currentInMonth) / Double(habitVM.calcMonthGoalStatistics(habit: habit)))
+                .animation(.easeOut, value: Double(habit.currentInMonth) / Double(habit.goalInMonth))
             Circle()
                 .foregroundColor(.clear)
             
-            if(habit.currentInMonth >= habitVM.calcMonthGoalStatistics(habit: habit)) {
+            if(habit.currentInMonth >= habit.goalInMonth) {
                 Image(systemName: "checkmark")
                     .resizable()
                     .frame(width: 30, height: 30)
@@ -50,3 +50,4 @@ struct CircularMonthProgressView: View {
     }
 }
 
+                      

@@ -28,7 +28,7 @@ struct HabitTile: View {
                     }
                     .padding()
                     CircularMonthProgressView(progress: habit.progress, habitVM: habitVM, habit: habit)
-                    Text("\(habit.currentInMonth)/\(habitVM.calcMonthGoalStatistics(habit: habit))")
+                    Text("\(habit.currentInMonth)/\(habit.goalInMonth)")
                         .padding(.bottom, 5)
                 }
                 .tag(1)
@@ -40,7 +40,7 @@ struct HabitTile: View {
                     }
                     .padding()
                     CircularYearProgressView(progress: habit.progress, habitVM: habitVM, habit: habit)
-                    Text("\(habit.currentInYear)/\(habitVM.calcYearGoalStatistics(habit: habit))")
+                    Text("\(habit.currentInYear)/\(habit.goalInYear)")
                         .padding(.bottom, 5)
                 }
                 .tag(2)
