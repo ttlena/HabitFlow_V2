@@ -19,7 +19,6 @@ class ToDosViewModel:ObservableObject {
     
     init() {
         fetchData()
-        toDosToday = updateFilteredToDos(pickedDate: Date.now)
     }
     
     func fetchData() {
@@ -27,6 +26,7 @@ class ToDosViewModel:ObservableObject {
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         do {
             toDos = try dataController.container.viewContext.fetch(request)
+            toDosToday = updateFilteredToDos(pickedDate: Date.now)
         } catch {
             print("CoreData Error")
         }
