@@ -63,7 +63,7 @@ class DateService: ObservableObject {
         let dayOfWeek = components.weekday
         print("Weekday \(dayOfWeek!)")
         print("nextWeekStarted \(dateKeeper.nextWeekStarted)")
-        if dayOfWeek == 2 && (dateKeeper.currentWeek != getCurrentWeek()){
+        if dateKeeper.currentWeek != getCurrentWeek(){
             dateKeeper.lastWeek = dateKeeper.currentWeek
             dateKeeper.currentWeek = Int64(getCurrentWeek())
             dateKeeper.nextWeekStarted = true
