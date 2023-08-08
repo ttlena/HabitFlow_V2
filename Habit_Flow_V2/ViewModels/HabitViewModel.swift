@@ -32,7 +32,6 @@ class HabitViewModel:ObservableObject {
     
     
     init() {
-//        let nextWeekDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date())!
         self.dateService = DateService()
         fetchData()
         if dateService.checkIfNewWeek() {
@@ -518,20 +517,6 @@ class HabitViewModel:ObservableObject {
         selectedDays = habit.weekdays ?? []
     
     }
-    
-//    func checkIfNewWeek() {
-//        let date = Date()
-//        let calendar = Calendar.current
-//        let components = calendar.dateComponents([.weekday], from: date)
-//        let dayOfWeek = components.weekday
-//        print("Weekday \(dayOfWeek!)")
-//        if !newWeekStarted && dayOfWeek == 5 {
-//            newWeekStarted = true
-//            resetCurrentOfWeek()
-//        } else {
-//            newWeekStarted = false
-//        }
-//    }
     
     func resetCurrentOfWeek() {
         for habit in habits {
