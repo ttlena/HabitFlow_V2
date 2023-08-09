@@ -98,7 +98,7 @@ struct CalendarView: View {
                                 event: habit.title ?? "",
                                 eventType: "", time: "",
                                 endTime: "", imageName: "",
-                                recColor: Color.blue,
+                                recColor: Color.orange,
                                 calendarVM: calendar,
                                 id: habit.id.unsafelyUnwrapped,
                                 isHabit: true
