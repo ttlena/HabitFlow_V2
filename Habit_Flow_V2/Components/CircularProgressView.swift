@@ -35,6 +35,7 @@ struct CircularProgressView: View {
             
             if(habit.current >= habit.goal) {
                 Button(action: {
+                    habitVM.plusButtonClicked = true
                     habitVM.setCurrentTo0(habit: habit)
                 }) {
                     Image(systemName: "checkmark")
@@ -45,6 +46,7 @@ struct CircularProgressView: View {
                 }
             } else {
                 Button(action: {
+                    habitVM.plusButtonClicked = true
                     habitVM.countUpHabbitDuration(habit: habit)
                 }) {
                     Image("Plus")

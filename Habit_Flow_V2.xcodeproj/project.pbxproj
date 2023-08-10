@@ -55,6 +55,7 @@
 		C537D7442A781E4A006F2D61 /* CircularMonthProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D7432A781E4A006F2D61 /* CircularMonthProgressView.swift */; };
 		C537D7462A783AED006F2D61 /* CircularYearProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D7452A783AED006F2D61 /* CircularYearProgressView.swift */; };
 		C5444A2D2A560F23002D05EA /* CalenderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5444A2C2A560F23002D05EA /* CalenderList.swift */; };
+		C56DB1172A844F3200F5D1FE /* EditHabitSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56DB1162A844F3200F5D1FE /* EditHabitSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		C537D7432A781E4A006F2D61 /* CircularMonthProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularMonthProgressView.swift; sourceTree = "<group>"; };
 		C537D7452A783AED006F2D61 /* CircularYearProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularYearProgressView.swift; sourceTree = "<group>"; };
 		C5444A2C2A560F23002D05EA /* CalenderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderList.swift; sourceTree = "<group>"; };
+		C56DB1162A844F3200F5D1FE /* EditHabitSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 				A53384B62A40F2080057F231 /* NavigationBarView.swift */,
 				5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */,
 				5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */,
+				C56DB1162A844F3200F5D1FE /* EditHabitSheetView.swift */,
 				5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */,
 				A53384BF2A40F2F40057F231 /* Calendar */,
 				A53384CC2A40F8D50057F231 /* Habits */,
@@ -493,6 +496,7 @@
 				A53384842A40CE210057F231 /* Habit_Flow_V2App.swift in Sources */,
 				5FFA70782A5577D7006B313F /* AddHabitSheetView.swift in Sources */,
 				A53384CB2A40F8110057F231 /* CircularProgressView.swift in Sources */,
+				C56DB1172A844F3200F5D1FE /* EditHabitSheetView.swift in Sources */,
 				A53384F42A4104130057F231 /* User+CoreDataProperties.swift in Sources */,
 				A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */,
 				A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */,

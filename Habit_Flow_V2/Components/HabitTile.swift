@@ -5,6 +5,8 @@ struct HabitTile: View {
     @StateObject var habitVM: HabitViewModel
     @State private var selectedTab = 0 // To track the currently selected tab
     @State private var showDeleteButton = false // To track when to show the delete button
+    @State var showingBottomSheet = false
+    
     
     var body: some View {
         VStack {
@@ -94,11 +96,26 @@ struct HabitTile: View {
         )
         .onTapGesture {
             showDeleteButton = false
+            editHabit()
         }
         .onLongPressGesture{
             showDeleteButton = true
             print("test")
         }
+        .sheet(isPresented: $showingBottomSheet) {
+                EditHabitSheetView(habitVM: habitVM, habit: habit)
+                    .presentationDetents([.medium, .large])
+        }
+        
+    }
+    
+    func editHabit() {
+        if !habitVM.plusButtonClicked {
+            habitVM.setEditHabit(habit: habit)
+            showingBottomSheet.toggle()
+
+        }
+        habitVM.plusButtonClicked = false
     }
 }
 
