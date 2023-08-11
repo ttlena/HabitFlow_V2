@@ -201,6 +201,7 @@ class CalendarViewModel: ObservableObject {
         newAppointment.date = newEventDate
         newAppointment.endDate = newEventEndDate
         
+        
         newAppointment.remindMe = newEventReminder
         newAppointment.reminderMinutes = newEventReminderMinutes
         newAppointment.color = newEventColor
@@ -222,6 +223,7 @@ class CalendarViewModel: ObservableObject {
         editedAppointment?.id = editedId
         editedAppointment?.date = editedDate
         editedAppointment?.title = editedTitle
+        editedAppointment?.endDate = editedEndDate
         
         editedAppointment?.remindMe = editedEventReminder
         editedAppointment?.reminderMinutes = editedEventReminderMinutes
