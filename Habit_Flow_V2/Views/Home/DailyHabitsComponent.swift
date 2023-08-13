@@ -21,7 +21,7 @@ struct DailyHabitsComponent: View {
                 Text("Heutige Habits")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.white)
-                Text("\(habitsVM.habitsToday.count - habitsVM.habitsTodayRemovingList.count)/\(habitsVM.habitsToday.count)")
+                Text("\(habitsVM.habitsToday.counpt - habitsVM.habitsTodayRemovingList.count)/\(habitsVM.habitsToday.count)")
                     .padding(10)
                     .padding([.horizontal], 15)
                     .fontWeight(.semibold)

@@ -319,5 +319,24 @@ class CalendarViewModel: ObservableObject {
         let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: currentTime)
         return calendar.date(bySettingHour: timeComponents.hour ?? 0, minute: timeComponents.minute ?? 0, second: timeComponents.second ?? 0, of: date) ?? date
     }
+    
+    func getNextAppointmentForToday() -> Appointment? {
+        let now = Date()
+        
+        let calendar = Calendar.current
+        let todayComponents = calendar.dateComponents([.year, .month, .day], from: now)
+        let startOfDay = calendar.date(from: todayComponents)!
+        let endOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: startOfDay)!
+        
+        let filteredAppointments = appointments.filter {
+            let isInToday = calendar.isDate($0.date!, inSameDayAs: now)
+                   return $0.date! > now && isInToday
+               }
+        
+        return filteredAppointments.min(by: { $0.date! < $1.date! })
+    }
+    
+    
+
 }
 

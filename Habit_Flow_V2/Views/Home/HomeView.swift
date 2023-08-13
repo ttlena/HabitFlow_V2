@@ -49,6 +49,9 @@ struct HomeView: View {
                     ToDoTodayComponent(toDosVM: toDosViewModel)
                     Spacer()
                         .frame(height: 25)
+                    CalendarTodayComponent(calendarVM: calendarViewModel)
+                    Spacer()
+                        .frame(height: 25)
                     DailyHabitsComponent(habitsVM: habitViewModel)
 
                 }

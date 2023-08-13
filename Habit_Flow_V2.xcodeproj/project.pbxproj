@@ -13,6 +13,7 @@
 		5F20CEFA2A7D3ADF005230BC /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20CEF92A7D3ADF005230BC /* PageView.swift */; };
 		5F20CEFC2A7D42B0005230BC /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20CEFB2A7D42B0005230BC /* IntroView.swift */; };
 		5F4A080D2A55A24D009D1AED /* AddCalendarSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */; };
+		5F91C1132A8611E500FBDDE2 /* CalendarTodayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F91C1122A8611E500FBDDE2 /* CalendarTodayComponent.swift */; };
 		5FA0DC1B2A7D72ED0053CAED /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA0DC1A2A7D72ED0053CAED /* UserViewModel.swift */; };
 		5FA0DC1D2A7D80EE0053CAED /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA0DC1C2A7D80EE0053CAED /* ImagePicker.swift */; };
 		5FA0DC262A7D9F3E0053CAED /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA0DC242A7D9F3E0053CAED /* User+CoreDataClass.swift */; };
@@ -88,6 +89,7 @@
 		5F20CEF92A7D3ADF005230BC /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		5F20CEFB2A7D42B0005230BC /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		5F4A080C2A55A24D009D1AED /* AddCalendarSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalendarSheetView.swift; sourceTree = "<group>"; };
+		5F91C1122A8611E500FBDDE2 /* CalendarTodayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTodayComponent.swift; sourceTree = "<group>"; };
 		5FA0DC1A2A7D72ED0053CAED /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		5FA0DC1C2A7D80EE0053CAED /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5FA0DC242A7D9F3E0053CAED /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -305,6 +307,7 @@
 				A53A41302A41161E008D64D2 /* ToDoTodayComponent.swift */,
 				A5B493E52A77E9010055B140 /* SingleTodayToDo.swift */,
 				A53384BB2A40F2AA0057F231 /* DailyHabitsComponent.swift */,
+				5F91C1122A8611E500FBDDE2 /* CalendarTodayComponent.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				C537D7462A783AED006F2D61 /* CircularYearProgressView.swift in Sources */,
 				5FA0DC262A7D9F3E0053CAED /* User+CoreDataClass.swift in Sources */,
 				C5043B372A770A7F008A5CC2 /* TestView.swift in Sources */,
+				5F91C1132A8611E500FBDDE2 /* CalendarTodayComponent.swift in Sources */,
 				A5688B462A7D01E800635978 /* DateKeeper+CoreDataProperties.swift in Sources */,
 				5F20CEFA2A7D3ADF005230BC /* PageView.swift in Sources */,
 				A53384BC2A40F2AA0057F231 /* DailyHabitsComponent.swift in Sources */,
