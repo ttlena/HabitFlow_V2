@@ -1,7 +1,14 @@
 import SwiftUI
 
+
 struct AddCalendarSheetView: View {
     @StateObject var calendarVM: CalendarViewModel
+    
+    @State private var selectedColorIndex = 0
+       
+       // Define an array of colors to choose from
+    let colorPalette: [Color] = [.red, .blue, .green, .orange]
+
     
     var body: some View {
         VStack {
@@ -29,13 +36,13 @@ struct AddCalendarSheetView: View {
                 
                 
                 Toggle(isOn: $calendarVM.editedEventReminder, label: {
-                                Text("Erinnerung")
-                            })
+                    Text("Erinnerung")
+                })
                 .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color(UIColor.systemGray5))
-                            .cornerRadius(12)
-
+                .frame(maxWidth: .infinity)
+                .background(Color(UIColor.systemGray5))
+                .cornerRadius(12)
+                
                 ScrollView {
                     if calendarVM.editedEventReminder {
                         VStack {
@@ -94,6 +101,23 @@ struct AddCalendarSheetView: View {
                     .environment(\.locale, Locale(identifier: "de_DE"))
                 
                 
+                Text("Event Color")
+                                .foregroundColor(.primary)
+                                .font(.headline)
+                                .padding(.top)
+
+               
+                Picker("Event Color", selection: $selectedColorIndex) {
+                                ForEach(colorPalette.indices, id: \.self) { index in
+                                    Text("\(colorName(for: colorPalette[index]))")
+                                }
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(12)
+
                 
                 Toggle(isOn: $calendarVM.newEventReminder, label: {
                                 Text("Erinnerung")
@@ -140,7 +164,21 @@ struct AddCalendarSheetView: View {
             }
         }
         .padding(39)
+        .onChange(of: selectedColorIndex, perform: { value in
+                    // Update the selected color in the view model
+                    calendarVM.newEventColor = colorName(for: colorPalette[value])
+                })
     }
+    
+    func colorName(for color: Color) -> String {
+            switch color {
+            case .red: return "Red"
+            case .blue: return "Blue"
+            case .green: return "Green"
+            case .orange: return "Orange"
+            default: return "Unknown"
+            }
+        }
 }
 
 struct AddCalendarSheetView_Previews: PreviewProvider {

@@ -23,6 +23,7 @@ extension Appointment {
     @NSManaged public var endDate: Date?
     @NSManaged public var remindMe: Bool
     @NSManaged public var reminderMinutes: Int
+    @NSManaged public var color: String?
 
 
 }
