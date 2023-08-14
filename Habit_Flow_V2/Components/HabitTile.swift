@@ -60,7 +60,7 @@ struct HabitTile: View {
                 }
                 .tag(0)
                 
-                VStack {
+                VStack (spacing: 3) {
                     HStack {
                         Text(habit.title ?? "Unknown")
                             .foregroundColor(.white)
@@ -74,7 +74,7 @@ struct HabitTile: View {
                 }
                 .tag(1)
                 
-                VStack {
+                VStack (spacing: 3){
                     HStack {
                         Text(habit.title ?? "Unknown")
                             .foregroundColor(.white)
