@@ -315,6 +315,8 @@ class CalendarViewModel: ObservableObject {
                         self?.newEventEndDate = unwrappedCurrentDate
                     }
                 }
+                
+                
             }
             .store(in: &cancellables)
     }

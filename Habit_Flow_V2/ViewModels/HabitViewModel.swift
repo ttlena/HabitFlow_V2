@@ -25,6 +25,7 @@ class HabitViewModel:ObservableObject {
     @Published var editHabitTitle = ""
     @Published var plusButtonClicked = false
     @Published var newWeekStarted = false
+    @Published var pickedToadayHabits: [Habit] = []
     
     private var dateService:DateService
     private let notificationCenter = NotificationCenter.default
@@ -476,6 +477,7 @@ class HabitViewModel:ObservableObject {
         }
 
         habit.progress = Double(habit.current) / Double(habit.goal)
+       // habit.lastHabitDone = Date()
         
         /*if (habit.current == habit.goal) {
          //addCurrentToCurrentInMonth(habit: habit)
@@ -487,6 +489,8 @@ class HabitViewModel:ObservableObject {
         fetchData()
        // plusButtonClicked = false
     }
+    
+
     
     func setCurrentTo0(habit: Habit) {
 //        if (habit.current == habit.goal) {

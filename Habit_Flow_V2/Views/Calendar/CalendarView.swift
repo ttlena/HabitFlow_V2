@@ -61,7 +61,7 @@ struct CalendarView: View {
                     //.padding(.bottom)
                 }
             }
-
+            
             
             //            CalenderList(event: "Laufen", eventType: "Habit", time: "20:00", imageName: "checkmark", recColor: Color.red)
             //            CalenderList(event: "Arzt", eventType: "Termin", time: "23:00", imageName: "checkmark", recColor: Color.blue)
@@ -70,7 +70,7 @@ struct CalendarView: View {
                 List {
                     if let dailyAppointments = calendar.structuredAppointmentsMap[calendar.deleteClockComponentFromDate(date: calendar.pickedDate)] {
                         Text("Termine")
-
+                        
                         ForEach(dailyAppointments, id: \.self) { event in
                             CalenderList(
                                 event: event.title ?? "",
@@ -82,7 +82,8 @@ struct CalendarView: View {
                                 //recColor: Color(.green),
                                 recColor: colorFromString(event.color ?? "red"),
                                 calendarVM: calendar,
-                                id: event.id.unsafelyUnwrapped
+                                id: event.id.unsafelyUnwrapped,
+                                isHabit: false
                             )
                         }
                         .onDelete { indices in
@@ -92,12 +93,15 @@ struct CalendarView: View {
                                 }
                             }
                         }
+                        
+                    }
+                    if habitVM.pickedToadayHabits != [] {
                         Text("Habits")
-
-                        ForEach(habitVM.getHabitsBasedOnWeekday(pickedDate: calendar.pickedDate)) { habit in
-                            CalenderList(event: habit.title ?? "", eventType: "", time: "", endTime: "", imageName: "", recColor: Color.blue, calendarVM: calendar, id: habit.id.unsafelyUnwrapped)
+                        ForEach(habitVM.pickedToadayHabits) { habit in
+                            CalenderList(event: habit.title ?? "", eventType: "", time: "", endTime: "", imageName: "", recColor: Color.blue, calendarVM: calendar, id: habit.id.unsafelyUnwrapped, isHabit: true)
                         }
                     }
+                    
                 }
                 .listStyle(PlainListStyle())
             }
@@ -113,6 +117,9 @@ struct CalendarView: View {
         .sheet(isPresented: $calendar.showingBottomSheet) {
             AddCalendarSheetView(calendarVM: calendar)
                 .presentationDetents([.large])
+        }
+        .onChange(of: calendar.pickedDate) { newDate in
+            habitVM.pickedToadayHabits = habitVM.getHabitsBasedOnWeekday(pickedDate: calendar.pickedDate)
         }
     }
     var dateFormatter: DateFormatter {

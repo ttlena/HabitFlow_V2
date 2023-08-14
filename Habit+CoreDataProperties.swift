@@ -29,6 +29,8 @@ extension Habit {
     @NSManaged public var origin: User?
     @NSManaged public var goalInMonth: Int16
     @NSManaged public var goalInYear: Int16
+    @NSManaged public var lastHabitDone: Date?
+
 }
 
 extension Habit : Identifiable {

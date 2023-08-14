@@ -18,6 +18,7 @@ struct CalenderList: View {
     @Environment(\.colorScheme) var colorScheme
     @StateObject var calendarVM: CalendarViewModel
     var id : UUID
+    var isHabit: Bool
     
     let gridItems = [
         GridItem(),
@@ -26,7 +27,7 @@ struct CalenderList: View {
         GridItem(),
     ]
     
-    init(event: String, eventType: String, time: String, endTime: String,  imageName: String, recColor: Color, calendarVM: CalendarViewModel, id: UUID) {
+    init(event: String, eventType: String, time: String, endTime: String,  imageName: String, recColor: Color, calendarVM: CalendarViewModel, id: UUID, isHabit: Bool) {
         self.event = event
         self.eventType = eventType
         self.time = time
@@ -35,12 +36,15 @@ struct CalenderList: View {
         self.recColor = recColor
         self._calendarVM = StateObject(wrappedValue: calendarVM)
         self.id = id
+        self.isHabit = isHabit
     }
     
     var body: some View {
         Button(action: {
-            calendarVM.setCurrentEditedAppointmentById(id: self.id)
-            calendarVM.toggleBottomSheetEditAppointment() // id mitgeben (bzw in published speichern), datum mitgeben , id aus map bzw appointment
+            if !isHabit {
+                calendarVM.setCurrentEditedAppointmentById(id: self.id)
+                calendarVM.toggleBottomSheetEditAppointment() 
+            }
         }) {
             VStack {
                 HStack {
@@ -76,6 +80,6 @@ struct CalenderList: View {
 struct CalenderList_Previews: PreviewProvider {
     static var previews: some View {
         let calendarVM = CalendarViewModel()
-        return CalenderList(event: "Trainieren", eventType: "Habit", time: "20:00", endTime: "22:00", imageName: "checkmark", recColor: Color.red, calendarVM: calendarVM, id: UUID())
+        return CalenderList(event: "Trainieren", eventType: "Habit", time: "20:00", endTime: "22:00", imageName: "checkmark", recColor: Color.red, calendarVM: calendarVM, id: UUID(), isHabit: false)
     }
 }
