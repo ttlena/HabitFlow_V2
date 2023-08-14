@@ -10,6 +10,7 @@ import CoreData
 
 class HabitViewModel:ObservableObject {
     private var dataController = DataController(name: "Model")
+    private let dataService = DateService()
     @Published var habits: [Habit] = []
     @Published var newHabitTitle = ""
     @Published var newHabitDuration: Int16?
@@ -24,14 +25,18 @@ class HabitViewModel:ObservableObject {
     @Published var plusButtonClicked = false
     @Published var newWeekStarted = false
     
+    private var dateService:DateService
     private let notificationCenter = NotificationCenter.default
     
     
     
     init() {
 //        let nextWeekDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date())!
+        self.dateService = DateService()
         fetchData()
-        checkIfNewWeek()
+        if dataService.checkIfNewWeek() {
+            resetCurrentOfWeek()
+        }
         //deleteAll()
     }
     
@@ -503,12 +508,12 @@ class HabitViewModel:ObservableObject {
     }
     
     func setCurrentTo0(habit: Habit) {
-        if (habit.current == habit.goal) {
+//        if (habit.current == habit.goal) {
             habit.current = 0
             habit.progress = Double(habit.current) / Double(habit.goal)
             habit.goal = Int16(habit.weekdays?.count ?? 0)
             
-        }
+//        }
         if (habit.currentInMonth == habit.goalInMonth) {
             habit.currentInMonth = 0
             habit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth(in: selectedDays))
@@ -547,7 +552,7 @@ class HabitViewModel:ObservableObject {
     
     func resetCurrentOfWeek() {
         for habit in habits {
-            habit.current = 0
+            setCurrentTo0(habit: habit)
         }
         save()
         fetchData()
