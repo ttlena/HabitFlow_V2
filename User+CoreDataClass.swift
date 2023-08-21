@@ -2,7 +2,7 @@
 //  User+CoreDataClass.swift
 //  Habit_Flow_V2
 //
-//  Created by Lena Ngo on 19.06.23.
+//  Created by Lena Ngo on 04.08.23.
 //
 //
 

@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  Habit_Flow_V2
 //
-//  Created by Lena Ngo on 19.06.23.
+//  Created by Lena Ngo on 04.08.23.
 //
 //
 
@@ -21,25 +21,8 @@ extension User {
     @NSManaged public var name: UUID?
     @NSManaged public var appointments: NSSet?
     @NSManaged public var habits: NSSet?
+    @NSManaged public var datekeeper: DateKeeper?
     @NSManaged public var todos: NSSet?
-    
-    var getAppointments: [Appointment] {
-        get {
-            return appointments?.allObjects as? [Appointment] ?? []
-        }
-    }
-    
-    var getHabits: [Habit] {
-        get {
-            return habits?.allObjects as? [Habit] ?? []
-        }
-    }
-    
-    var getToDos: [ToDo] {
-        get {
-            return todos?.allObjects as? [ToDo] ?? []
-        }
-    }
 
 }
 

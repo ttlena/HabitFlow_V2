@@ -10,6 +10,13 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="origin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="appointments" inverseEntity="User"/>
     </entity>
+    <entity name="DateKeeper" representedClassName="DateKeeper" syncable="YES">
+        <attribute name="currentWeek" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lastWeek" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nextWeekStarted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="origin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="datekeeper" inverseEntity="User"/>
+    </entity>
     <entity name="Habit" representedClassName="Habit" syncable="YES">
         <attribute name="current" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="currentInMonth" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -24,11 +31,6 @@
         <attribute name="weekdays" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <relationship name="origin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="habits" inverseEntity="User"/>
     </entity>
-    <entity name="Helper" representedClassName="Helper" syncable="YES">
-        <attribute name="lastWeek" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="nextWeekStarted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <relationship name="origin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="helper" inverseEntity="User"/>
-    </entity>
     <entity name="ToDo" representedClassName="ToDo" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -41,8 +43,8 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="origin" inverseEntity="Appointment"/>
+        <relationship name="datekeeper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DateKeeper" inverseName="origin" inverseEntity="DateKeeper"/>
         <relationship name="habits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Habit" inverseName="origin" inverseEntity="Habit"/>
-        <relationship name="helper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Helper" inverseName="origin" inverseEntity="Helper"/>
         <relationship name="todos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ToDo" inverseName="origin" inverseEntity="ToDo"/>
     </entity>
 </model>

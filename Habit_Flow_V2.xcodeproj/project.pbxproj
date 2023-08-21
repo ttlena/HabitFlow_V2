@@ -16,8 +16,6 @@
 		A51F03182A70A48200210E38 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F03172A70A48200210E38 /* TabBarView.swift */; };
 		A51F031B2A70A53400210E38 /* TabItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F031A2A70A53400210E38 /* TabItemData.swift */; };
 		A51F031D2A70A62400210E38 /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F031C2A70A62400210E38 /* TabItemView.swift */; };
-		A529CF2C2A7C3FF200C9E4A1 /* Helper+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529CF2A2A7C3FF200C9E4A1 /* Helper+CoreDataClass.swift */; };
-		A529CF2D2A7C3FF200C9E4A1 /* Helper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529CF2B2A7C3FF200C9E4A1 /* Helper+CoreDataProperties.swift */; };
 		A529CF302A7C402700C9E4A1 /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529CF2F2A7C402700C9E4A1 /* DateService.swift */; };
 		A53384842A40CE210057F231 /* Habit_Flow_V2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384832A40CE210057F231 /* Habit_Flow_V2App.swift */; };
 		A53384862A40CE210057F231 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384852A40CE210057F231 /* ContentView.swift */; };
@@ -43,11 +41,13 @@
 		A53384F02A4104130057F231 /* ToDo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384E82A4104130057F231 /* ToDo+CoreDataProperties.swift */; };
 		A53384F12A4104130057F231 /* Appointment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384E92A4104130057F231 /* Appointment+CoreDataClass.swift */; };
 		A53384F22A4104130057F231 /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384EA2A4104130057F231 /* Appointment+CoreDataProperties.swift */; };
-		A53384F32A4104130057F231 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384EB2A4104130057F231 /* User+CoreDataClass.swift */; };
-		A53384F42A4104130057F231 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53384EC2A4104130057F231 /* User+CoreDataProperties.swift */; };
 		A53A41312A41161F008D64D2 /* ToDoTodayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41302A41161E008D64D2 /* ToDoTodayComponent.swift */; };
 		A53A41332A41170A008D64D2 /* WeeklyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41322A41170A008D64D2 /* WeeklyOverview.swift */; };
 		A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A41342A412D3C008D64D2 /* HabitViewModel.swift */; };
+		A5688B452A7D01E800635978 /* DateKeeper+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5688B432A7D01E800635978 /* DateKeeper+CoreDataClass.swift */; };
+		A5688B462A7D01E800635978 /* DateKeeper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5688B442A7D01E800635978 /* DateKeeper+CoreDataProperties.swift */; };
+		A5688B492A7D020100635978 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5688B472A7D020100635978 /* User+CoreDataClass.swift */; };
+		A5688B4A2A7D020100635978 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5688B482A7D020100635978 /* User+CoreDataProperties.swift */; };
 		A59693612A43C3D6003CF220 /* NavigationBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */; };
 		A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59693622A43CB23003CF220 /* CalendarViewModel.swift */; };
 		A5B493E62A77E9010055B140 /* SingleTodayToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B493E52A77E9010055B140 /* SingleTodayToDo.swift */; };
@@ -89,8 +89,6 @@
 		A51F03172A70A48200210E38 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		A51F031A2A70A53400210E38 /* TabItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemData.swift; sourceTree = "<group>"; };
 		A51F031C2A70A62400210E38 /* TabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
-		A529CF2A2A7C3FF200C9E4A1 /* Helper+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		A529CF2B2A7C3FF200C9E4A1 /* Helper+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		A529CF2F2A7C402700C9E4A1 /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		A53384802A40CE210057F231 /* Habit_Flow_V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habit_Flow_V2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53384832A40CE210057F231 /* Habit_Flow_V2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit_Flow_V2App.swift; sourceTree = "<group>"; };
@@ -119,11 +117,13 @@
 		A53384E82A4104130057F231 /* ToDo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A53384E92A4104130057F231 /* Appointment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A53384EA2A4104130057F231 /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A53384EB2A4104130057F231 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A53384EC2A4104130057F231 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A53A41302A41161E008D64D2 /* ToDoTodayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTodayComponent.swift; sourceTree = "<group>"; };
 		A53A41322A41170A008D64D2 /* WeeklyOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyOverview.swift; sourceTree = "<group>"; };
 		A53A41342A412D3C008D64D2 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
+		A5688B432A7D01E800635978 /* DateKeeper+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateKeeper+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		A5688B442A7D01E800635978 /* DateKeeper+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateKeeper+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		A5688B472A7D020100635978 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		A5688B482A7D020100635978 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		A59693602A43C3D6003CF220 /* NavigationBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModel.swift; sourceTree = "<group>"; };
 		A59693622A43CB23003CF220 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		A5B493E52A77E9010055B140 /* SingleTodayToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTodayToDo.swift; sourceTree = "<group>"; };
@@ -339,16 +339,16 @@
 		A53384F72A41046A0057F231 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				A529CF2A2A7C3FF200C9E4A1 /* Helper+CoreDataClass.swift */,
-				A529CF2B2A7C3FF200C9E4A1 /* Helper+CoreDataProperties.swift */,
+				A5688B472A7D020100635978 /* User+CoreDataClass.swift */,
+				A5688B482A7D020100635978 /* User+CoreDataProperties.swift */,
+				A5688B432A7D01E800635978 /* DateKeeper+CoreDataClass.swift */,
+				A5688B442A7D01E800635978 /* DateKeeper+CoreDataProperties.swift */,
 				A5DAC60D2A7952BD00BD4CAA /* Habit+CoreDataClass.swift */,
 				A5DAC60E2A7952BD00BD4CAA /* Habit+CoreDataProperties.swift */,
 				A53384E72A4104130057F231 /* ToDo+CoreDataClass.swift */,
 				A53384E82A4104130057F231 /* ToDo+CoreDataProperties.swift */,
 				A53384E92A4104130057F231 /* Appointment+CoreDataClass.swift */,
 				A53384EA2A4104130057F231 /* Appointment+CoreDataProperties.swift */,
-				A53384EB2A4104130057F231 /* User+CoreDataClass.swift */,
-				A53384EC2A4104130057F231 /* User+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -485,9 +485,11 @@
 			files = (
 				5F20CEEB2A7AC18F005230BC /* AppDelegate.swift in Sources */,
 				A5B493E62A77E9010055B140 /* SingleTodayToDo.swift in Sources */,
+				A5688B4A2A7D020100635978 /* User+CoreDataProperties.swift in Sources */,
 				A5B9707E2A70501D0039A193 /* HabitTile.swift in Sources */,
 				A51F031B2A70A53400210E38 /* TabItemData.swift in Sources */,
 				A53384F02A4104130057F231 /* ToDo+CoreDataProperties.swift in Sources */,
+				A5688B492A7D020100635978 /* User+CoreDataClass.swift in Sources */,
 				A53384C12A40F3340057F231 /* CalendarView.swift in Sources */,
 				A53384C92A40F7860057F231 /* ItemModel.swift in Sources */,
 				A51F03182A70A48200210E38 /* TabBarView.swift in Sources */,
@@ -495,14 +497,13 @@
 				A53384F22A4104130057F231 /* Appointment+CoreDataProperties.swift in Sources */,
 				C5444A2D2A560F23002D05EA /* CalenderList.swift in Sources */,
 				5F20CEED2A7AC42B005230BC /* NotificationManager.swift in Sources */,
-				A529CF2D2A7C3FF200C9E4A1 /* Helper+CoreDataProperties.swift in Sources */,
 				A59693612A43C3D6003CF220 /* NavigationBarViewModel.swift in Sources */,
 				A53384B42A40E9A60057F231 /* ToDosViewModel.swift in Sources */,
 				A51F031D2A70A62400210E38 /* TabItemView.swift in Sources */,
 				A53384BA2A40F23C0057F231 /* HomeView.swift in Sources */,
 				A5DAC6102A7952BD00BD4CAA /* Habit+CoreDataProperties.swift in Sources */,
+				A5688B452A7D01E800635978 /* DateKeeper+CoreDataClass.swift in Sources */,
 				A53A41332A41170A008D64D2 /* WeeklyOverview.swift in Sources */,
-				A53384F32A4104130057F231 /* User+CoreDataClass.swift in Sources */,
 				A53384862A40CE210057F231 /* ContentView.swift in Sources */,
 				A53A41312A41161F008D64D2 /* ToDoTodayComponent.swift in Sources */,
 				C5043B332A76BAF2008A5CC2 /* WeekPicker.swift in Sources */,
@@ -518,15 +519,14 @@
 				5F4A080D2A55A24D009D1AED /* AddCalendarSheetView.swift in Sources */,
 				A53384842A40CE210057F231 /* Habit_Flow_V2App.swift in Sources */,
 				5FFA70782A5577D7006B313F /* AddHabitSheetView.swift in Sources */,
-				A529CF2C2A7C3FF200C9E4A1 /* Helper+CoreDataClass.swift in Sources */,
 				A53384CB2A40F8110057F231 /* CircularProgressView.swift in Sources */,
 				C56DB1172A844F3200F5D1FE /* EditHabitSheetView.swift in Sources */,
-				A53384F42A4104130057F231 /* User+CoreDataProperties.swift in Sources */,
 				A59693632A43CB23003CF220 /* CalendarViewModel.swift in Sources */,
 				A53A41352A412D3C008D64D2 /* HabitViewModel.swift in Sources */,
 				A5DAC60F2A7952BD00BD4CAA /* Habit+CoreDataClass.swift in Sources */,
 				C537D7462A783AED006F2D61 /* CircularYearProgressView.swift in Sources */,
 				C5043B372A770A7F008A5CC2 /* TestView.swift in Sources */,
+				A5688B462A7D01E800635978 /* DateKeeper+CoreDataProperties.swift in Sources */,
 				A53384BC2A40F2AA0057F231 /* DailyHabitsComponent.swift in Sources */,
 				A53384AF2A40CEA70057F231 /* Model.xcdatamodeld in Sources */,
 				A53384EF2A4104130057F231 /* ToDo+CoreDataClass.swift in Sources */,

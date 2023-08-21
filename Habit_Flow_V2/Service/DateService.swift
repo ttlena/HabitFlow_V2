@@ -10,26 +10,26 @@ import CoreData
 
 class DateService: ObservableObject {
     private var dataController = DataController(name: "Model")
-    private var data:[Helper] = []
-    @Published var dateHelper:Helper = Helper()
+//    private var data:[DateKeeper] = []
+    @Published var dateKeeper:DateKeeper = DateKeeper()
+    
     init() {
         fetchData()
-        print(data)
+        print(dateKeeper)
     }
     
     func fetchData() {
-        let request = NSFetchRequest<Helper>(entityName: "Helper")
+        let request = NSFetchRequest<DateKeeper>(entityName: "DateKeeper")
         request.fetchLimit = 1
         do {
-            data = try dataController.container.viewContext.fetch(request)
+            if let fetchDateKeeper = try dataController.container.viewContext.fetch(request).first {
+                dateKeeper = fetchDateKeeper
+                return
+            }
         } catch {
             print("CoreData error")
         }
-        if data.isEmpty {
-            dateHelper = createHelper()
-        } else {
-            dateHelper = data.first ?? createHelper()
-        }
+        createHelper()
     }
     
     func save() {
@@ -41,13 +41,19 @@ class DateService: ObservableObject {
         }
     }
     
-    func createHelper() -> Helper {
+    func createHelper() {
         print("---------- create Helper!")
-        let newHelper = Helper(context:dataController.container.viewContext)
-        newHelper.nextWeekStarted = false
+        let dateKeeper = DateKeeper(context:dataController.container.viewContext)
+        dateKeeper.id = UUID()
+        dateKeeper.currentWeek = Int64(getCurrentWeek())
+        dateKeeper.lastWeek = dateKeeper.currentWeek - 1
         save()
-//        fetchData()
-        return newHelper
+        fetchData()
+    }
+    
+    func getCurrentWeek() -> Int{
+        let calendar = Calendar(identifier: .gregorian)
+        return calendar.component(.weekOfYear, from: Date())
     }
     
     func checkIfNewWeek() -> Bool {
@@ -56,21 +62,17 @@ class DateService: ObservableObject {
         let components = calendar.dateComponents([.weekday], from: date)
         let dayOfWeek = components.weekday
         print("Weekday \(dayOfWeek!)")
-        print("nextWeekStarted \(dateHelper.nextWeekStarted)")
-        if !dateHelper.nextWeekStarted && dayOfWeek == 2 {
-            dateHelper.nextWeekStarted = true
-            if let item = data.first(where: {$0.id == dateHelper.id}) {
-                item.nextWeekStarted = true
-            }
+        print("nextWeekStarted \(dateKeeper.nextWeekStarted)")
+        if dayOfWeek == 2 && (dateKeeper.currentWeek != getCurrentWeek()){
+            dateKeeper.lastWeek = dateKeeper.currentWeek
+            dateKeeper.currentWeek = Int64(getCurrentWeek())
+            dateKeeper.nextWeekStarted = true
         } else {
-            dateHelper.nextWeekStarted = false
-            if let item = data.first(where: {$0.id == dateHelper.id}) {
-                item.nextWeekStarted = false
-            }
+            dateKeeper.nextWeekStarted = false
         }
         save()
         fetchData()
-        return dateHelper.nextWeekStarted
+        return dateKeeper.nextWeekStarted
     }
 }
 

@@ -110,7 +110,12 @@ class ToDosViewModel:ObservableObject {
         let calendar = Calendar.current
         
         let pickedDay = calendar.component(.day, from: pickedDate)
-        let filteredToDos = toDos.filter({calendar.component(.day, from: $0.date!) == pickedDay})
+        let filteredToDos = toDos.filter({
+            guard let date = $0.date else {
+                return  false
+            }
+            
+            return calendar.component(.day, from: date) == pickedDay})
         //wenn es nicht erledigte ToDos gibt, wird eine Notification geplant
         if(filteredToDos.filter{$0.isCompleted == false}.count > 0) {
             notificationManager.toDoNoification(numberOfUndoneToDos: filteredToDos.filter{$0.isCompleted == false}.count)
