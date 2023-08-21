@@ -39,6 +39,30 @@ struct AddCalendarSheetView: View {
                     .environment(\.locale, Locale(identifier: "de_DE"))
                 
                 
+                HStack(spacing: 4) {
+                               ForEach(colorPalette.indices, id: \.self) { index in
+                                   Button(action: {
+                                       selectedColorIndex = index
+                                       calendarVM.editedEventColor = colorPalette[index].name 
+                                   }) {
+                                       Text("\(colorPalette[index].name)")
+                                           .foregroundColor(.white)
+                                           .frame(maxWidth: .infinity)
+                                           .frame(height: 30)
+                                           .padding(.horizontal, 8)
+                                           .background(
+                                               index == selectedColorIndex ? colorPalette[index].color : Color.clear
+                                           )
+                                           .cornerRadius(15)
+                                           .lineLimit(1)
+                                   }
+                               }
+                           }
+                           .padding()
+                           .background(Color(UIColor.systemGray5))
+                           .cornerRadius(12)
+                
+                
                 
                 Toggle(isOn: $calendarVM.editedEventReminder, label: {
                     Text("Erinnerung")
@@ -71,7 +95,7 @@ struct AddCalendarSheetView: View {
                 
                 
                 
-                Button(action: calendarVM.editAppointment, label: {
+                Button(action: editButtonPressed, label: {
                     Text("Speichern")
                         .foregroundColor(.white)
                         .font(.title3)
@@ -188,6 +212,11 @@ struct AddCalendarSheetView: View {
     }
     func saveButtonPressed() {
         calendarVM.addNewAppointment()
+        selectedColorIndex = 0
+    }
+    
+    func editButtonPressed() {
+        calendarVM.editAppointment()
         selectedColorIndex = 0
     }
 }

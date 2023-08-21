@@ -16,11 +16,11 @@ struct HabitsView: View {
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
-    
+
     var body: some View {
         VStack{
             HStack{
-                Text("Daily Habits")
+                Text("Habits")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                     .padding(0)
@@ -76,6 +76,7 @@ struct HabitsView: View {
     
     func newHabit() {
         showingBottomSheet.toggle()
+        habitsViewModel.resetHabitEntry()
         //
     }
     

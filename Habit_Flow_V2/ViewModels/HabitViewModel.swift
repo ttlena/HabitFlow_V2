@@ -51,82 +51,30 @@ class HabitViewModel:ObservableObject {
         }
     }
     
-    /*  func calcMonthGoalStatistics(habit: Habit) -> Int16 {
-     //habitMonthGoal = habit.goal * Int16(numberOfDaysInCurrentMonth())
-     //let goal = habit.goal * Int16(numberOfDaysInCurrentMonth())
-     
-     if let weekdays = habit.weekdays {
-     let goal = Int16(occurrencesOfWeekdaysInCurrentMonth(in: weekdays))
-     return goal
-     } else {
-     print("Keine Wochentage angegeben.")
-     return 0
-     }
-     }
-     
-     func calcYearGoalStatistics(habit: Habit) -> Int16 {
-     //return habit.goal * Int16(numberOfDaysInCurrentYear())
-     if let weekdays = habit.weekdays {
-     let goal = Int16(occurrencesOfWeekdaysInCurrentYear(in: weekdays))
-     return goal
-     } else {
-     print("Keine Wochentage angegeben.")
-     return 0
-     }
-     }*/
-    
-    func calcMonthProgressStatistic(habit: Habit) -> Int16 {
-        /* guard let previousCurrentsFromCurrentMonth = habit.previousCurrents?[currentMonth()] else {
-         return 0
-         }
-         
-         var monthProgress: Int16 = 0
-         for current in previousCurrentsFromCurrentMonth {
-         monthProgress += current
-         }
-         
-         return monthProgress*/
+    func getHabitsBasedOnWeekday(habits: [Habit], pickedDate: Date) -> [Habit] {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E"
+        dateFormatter.locale = Locale(identifier: "de_DE")
+        var weekdayHabits: [Habit] = []
         
-        return 0
+        for habit in habits {
+            if let weekdays = habit.weekdays {
+                for weekday in weekdays {
+                    if weekday == getWeekDayFromData(from: pickedDate) {
+                        weekdayHabits.append(habit)
+                    }
+                }
+            }
+        }
+        return weekdayHabits
     }
     
-    
-    func addCurrentToCurrentInMonth(habit: Habit) {
-        /*let currentMonthKey = currentMonth()
-         var previousCurrents = habit.previousCurrents
-         
-         if var previousCurrentsFromCurrentMonth = previousCurrents[currentMonthKey] {
-         previousCurrentsFromCurrentMonth.append(habit.current)
-         previousCurrents[currentMonthKey] = previousCurrentsFromCurrentMonth
-         } else {
-         previousCurrents[currentMonthKey] = [habit.current]
-         }
-         
-         habit.previousCurrents = previousCurrents
-         
-         do {
-         try habit.managedObjectContext?.save()
-         } catch {
-         // Fehlerbehandlung
-         }*/
-        
-        habit.currentInMonth += habit.current
+    func getWeekDayFromData(from date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E"
+        dateFormatter.locale = Locale(identifier: "de_DE")
+        return String(dateFormatter.string(from: date).lowercased().dropLast())
     }
-    
-    /* func addCurrentToPreviousGoalsList(habit: Habit) {
-     let goalMonthKey = currentMonth()
-     var previousGoals = habit.previousGoals ?? [:]
-     var previousGoalsFromCurrentMonth = previousGoals[goalMonthKey] ?? []
-     previousGoalsFromCurrentMonth.append(habit.goal)
-     previousGoals[goalMonthKey] = previousGoalsFromCurrentMonth
-     habit.previousGoals = previousGoals
-     
-     do {
-     try habit.managedObjectContext?.save()
-     } catch {
-     // Fehlerbehandlung
-     }
-     }*/
     
     func currentMonth() -> Int {
         let calendar = Calendar.current

@@ -13,34 +13,38 @@ struct HomeView: View {
     @StateObject var calendarViewModel: CalendarViewModel
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack {
-                HStack {
-                    Text("Hallo Jens!")
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .padding([.top, .bottom, .trailing], 20.0)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(.white)
-                    Image("ProfilePic")
-                }
-                Spacer()
-                    .frame(height: 40)
-                WeeklyOverview(calendarViewModel: calendarViewModel)
-                Spacer()
-                    .frame(height: 25)
-                ToDoTodayComponent(toDosVM: toDosViewModel)
-                Spacer()
-                    .frame(height: 25)
-                DailyHabitsComponent(habitsVM: habitViewModel)
+        VStack {
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    HStack {
+                        Text("Hallo Jens!")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                            .padding([.top, .bottom, .trailing], 20.0)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundColor(.white)
+                        Image("ProfilePic")
+                    }
+                    Spacer()
+                        .frame(height: 40)
+                    WeeklyOverview(calendarViewModel: calendarViewModel)
+                    Spacer()
+                        .frame(height: 25)
+                    ToDoTodayComponent(toDosVM: toDosViewModel)
+                    Spacer()
+                        .frame(height: 25)
+                    DailyHabitsComponent(habitsVM: habitViewModel)
 
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .cornerRadius(10)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .cornerRadius(10)
+            .background(.black)
         }
         .background(.black)
+        .clipped()
     }
 }
 
