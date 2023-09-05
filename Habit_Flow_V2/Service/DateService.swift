@@ -36,7 +36,7 @@ class DateService: ObservableObject {
             try dataController.container.viewContext.save()
             //print("saved!")
         } catch {
-            print("speichern failed")
+            print("DateService - speichern failed \(            error.localizedDescription)")
         }
     }
     
@@ -52,20 +52,20 @@ class DateService: ObservableObject {
         fetchData()
     }
     
-//    func getCurrentWeek() -> Int{
-//        let calendar = Calendar(identifier: .gregorian)
-//        return calendar.component(.weekOfYear, from: Date())
-//    }
-//    
-//    func getCurrentMonth() -> Int {
-//        let calendar = Calendar(identifier: .gregorian)
-//        return calendar.component(.month, from: Date())
-//    }
-//    
-//    func getCurrentYear() -> Int {
-//        let calendar = Calendar(identifier: .gregorian)
-//        return calendar.component(.year, from: Date())
-//    }
+    //    func getCurrentWeek() -> Int{
+    //        let calendar = Calendar(identifier: .gregorian)
+    //        return calendar.component(.weekOfYear, from: Date())
+    //    }
+    //
+    //    func getCurrentMonth() -> Int {
+    //        let calendar = Calendar(identifier: .gregorian)
+    //        return calendar.component(.month, from: Date())
+    //    }
+    //
+    //    func getCurrentYear() -> Int {
+    //        let calendar = Calendar(identifier: .gregorian)
+    //        return calendar.component(.year, from: Date())
+    //    }
     
     func getCurrent(component : Calendar.Component) -> Int {
         let calendar = Calendar(identifier: .gregorian)
@@ -88,7 +88,7 @@ class DateService: ObservableObject {
     
     func checkIfNewMonth() -> Bool {
         let currentMonth = getCurrent(component: Calendar.Component.month)
-        print("------current month \(currentMonth) \(dateKeeper.currentMonth)")
+        //        print("------current month \(currentMonth) \(dateKeeper.currentMonth)")
         if dateKeeper.currentMonth != currentMonth {
             dateKeeper.currentMonth = Int64(currentMonth)
             save()

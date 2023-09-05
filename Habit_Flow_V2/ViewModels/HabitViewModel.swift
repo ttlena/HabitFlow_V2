@@ -10,7 +10,6 @@ import CoreData
 
 class HabitViewModel:ObservableObject {
     private var dataController = DataController(name: "Model")
-    private let dataService = DateService()
     @Published var habits: [Habit] = []
     @Published var habitsToday: [Habit] = []
     @Published var newHabitTitle = ""
@@ -35,7 +34,7 @@ class HabitViewModel:ObservableObject {
     init() {
         self.dateService = DateService()
         fetchData()
-        checkIfResetNecessary()
+//        checkIfResetNecessary()
     }
     
     func fetchData() {
@@ -58,7 +57,7 @@ class HabitViewModel:ObservableObject {
             }
         }
         
-        if dataService.checkIfNewMonth() {
+        if dateService.checkIfNewMonth() {
             print("-------new month")
             for habit in habits {
                 habit.currentInMonth = 0
@@ -83,12 +82,13 @@ class HabitViewModel:ObservableObject {
             habit.goal = Int16(habit.weekdays?.count ?? 0)
 
 //        }
-        if (habit.currentInMonth == habit.goalInMonth) {
-            habit.currentInMonth = 0
-            habit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth(in: habit.weekdays ?? []))
-
-
-        }
+        print("set current to 0 aufgerufen")
+//        if (habit.currentInMonth == habit.goalInMonth) {
+//            habit.currentInMonth = 0
+//            habit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth(in: habit.weekdays ?? []))
+//
+//
+//        }
 
         if(habit.currentInYear == habit.goalInYear) {
             habit.currentInYear = 0
@@ -511,7 +511,7 @@ class HabitViewModel:ObservableObject {
             try dataController.container.viewContext.save()
             //print("saved!")
         } catch {
-            print("speichern failed")
+            print("HabitVM - speichern failed")
         }
     }
     
