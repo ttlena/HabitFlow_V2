@@ -26,6 +26,9 @@ class HabitViewModel:ObservableObject {
     @Published var newWeekStarted = false
     @Published var pickedToadayHabits: [Habit] = []
     
+    @Published var habitsTodayRemovingList: [Habit] = []
+
+    
     private var dateService:DateService
     private let notificationCenter = NotificationCenter.default
     
@@ -45,6 +48,10 @@ class HabitViewModel:ObservableObject {
             habitsToday = getHabitsBasedOnWeekday(pickedDate: Date())
         } catch {
             print("CoreData Error")
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.habitsTodayRemovingList = self.habitsToday
+            self.habitsTodayRemovingList = self.showOnlyUncheckedHabits(habitsToday: self.habitsTodayRemovingList)
         }
     }
     
@@ -531,10 +538,53 @@ class HabitViewModel:ObservableObject {
          habit.current = 0
          }*/
         
+        habit.lastHabitDone = Date()
+        
         
         save()
         fetchData()
+
        // plusButtonClicked = false
+    }
+    
+    func showOnlyUncheckedHabits(habitsToday: [Habit]) -> [Habit] {
+        //habitsTodayRemovingList.removeAll { $0 == habit }
+        let currentDate = Date()
+        var dailyHabitList = [Habit]()
+        
+        //Wenn das date (am nächsten Tag)  da drin ist dann setze lastHabitDone date neu
+        //Vergleiche las habit done mit current date
+        
+        
+        //Wenn date am letzte Tag war -> lass in liste
+        //Wo Date gleich ist -> entferne aus liste
+        for habitToday in habitsToday {
+            if(!areDatesOnSameDay(currentDate, habitToday.lastHabitDone ?? previousDay(from: Date()))) {
+                dailyHabitList.append(habitToday)
+            }
+        }
+        
+        return dailyHabitList
+    }
+    
+    func previousDay(from date: Date) -> Date {
+        let calendar = Calendar.current
+        return calendar.date(byAdding: .day, value: -1, to: date) ?? Date()
+    }
+    
+    func areDatesOnSameDay(_ date1: Date, _ date2: Date) -> Bool {
+        let calendar = Calendar.current
+        let normalizedDate1 = calendar.startOfDay(for: date1)
+        let normalizedDate2 = calendar.startOfDay(for: date2)
+        
+        return calendar.isDate(normalizedDate1, inSameDayAs: normalizedDate2)
+    }
+    
+    func getWeekdayShorthand(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E"
+        dateFormatter.locale = Locale(identifier: "de_DE")
+        return String(dateFormatter.string(from: date).lowercased().dropLast())
     }
     
 

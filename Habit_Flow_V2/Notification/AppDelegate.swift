@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let notificationManager = NotificationManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
-        notificationManager.requestAuthorization()
+        //notificationManager.requestAuthorization()
         print("Your code here")
         return true
     }

@@ -10,7 +10,7 @@ import Combine
 
 struct AddHabitSheetView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State var habitVM: HabitViewModel
+    @StateObject var habitVM: HabitViewModel
     
     var body: some View {
         VStack {
@@ -45,9 +45,11 @@ struct AddHabitSheetView: View {
             }
             
             Button(action: {
-                habitVM.saveNewHabit()
-                presentationMode.wrappedValue.dismiss()
-                habitVM.resetHabitEntry()
+                if (habitVM.selectedDays.count != 0) {
+                    habitVM.saveNewHabit()
+                    presentationMode.wrappedValue.dismiss()
+                    habitVM.resetHabitEntry()
+                }
             }, label: {
                 Text("Speichern")
                     .foregroundColor(.white)
@@ -55,7 +57,7 @@ struct AddHabitSheetView: View {
                     .fontWeight(.semibold)
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
-                    .background(Color.orange)
+                    .background(habitVM.selectedDays.count == 0 ? Color.gray : Color.orange)
                     .cornerRadius(32)
                     .padding([.horizontal], 70)
             })
