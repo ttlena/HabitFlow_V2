@@ -17,7 +17,6 @@
 		5FA0DC1D2A7D80EE0053CAED /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA0DC1C2A7D80EE0053CAED /* ImagePicker.swift */; };
 		5FA0DC262A7D9F3E0053CAED /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA0DC242A7D9F3E0053CAED /* User+CoreDataClass.swift */; };
 		5FA0DC272A7D9F3E0053CAED /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA0DC252A7D9F3E0053CAED /* User+CoreDataProperties.swift */; };
-		5FE7AADF2A56C54500C03E3F /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7AADE2A56C54500C03E3F /* HabitModel.swift */; };
 		5FFA70762A5573DC006B313F /* AddToDoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */; };
 		5FFA70782A5577D7006B313F /* AddHabitSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */; };
 		A51F03182A70A48200210E38 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F03172A70A48200210E38 /* TabBarView.swift */; };
@@ -93,7 +92,6 @@
 		5FA0DC1C2A7D80EE0053CAED /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5FA0DC242A7D9F3E0053CAED /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		5FA0DC252A7D9F3E0053CAED /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		5FE7AADE2A56C54500C03E3F /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
 		5FFA70752A5573DC006B313F /* AddToDoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoSheetView.swift; sourceTree = "<group>"; };
 		5FFA70772A5577D7006B313F /* AddHabitSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitSheetView.swift; sourceTree = "<group>"; };
 		A51F03172A70A48200210E38 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -718,6 +716,7 @@
 				DEVELOPMENT_TEAM = EWCT36K3DG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Habit Flow";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -747,6 +746,7 @@
 				DEVELOPMENT_TEAM = EWCT36K3DG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Habit Flow";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
