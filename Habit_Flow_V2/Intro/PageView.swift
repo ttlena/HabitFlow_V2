@@ -12,12 +12,20 @@ struct PageView: View {
     
     var body: some View {
         VStack(spacing: 10) {
+            if(page.imageUrl == "Welcome") {
+                Image("\(page.imageUrl)")
+                    .resizable()
+                    .cornerRadius(30)
+                    .frame(width: 200, height: 200)
+                    .padding()
+            }else {
+                Image("\(page.imageUrl)")
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(30)
+                    .padding()
+            }
             
-            Image("\(page.imageUrl)")
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(30)
-                .padding()
             
             
             Text(page.name)

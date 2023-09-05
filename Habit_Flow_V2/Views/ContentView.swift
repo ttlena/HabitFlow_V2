@@ -8,35 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) var moc
-    
-    @StateObject var toDosVM = ToDosViewModel()
-    
-    @State private var name = ""
+    @StateObject private var dataController = DataController.shared
+    @StateObject var userViewModel = UserViewModel()
     var body: some View {
-        VStack {
-            List {
-                ForEach(toDosVM.toDos) { toDo in
-                    Text(toDo.title ?? "Error")
-                }
-                .onDelete(perform: toDosVM.deleteItems)
-            }
-            
-            HStack {
-                TextField("neues Todo", text:$name)
-                Button("Add") {
-                    toDosVM.addItem(title: name, date: Date())
-                    name = ""
-                }
-            }
-            
+        if(userViewModel.user.firstStart) {
+            IntroView(userViewModel: userViewModel)
+        }else {
+            NavigationBar()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
-        .padding()
+        
+    }
+    
+    func toggle() {
+        userViewModel.toggleFirstStarted()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+        
     }
 }

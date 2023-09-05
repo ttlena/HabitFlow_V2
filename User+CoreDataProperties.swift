@@ -23,6 +23,7 @@ extension User {
     @NSManaged public var habits: NSSet?
     @NSManaged public var datekeeper: DateKeeper?
     @NSManaged public var todos: NSSet?
+    @NSManaged public var firstStart: Bool
 
 }
 
