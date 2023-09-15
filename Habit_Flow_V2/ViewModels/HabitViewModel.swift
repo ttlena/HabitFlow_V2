@@ -35,11 +35,7 @@ class HabitViewModel:ObservableObject {
     init() {
         self.dateService = DateService()
         fetchData()
-        if dateService.checkIfNewWeek() {
-            for habit in habits {
-                setCurrentTo0(habit: habit)
-            }
-        }
+        checkIfResetNecessary()
     }
     
     func fetchData() {
@@ -51,6 +47,57 @@ class HabitViewModel:ObservableObject {
         } catch {
             print("CoreData Error")
         }
+    }
+    
+    func checkIfResetNecessary() {
+        if dateService.checkIfNewWeek() {
+            for habit in habits {
+                habit.current = 0
+                habit.progress = Double(habit.current) / Double(habit.goal)
+                habit.goal = Int16(habit.weekdays?.count ?? 0)
+            }
+        }
+        
+        if dataService.checkIfNewMonth() {
+            print("-------new month")
+            for habit in habits {
+                habit.currentInMonth = 0
+                habit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth(in: habit.weekdays ?? []))
+            }
+        }
+        
+        if dateService.checkIfNewYear() {
+            for habit in habits {
+                habit.currentInYear = 0
+                habit.goalInYear = Int16(occurrencesOfWeekdaysInCurrentYear(in: habit.weekdays ?? []))
+            }
+        }
+        save()
+        fetchData()
+    }
+    
+    func setCurrentTo0(habit: Habit) {
+//        if (habit.current == habit.goal) {
+            habit.current = 0
+            habit.progress = Double(habit.current) / Double(habit.goal)
+            habit.goal = Int16(habit.weekdays?.count ?? 0)
+
+//        }
+        if (habit.currentInMonth == habit.goalInMonth) {
+            habit.currentInMonth = 0
+            habit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth(in: habit.weekdays ?? []))
+
+
+        }
+
+        if(habit.currentInYear == habit.goalInYear) {
+            habit.currentInYear = 0
+            habit.goalInYear = Int16(occurrencesOfWeekdaysInCurrentYear(in: habit.weekdays ?? []))
+        }
+
+        save()
+        fetchData()
+       // plusButtonClicked = false
     }
     
     func getHabitsBasedOnWeekday(pickedDate: Date) -> [Habit] {
@@ -492,42 +539,12 @@ class HabitViewModel:ObservableObject {
     
 
     
-    func setCurrentTo0(habit: Habit) {
-//        if (habit.current == habit.goal) {
-            habit.current = 0
-            habit.progress = Double(habit.current) / Double(habit.goal)
-            habit.goal = Int16(habit.weekdays?.count ?? 0)
-            
-//        }
-        if (habit.currentInMonth == habit.goalInMonth) {
-            habit.currentInMonth = 0
-            habit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth(in: habit.weekdays ?? []))
-
-            
-        }
-        
-        if(habit.currentInYear == habit.goalInYear) {
-            habit.currentInYear = 0
-            habit.goalInYear = Int16(occurrencesOfWeekdaysInCurrentYear(in: habit.weekdays ?? []))
-        }
-        
-        save()
-        fetchData()
-       // plusButtonClicked = false
-    }
+   
     
     func setEditHabit(habit: Habit) {
         editHabitTitle = habit.title ?? "Unknown"
         selectedDays = habit.weekdays ?? []
     
-    }
-    
-    func resetCurrentOfWeek() {
-        for habit in habits {
-            setCurrentTo0(habit: habit)
-        }
-        save()
-        fetchData()
     }
     
     /*

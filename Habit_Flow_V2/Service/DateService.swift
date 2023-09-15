@@ -10,12 +10,10 @@ import CoreData
 
 class DateService: ObservableObject {
     private var dataController = DataController(name: "Model")
-//    private var data:[DateKeeper] = []
     @Published var dateKeeper:DateKeeper = DateKeeper()
     
     init() {
         fetchData()
-        print(dateKeeper)
     }
     
     func fetchData() {
@@ -29,6 +27,7 @@ class DateService: ObservableObject {
         } catch {
             print("CoreData error")
         }
+        print("!!!! neuer DateKeeper")
         createHelper()
     }
     
@@ -45,27 +44,39 @@ class DateService: ObservableObject {
         print("---------- create Helper!")
         let dateKeeper = DateKeeper(context:dataController.container.viewContext)
         dateKeeper.id = UUID()
-        dateKeeper.currentWeek = Int64(getCurrentWeek())
+        dateKeeper.currentWeek = Int64(getCurrent(component: Calendar.Component.weekOfYear))
         dateKeeper.lastWeek = dateKeeper.currentWeek - 1
+        dateKeeper.currentMonth = Int64(getCurrent(component: Calendar.Component.month))
+        dateKeeper.currentYear = Int64(getCurrent(component: Calendar.Component.year))
         save()
         fetchData()
     }
     
-    func getCurrentWeek() -> Int{
+//    func getCurrentWeek() -> Int{
+//        let calendar = Calendar(identifier: .gregorian)
+//        return calendar.component(.weekOfYear, from: Date())
+//    }
+//    
+//    func getCurrentMonth() -> Int {
+//        let calendar = Calendar(identifier: .gregorian)
+//        return calendar.component(.month, from: Date())
+//    }
+//    
+//    func getCurrentYear() -> Int {
+//        let calendar = Calendar(identifier: .gregorian)
+//        return calendar.component(.year, from: Date())
+//    }
+    
+    func getCurrent(component : Calendar.Component) -> Int {
         let calendar = Calendar(identifier: .gregorian)
-        return calendar.component(.weekOfYear, from: Date())
+        return calendar.component(component, from: Date())
     }
     
     func checkIfNewWeek() -> Bool {
-        let date = Date()
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.weekday], from: date)
-        let dayOfWeek = components.weekday
-        print("Weekday \(dayOfWeek!)")
-        print("nextWeekStarted \(dateKeeper.nextWeekStarted)")
-        if dateKeeper.currentWeek != getCurrentWeek(){
+        let currentWeek = getCurrent(component: Calendar.Component.weekOfYear)
+        if dateKeeper.currentWeek != currentWeek {
             dateKeeper.lastWeek = dateKeeper.currentWeek
-            dateKeeper.currentWeek = Int64(getCurrentWeek())
+            dateKeeper.currentWeek = Int64(currentWeek)
             dateKeeper.nextWeekStarted = true
         } else {
             dateKeeper.nextWeekStarted = false
@@ -74,5 +85,29 @@ class DateService: ObservableObject {
         fetchData()
         return dateKeeper.nextWeekStarted
     }
+    
+    func checkIfNewMonth() -> Bool {
+        let currentMonth = getCurrent(component: Calendar.Component.month)
+        print("------current month \(currentMonth) \(dateKeeper.currentMonth)")
+        if dateKeeper.currentMonth != currentMonth {
+            dateKeeper.currentMonth = Int64(currentMonth)
+            save()
+            fetchData()
+            return true
+        }
+        return false
+    }
+    
+    func checkIfNewYear() -> Bool {
+        let currentYear = getCurrent(component: Calendar.Component.year)
+        if dateKeeper.currentYear != currentYear {
+            dateKeeper.currentYear = Int64(currentYear)
+            save()
+            fetchData()
+            return true
+        }
+        return false
+    }
+    
 }
 

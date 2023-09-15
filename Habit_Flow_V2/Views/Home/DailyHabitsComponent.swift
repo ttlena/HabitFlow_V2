@@ -43,6 +43,9 @@ struct DailyHabitsComponent: View {
                 .frame(height: 500)
             }
         }
+        .onAppear{
+            habitsVM.checkIfResetNecessary()
+        }
     }
 }
 
