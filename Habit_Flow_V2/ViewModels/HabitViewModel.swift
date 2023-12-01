@@ -32,7 +32,7 @@ class HabitViewModel:ObservableObject {
         
         
         fetchData()
-        deleteAll()
+        //deleteAll()
     }
     
     func fetchData() {
@@ -160,6 +160,7 @@ class HabitViewModel:ObservableObject {
         let year = calendar.component(.year, from: currentDate)
         let month = calendar.component(.month, from: currentDate)
         
+        
         // Erstelle ein DateComponents-Objekt mit dem ersten Tag des aktuellen Monats
         var firstDateComponents = DateComponents()
         firstDateComponents.year = year
@@ -180,6 +181,7 @@ class HabitViewModel:ObservableObject {
             // Hole den Wochentag des aktuellen Datums (z.B. "mo", "di" usw.)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "E"
+            dateFormatter.locale = Locale(identifier: "de_DE")
             let weekdayString = dateFormatter.string(from: currentDateInLoop).lowercased()
             
             // Prüfe, ob der Wochentag in der Eingabe enthalten ist
@@ -199,7 +201,8 @@ class HabitViewModel:ObservableObject {
         let calendar = Calendar.current
         
         // Hole das aktuelle Datum
-        let currentDate = Date()
+        var currentDate =  Date()
+        
         
         // Hole das Jahr und den Monat aus dem aktuellen Datum
         let year = calendar.component(.year, from: currentDate)
@@ -209,22 +212,23 @@ class HabitViewModel:ObservableObject {
         var firstDateComponents = DateComponents()
         firstDateComponents.year = year
         firstDateComponents.month = month
-        firstDateComponents.day = 1
+        firstDateComponents.day = 2
         let firstDate = calendar.date(from: firstDateComponents)!
         
         // Erstelle ein DateComponents-Objekt mit dem ersten Tag des nächsten Monats
         var nextMonthComponents = DateComponents()
         nextMonthComponents.month = 1
-        let nextMonthDate = calendar.date(byAdding: nextMonthComponents, to: firstDate)!
+        let nextMonthDate =  calendar.date(byAdding: nextMonthComponents, to: firstDate)!
         
         // Schleife über alle Tage des aktuellen Monats
         var currentDateInLoop = currentDate
         var occurrences = 0
         
-        while currentDateInLoop < nextMonthDate {
+        while deleteClockComponentFromDate(date: currentDateInLoop) < nextMonthDate {
             // Hole den Wochentag des aktuellen Datums (z.B. "mo", "di" usw.)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "E"
+            dateFormatter.locale = Locale(identifier: "de_DE")
             let weekdayString = dateFormatter.string(from: currentDateInLoop).lowercased()
             
             // Prüfe, ob der Wochentag in der Eingabe enthalten ist
@@ -257,10 +261,11 @@ class HabitViewModel:ObservableObject {
         var currentDateInLoop = currentDate
         var occurrences = 0
         
-        while currentDateInLoop <= endDate {
+        while currentDateInLoop < endDate {
             // Hole den Wochentag des aktuellen Datums (z.B. "mo", "di" usw.)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "E"
+            dateFormatter.locale = Locale(identifier: "de_DE")
             let weekdayString = dateFormatter.string(from: currentDateInLoop).lowercased()
             
             // Prüfe, ob der Wochentag in der Eingabe enthalten ist
@@ -290,7 +295,7 @@ class HabitViewModel:ObservableObject {
         var firstDateComponents = DateComponents()
         firstDateComponents.year = year
         firstDateComponents.month = 1
-        firstDateComponents.day = 1
+        firstDateComponents.day = 2
         let firstDateOfYear = calendar.date(from: firstDateComponents)!
         
         // Erstelle ein DateComponents-Objekt mit dem ersten Tag des nächsten Jahres
@@ -302,10 +307,11 @@ class HabitViewModel:ObservableObject {
         var currentDateInLoop = firstDateOfYear
         var occurrences = 0
         
-        while currentDateInLoop < nextYearDate {
+        while deleteClockComponentFromDate(date: currentDateInLoop) < nextYearDate {
             // Hole den Wochentag des aktuellen Datums (z.B. "mo", "di" usw.)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "E"
+            dateFormatter.locale = Locale(identifier: "de_DE")
             let weekdayString = dateFormatter.string(from: currentDateInLoop).lowercased()
             
             // Prüfe, ob der Wochentag in der Eingabe enthalten ist
@@ -334,7 +340,7 @@ class HabitViewModel:ObservableObject {
         var firstDateComponents = DateComponents()
         firstDateComponents.year = year
         firstDateComponents.month = 1
-        firstDateComponents.day = 1
+        firstDateComponents.day = 2
         let firstDateOfYear = calendar.date(from: firstDateComponents)!
         
         // Erstelle ein DateComponents-Objekt mit dem ersten Tag des nächsten Jahres
@@ -346,10 +352,11 @@ class HabitViewModel:ObservableObject {
         var currentDateInLoop = currentDate
         var occurrences = 0
         
-        while currentDateInLoop < nextYearDate {
+        while deleteClockComponentFromDate(date: currentDateInLoop) < nextYearDate {
             // Hole den Wochentag des aktuellen Datums (z.B. "mo", "di" usw.)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "E"
+            dateFormatter.locale = Locale(identifier: "de_DE")
             let weekdayString = dateFormatter.string(from: currentDateInLoop).lowercased()
             
             // Prüfe, ob der Wochentag in der Eingabe enthalten ist
@@ -363,6 +370,29 @@ class HabitViewModel:ObservableObject {
         
         return occurrences
     }
+    
+    func deleteClockComponentFromDate(date: Date) -> Date {
+        let calendar = Calendar.current
+        
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        guard let extractedDate = calendar.date(from: dateComponents) else {
+            fatalError("Fehler beim Extrahieren des Datums aus date")
+        }
+        
+        // Setze die Uhrzeit auf 0:00 Uhr (Mitternacht)
+        var updatedDateComponents = calendar.dateComponents(in: TimeZone.current, from: extractedDate)
+        updatedDateComponents.hour = 24
+        updatedDateComponents.minute = 0
+        updatedDateComponents.second = 0
+        
+        guard let updatedDate = calendar.date(from: updatedDateComponents) else {
+            fatalError("Fehler beim Setzen der Uhrzeit auf Mitternacht")
+        }
+        
+        return updatedDate
+    }
+
+
     
     
     func numberOfDaysInCurrentYear() -> Int {
@@ -497,6 +527,7 @@ class HabitViewModel:ObservableObject {
             habit.currentInYear += 1
             
         }
+
         habit.progress = Double(habit.current) / Double(habit.goal)
         
         /*if (habit.current == habit.goal) {
@@ -519,13 +550,14 @@ class HabitViewModel:ObservableObject {
         }
         if (habit.currentInMonth == habit.goalInMonth) {
             habit.currentInMonth = 0
-            habit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth(in: selectedDays))
+            habit.goalInMonth = Int16(occurrencesOfWeekdaysInCurrentMonth(in: habit.weekdays ?? []))
+
             
         }
         
         if(habit.currentInYear == habit.goalInYear) {
             habit.currentInYear = 0
-            habit.goalInYear = Int16(occurrencesOfWeekdaysInCurrentYear(in: selectedDays))
+            habit.goalInYear = Int16(occurrencesOfWeekdaysInCurrentYear(in: habit.weekdays ?? []))
         }
         
         save()
