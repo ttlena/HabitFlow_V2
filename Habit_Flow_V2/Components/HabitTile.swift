@@ -6,20 +6,57 @@ struct HabitTile: View {
     @State private var selectedTab = 0 // To track the currently selected tab
     @State private var showDeleteButton = false // To track when to show the delete button
     @State var showingBottomSheet = false
+    @State private var highlighted = false // Variable zum Hervorheben der Kachel
+    @State private var color = Color(UIColor.darkGray).opacity(0.8)
     
+    var weekdays = ["mo", "di", "mi", "do", "fr", "sa", "so"]
     
     var body: some View {
         VStack {
+            VStack(spacing: 5) {
+                HStack {
+                    ForEach(habit.weekdays?.sorted { (day1, day2) -> Bool in
+                        guard let index1 = weekdays.firstIndex(of: day1),
+                              let index2 = weekdays.firstIndex(of: day2) else {
+                            return false
+                        }
+                        return index1 < index2
+                    } ?? [], id: \.self) { weekday in
+                        ZStack(alignment: .bottom) {
+                            Text(weekday.capitalized)
+                                .font(.system(size: 15))
+                                .lineLimit(1)
+                                .foregroundColor(.orange)
+                        }
+                    }
+                }
+                if selectedTab == 0 {
+                    Text("Woche")
+                } else if selectedTab == 1 {
+                    Text("Monat")
+                } else if selectedTab == 2 {
+                    Text("Jahr")
+                }
+                
+                Divider()
+                    .frame(height: 0.3)
+                    .font(.system(size: 17))
+                    .background(Color.white)
+                
+            }
             TabView(selection: $selectedTab) {
-                VStack {
+                VStack (spacing: 3) {
                     HStack {
                         Text(habit.title ?? "Unknown")
                             .foregroundColor(.white)
+                            .bold()
+                            .font(.system(size: 22))
+                        
                     }
-                    .padding()
                     CircularProgressView(progress: habit.progress, habitVM: habitVM, habit: habit)
                     Text("\(habit.current)/\(habit.goal)")
                         .padding(.bottom, 5)
+                    
                 }
                 .tag(0)
                 
@@ -27,8 +64,10 @@ struct HabitTile: View {
                     HStack {
                         Text(habit.title ?? "Unknown")
                             .foregroundColor(.white)
+                            .bold()
+                            .font(.system(size: 22))
+
                     }
-                    .padding()
                     CircularMonthProgressView(progress: habit.progress, habitVM: habitVM, habit: habit)
                     Text("\(habit.currentInMonth)/\(habit.goalInMonth)")
                         .padding(.bottom, 5)
@@ -39,8 +78,10 @@ struct HabitTile: View {
                     HStack {
                         Text(habit.title ?? "Unknown")
                             .foregroundColor(.white)
+                            .bold()
+                            .font(.system(size: 22))
+
                     }
-                    .padding()
                     CircularYearProgressView(progress: habit.progress, habitVM: habitVM, habit: habit)
                     Text("\(habit.currentInYear)/\(habit.goalInYear)")
                         .padding(.bottom, 5)
@@ -61,7 +102,7 @@ struct HabitTile: View {
             
             
         }
-        .background(Color(UIColor.darkGray).opacity(0.8))
+        .background(color)
         .cornerRadius(10)
         .padding(.horizontal, 10)
         .padding(.vertical, 5)
@@ -82,7 +123,6 @@ struct HabitTile: View {
                             .padding(.top, -126)
                             .padding(.trailing, 3)
                             .onTapGesture {
-                                print("hallo")
                                 habitVM.deleteHabit(habit: habit)
                                 showDeleteButton = false
                                 
@@ -96,24 +136,43 @@ struct HabitTile: View {
         )
         .onTapGesture {
             showDeleteButton = false
+            highlighted = true
+            
             editHabit()
+            
         }
-        .onLongPressGesture{
+        .onLongPressGesture(minimumDuration: 0.5, maximumDistance: .infinity, pressing: { isPressing in
+            if isPressing {
+                color =  Color(UIColor.systemGray2).opacity(0.8)
+            } else {
+                color =  Color(UIColor.darkGray).opacity(0.8)
+                
+            }
+        }, perform: {
             showDeleteButton = true
             print("test")
-        }
+        })
         .sheet(isPresented: $showingBottomSheet) {
-                EditHabitSheetView(habitVM: habitVM, habit: habit)
-                    .presentationDetents([.medium, .large])
+            EditHabitSheetView(habitVM: habitVM, habit: habit)
+                .presentationDetents([.medium, .large])
         }
         
     }
     
+    
     func editHabit() {
         if !habitVM.plusButtonClicked {
+            
+            color =  Color(UIColor.systemGray2).opacity(0.8)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                highlighted = false
+                color =  Color(UIColor.darkGray).opacity(0.8)
+                
+            }
             habitVM.setEditHabit(habit: habit)
             showingBottomSheet.toggle()
-
+            
+            
         }
         habitVM.plusButtonClicked = false
     }

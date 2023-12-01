@@ -51,8 +51,8 @@ struct HabitsView: View {
                         
                         ForEach(habitsViewModel.habits, id: \.self) { habit in
                             HabitTile(habit: habit, habitVM: habitsViewModel)
-                                .frame(width: 190, height: 260) // Hier die gewünschte Breite und Höhe einstellen
-                            
+                                .frame(width: 190, height: 280) // Hier die gewünschte Breite und Höhe einstellen
+
                         }
                     }
                 }
